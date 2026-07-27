@@ -55,6 +55,21 @@ pnpm lint        # eslint
 pnpm typecheck   # tsc --noEmit
 ```
 
+## Design Context
+
+Two root files carry the design point of view for the `impeccable` skill and any agent:
+
+- `PRODUCT.md` — strategic (register: **brand**), users, purpose, brand personality,
+  anti-references, and five design principles: partner-not-vendor, signature restraint,
+  industrial-editorial hierarchy, earned trust, motion-supports-comprehension.
+- `DESIGN.md` (+ `DESIGN.json` sidecar) — the visual system in Google Stitch format:
+  tokens, typography, elevation, components. North star: **"The Considered Foreman."**
+  Enforced rules: Rare Signature (purple ≤10%, only "act" moments), Flat Navy (never
+  gradiented), Hairline-First (1px silver borders; shadows only for floating surfaces).
+
+These summarize, and must stay consistent with, the sources of truth above and
+`docs/DESIGN_SYSTEM.md` / `docs/BRAND_DIRECTION.md`.
+
 ## Handoff
 
 At the end of a substantial session, update `docs/IMPLEMENTATION_STATUS.md`,
