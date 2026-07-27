@@ -1,0 +1,154 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Literal family names — Tailwind v4 @theme inline resolves at parse time.
+     next/font still injects --font-manrope / --font-libre on <html> for fallback chaining. */
+  --font-sans: "Libre Franklin", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Semantic colors (shadcn vocabulary) mapped to the Platinum palette */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand-named aliases for direct use */
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-purple: var(--primary);
+  --color-silver: var(--silver);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  /* Radius scale (multiplicative, per shadcn v4) */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+  --radius-2xl: calc(var(--radius) * 2);
+  --radius-3xl: calc(var(--radius) * 2.75);
+
+  /* Motion */
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Layout */
+  --spacing-gutter: 1.25rem;
+}
+
+:root {
+  /* Brand palette
+     Executive Purple #4B2E83 · Deep Navy #1E2A44 · Platinum Silver #C7CCD6
+     Soft White #F8F9FB · Charcoal #2C2C2C · Emerald #2E8B57 */
+  --background: #f8f9fb;
+  --foreground: #2c2c2c;
+  --card: #ffffff;
+  --card-foreground: #2c2c2c;
+  --popover: #ffffff;
+  --popover-foreground: #2c2c2c;
+
+  --primary: #4b2e83;
+  --primary-foreground: #ffffff;
+
+  --secondary: #ecedf2;
+  --secondary-foreground: #1e2a44;
+
+  --muted: #f1f2f6;
+  --muted-foreground: #55607a;
+
+  --accent: #eee9f5;
+  --accent-foreground: #4b2e83;
+
+  --destructive: #c0362c;
+  --destructive-foreground: #ffffff;
+
+  --border: #c7ccd6;
+  --input: #8a92a3;
+  --ring: #4b2e83;
+
+  --radius: 0.5rem;
+
+  /* Brand aliases */
+  --navy: #1e2a44;
+  --navy-foreground: #f8f9fb;
+  --silver: #c7ccd6;
+  --surface: #ffffff;
+  --surface-muted: #f1f2f6;
+  --success: #2e8b57;
+  --success-foreground: #ffffff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--primary) 22%, transparent);
+    color: var(--foreground);
+  }
+}
+
+/* Respect reduced-motion globally */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
