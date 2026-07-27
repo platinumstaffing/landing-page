@@ -7,6 +7,7 @@ import { RequestTalentForm } from "@/components/forms/request-talent-form";
 import { Container } from "@/components/layout/container";
 import { Eyebrow } from "@/components/layout/eyebrow";
 import { Heading } from "@/components/layout/heading";
+import { LinkCard } from "@/components/layout/link-card";
 import { Prose } from "@/components/layout/prose";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
@@ -57,48 +58,27 @@ export default function ContactPage() {
             title="Choose the path that fits your needs"
           />
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <a
+            <LinkCard
               href="#request-talent"
-              className="rounded-xl border border-border bg-surface p-6 transition-colors hover:border-primary"
-            >
-              <Briefcase className="size-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-heading text-lg font-bold">Employers</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Looking to hire qualified professionals for your organization.
-              </p>
-              <span className="mt-4 inline-block text-sm font-semibold text-primary">
-                Request Talent →
-              </span>
-            </a>
-            <Link
+              icon={Briefcase}
+              title="Employers"
+              summary="Looking to hire qualified professionals for your organization."
+              cta="Request talent"
+            />
+            <LinkCard
               href="/job-seekers"
-              className="rounded-xl border border-border bg-surface p-6 transition-colors hover:border-primary"
-            >
-              <User className="size-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-heading text-lg font-bold">Job Seekers</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Looking for employment opportunities or assistance with an
-                application.
-              </p>
-              <span className="mt-4 inline-block text-sm font-semibold text-primary">
-                Career Center →
-              </span>
-            </Link>
-            <a
+              icon={User}
+              title="Job Seekers"
+              summary="Looking for employment opportunities or help with an application."
+              cta="Visit the Career Center"
+            />
+            <LinkCard
               href="#message"
-              className="rounded-xl border border-border bg-surface p-6 transition-colors hover:border-primary"
-            >
-              <EnvelopeSimple className="size-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-heading text-lg font-bold">
-                General Inquiry
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Questions about Platinum Staffing & Recruitment or our services.
-              </p>
-              <span className="mt-4 inline-block text-sm font-semibold text-primary">
-                Send a Message →
-              </span>
-            </a>
+              icon={EnvelopeSimple}
+              title="General Inquiry"
+              summary="Questions about Platinum Staffing & Recruitment or our services."
+              cta="Send a message"
+            />
           </div>
         </Container>
       </Section>

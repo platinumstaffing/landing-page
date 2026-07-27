@@ -11,6 +11,7 @@ import { SectionHeader } from "@/components/layout/section-header";
 import { FaqList } from "@/components/sections/faq-list";
 import { FinalCta } from "@/components/sections/final-cta";
 import { IndustriesGrid } from "@/components/sections/industries-grid";
+import { PillarGrid } from "@/components/sections/pillar-grid";
 import { ProcessSteps } from "@/components/sections/process-steps";
 import { SolutionsGrid } from "@/components/sections/solutions-grid";
 import { Button } from "@/components/ui/button";
@@ -53,7 +54,7 @@ export default function EmployersPage() {
               </Button>
             </div>
           </div>
-          <BrandGraphic className="aspect-[4/3] min-h-64" />
+          <BrandGraphic className="aspect-4/3 min-h-64" />
         </Container>
       </section>
 
@@ -118,19 +119,7 @@ export default function EmployersPage() {
             eyebrow="Why Partner With Platinum"
             title="Why Businesses Choose Platinum Staffing"
           />
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-            {employerPillars.map((pillar) => (
-              <li
-                key={pillar.id}
-                className="rounded-xl border border-border bg-surface p-6"
-              >
-                <h3 className="font-heading text-lg font-bold">{pillar.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {pillar.description}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <PillarGrid pillars={employerPillars} className="mt-10" />
         </Container>
       </Section>
 

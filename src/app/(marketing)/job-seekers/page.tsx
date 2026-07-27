@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Check } from "@phosphor-icons/react/dist/ssr";
 
 import { BrandGraphic } from "@/components/brand/brand-graphic";
 import { SubmitResumeForm } from "@/components/forms/submit-resume-form";
@@ -59,7 +60,7 @@ export default function JobSeekersPage() {
               </Button>
             </div>
           </div>
-          <BrandGraphic className="aspect-[4/3] min-h-64" />
+          <BrandGraphic className="aspect-4/3 min-h-64" />
         </Container>
       </section>
 
@@ -118,12 +119,17 @@ export default function JobSeekersPage() {
             title="More Than a Staffing Agency"
             description="We are committed to helping talented professionals find meaningful employment with organizations that value their skills and contributions."
           />
-          <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 grid gap-x-10 gap-y-1 sm:grid-cols-2">
             {benefits.map((benefit) => (
               <li
                 key={benefit}
-                className="rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium"
+                className="flex items-start gap-3 border-b border-border/70 py-3.5 text-sm font-medium text-foreground"
               >
+                <Check
+                  className="mt-0.5 size-4 shrink-0 text-primary"
+                  weight="bold"
+                  aria-hidden
+                />
                 {benefit}
               </li>
             ))}
