@@ -24,7 +24,7 @@ const careerTopics = [
 
 export function ResourcesTeaser() {
   return (
-    <Section tone="muted">
+    <Section>
       <Container>
         <Reveal>
           <SectionHeader

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 export function CareerPathway() {
   return (
-    <Section tone="muted">
+    <Section>
       <Container>
         <Reveal>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">

@@ -13,7 +13,12 @@ type AnimatedStatProps = {
 /**
  * Counts up once when scrolled into view. Respects prefers-reduced-motion.
  */
-export function AnimatedStat({ value, display, label }: AnimatedStatProps) {
+export function AnimatedStat({
+  value,
+  display,
+  label,
+  suffix,
+}: AnimatedStatProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10% 0px" });
   const reduce = useReducedMotion();
@@ -47,13 +52,19 @@ export function AnimatedStat({ value, display, label }: AnimatedStatProps) {
   }, [display, inView, reduce, value]);
 
   return (
-    <div ref={ref} className="text-center sm:text-left">
-      <p className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+    <div ref={ref} className="flex flex-col items-center sm:items-start">
+      <span aria-hidden className="mb-4 block h-px w-8 bg-silver/45" />
+      <p className="font-heading text-3xl font-bold tracking-tight text-white tabular-nums sm:text-4xl">
         {shown}
       </p>
       <p className="mt-2 text-sm font-medium tracking-wide text-silver uppercase">
         {label}
       </p>
+      {suffix?.trim() ? (
+        <p className="mt-1 text-xs leading-snug text-silver/70">
+          {suffix.trim()}
+        </p>
+      ) : null}
     </div>
   );
 }

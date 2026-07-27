@@ -18,9 +18,9 @@ export default function HomePage() {
       <WorkforceImpact />
       <WhyEmployers />
       <CareerPathway />
-      <IndustriesGrid />
-      <SolutionsGrid />
-      <ProcessSteps steps={employerProcess} />
+      <IndustriesGrid tone="muted" />
+      <SolutionsGrid tone="default" />
+      <ProcessSteps steps={employerProcess} tone="muted" />
       <ResourcesTeaser />
       <FinalCta
         title="Ready to Build Your Workforce?"
