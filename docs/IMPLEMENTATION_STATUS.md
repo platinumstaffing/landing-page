@@ -20,8 +20,25 @@ _Last updated: end of vertical-slice build session._
   + Resend boundary + honeypot. Honest loading/success/error states.
 - SEO: metadata, OG, sitemap, robots, Organization JSON-LD; `not-found` + `error`.
 - Motion: Reveal + AnimatedStat with reduced-motion support.
-- Stub routes for deferred About / Resources / legal pages (no-index where appropriate).
+- Legal pages built via a shared `LegalPage` layout: `/accessibility` is a real, indexable
+  statement (truthful to the site's a11y posture); `/privacy` and `/terms` are grounded drafts,
+  `noindex`, with a "pending legal review" banner and `[bracketed]` items for counsel.
 - Validation: `pnpm lint`, `pnpm typecheck`, `pnpm build` all pass.
+
+## Impeccable design pass (this session)
+
+- Added `PRODUCT.md` + `DESIGN.md` (+ `DESIGN.json`) design context; pointer in `AGENTS.md`.
+- Homepage hero rebuilt as a full-bleed, GSAP-pinned WebGL hero (navy duotone + grain via
+  `ogl`) — deviates from the Motion-only rule for this surface only (DECISIONS D10). Pin is
+  desktop-only via `matchMedia`; reduced-motion + no-WebGL fallbacks in place.
+- Navbar polish: wider/taller with a scrolled shrink+shadow, roomier two-column dropdowns,
+  desktop nav at `xl` (Sheet below) to remove crowding.
+- Homepage + shared sections: deliberate alternating tone rhythm, shared `LinkCard` and
+  `PillarGrid` (removed identical-card-grid anti-patterns), clarified ambiguous CTAs.
+- `/about` and `/resources` are now **real pages** built from approved brand copy:
+  About (story, mission, vision, core values, honest leadership placeholder, reused
+  impact/why/careers sections); Resources (category directory with honest "articles in
+  progress" states + useful cross-links). Both added to the sitemap.
 
 ## In progress
 
@@ -31,7 +48,8 @@ _Last updated: end of vertical-slice build session._
 
 - 6 employer service detail pages + 6 industry detail pages.
 - Job detail (`/jobs/[slug]`) + apply flow.
-- Full About section and Resource Center + article template.
+- Resource article template + real articles per category (directory is live; articles pending).
+- Leadership section on `/about` needs real bios + headshots when supplied.
 - Legal copy pages once client provides Privacy / Terms / Accessibility.
 - Client sign-off on Libre Franklin; replace sample jobs with real openings.
 - Turnstile spam upgrade when keys are provided.
