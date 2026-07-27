@@ -72,3 +72,23 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
 - **Decision:** Forms use a honeypot field (`website`). Timing-based client gates were dropped to
   satisfy React Compiler purity/ref rules. Cloudflare Turnstile remains env-gated for a later pass
   (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` in `.env.example`).
+
+## D10 — Homepage hero: GSAP + WebGL, overriding the Motion-only rule
+
+- **Context:** AGENTS.md hard rule states Motion v12 is the only animation library. The homepage
+  hero was directed (client request) to be a full-bleed, page-filling pinned hero with a
+  cinematic scroll handoff, explicitly authorizing GSAP or WebGL for this surface.
+- **Decision:** For the hero **only**, add `gsap` + `@gsap/react` (ScrollTrigger pin + intro
+  choreography) and `ogl` (a ~10kb WebGL renderer). The image runs through a navy **duotone +
+  film-grain** shader (`src/components/motion/hero-canvas.tsx`) with a subtle scroll parallax.
+  The rest of the site stays on Motion v12.
+- **Alternatives:** Motion-only sticky hero (declined: wanted GPU treatment to brand the photo);
+  CSS scroll-driven animations (declined: pin + shader needed JS/WebGL).
+- **Rationale:** The duotone brands off-palette photography toward the Platinum navy world and
+  enforces the Flat-Navy / signature-restraint rules on imagery. GSAP ScrollTrigger is the
+  reliable tool for pinning + scrubbed handoff.
+- **Consequence / guardrails:** Progressive enhancement is mandatory — a CSS-treated `<img>`
+  (grayscale + navy multiply + vignette) is the SSR/LCP layer and the fallback if WebGL fails;
+  grain and parallax are disabled under `prefers-reduced-motion`; the WebGL loop pauses when the
+  hero is off-screen. The H1 remains real SSR text. If a future audit wants to drop the extra
+  deps, the hero can fall back to the Motion-only sticky variant without touching other sections.
