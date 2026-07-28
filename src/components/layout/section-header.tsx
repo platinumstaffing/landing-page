@@ -25,7 +25,8 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "max-w-2xl",
+        "max-w-3xl",
+        align === "left" && "border-t border-border pt-6",
         align === "center" && "mx-auto text-center",
         className,
       )}
@@ -34,7 +35,7 @@ export function SectionHeader({
       <Heading
         level={level}
         onDark={onDark}
-        className={cn(eyebrow && "mt-3")}
+        className={cn(eyebrow && "mt-4")}
       >
         {title}
       </Heading>

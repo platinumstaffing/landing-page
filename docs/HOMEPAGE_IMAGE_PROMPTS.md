@@ -6,6 +6,9 @@ These prompts replace the designed SVG art-direction frames in `public/brand/hom
 The final set should feel like one documentary assignment photographed across real
 Pennsylvania workplaces, not a collection of unrelated stock images.
 
+The five diagrammatic illustrations for the interactive employer process are documented
+separately in `docs/PARTNERSHIP_JOURNEY_IMAGE_PROMPTS.md`.
+
 ## Shared production rules
 
 - Photorealistic documentary workplace photography.
@@ -34,6 +37,7 @@ Pennsylvania workplaces, not a collection of unrelated stock images.
 | 09 | `candidate-pathway.webp` | 2100 × 1400 | 3:2 | Worker center-left | Job seeker pathway |
 | 10 | `employer-resource.webp` | 1800 × 1200 | 3:2 | Documents and manager center | Employer resource |
 | 11 | `career-resource.webp` | 1800 × 1200 | 3:2 | Job seeker center-right | Career resource |
+| 12 | `staffing-models.webp` | 1800 × 1350 | 4:3 | People and plan centered | Staffing models |
 
 After adding final files, update only the corresponding `src` values in
 `src/content/home-images.ts`. The section components, dimensions, crops, captions, and
@@ -244,3 +248,24 @@ alternative text do not need to change.
 **Alt text draft**
 
 > A job seeker preparing application materials with support from a recruiter.
+
+## 12. Staffing models
+
+**Prompt**
+
+> Documentary photograph of a staffing strategist and operations leader mapping shift
+> requirements at a practical table near an active facility. A paper schedule, role notes,
+> and a simple workforce plan are visible without readable confidential information. The
+> two professionals are engaged in the work rather than facing the camera. Include enough
+> industrial context to connect the plan to real operations, with accurate safety-aware
+> clothing, natural overhead light, and a calm cool-neutral grade. 4:3 landscape.
+
+**Negative prompt**
+
+> Handshake, sales presentation, staged boardroom, floating charts, transparent screens,
+> readable employee data, branded uniforms, camera-facing smiles, luxury office, generic
+> laptop meeting.
+
+**Alt text draft**
+
+> A staffing strategist and operations leader mapping shift requirements together.

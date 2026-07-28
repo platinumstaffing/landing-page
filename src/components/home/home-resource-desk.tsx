@@ -41,7 +41,7 @@ export function HomeResourceDesk() {
               <EditorialImage
                 image={row.image}
                 sizes="(min-width: 1024px) 13rem, 100vw"
-                className="max-w-lg lg:aspect-[3/2]"
+                className="max-w-lg"
               />
               <div>
                 <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">

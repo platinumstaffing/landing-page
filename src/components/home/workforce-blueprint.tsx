@@ -2,14 +2,16 @@ import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 import { Container } from "@/components/layout/container";
-import { employerProcess } from "@/content/process";
+import { homeImages } from "@/content/home-images";
 import { solutions } from "@/content/solutions";
+import { EditorialImage } from "./editorial-image";
 import { EditorialIntro } from "./editorial-intro";
+import { PartnershipJourney } from "./partnership-journey";
 
 export function WorkforceBlueprint() {
   return (
     <section className="bg-background py-20 sm:py-28 lg:py-36">
-      <Container>
+      <Container className="max-w-[90rem]">
         <EditorialIntro
           index="04"
           eyebrow="Workforce blueprint"
@@ -17,7 +19,7 @@ export function WorkforceBlueprint() {
           description="Choose the workforce approach that fits the need. We manage the recruiting process with clear communication and stay involved after the placement."
         />
 
-        <div className="mt-16 grid gap-16 lg:grid-cols-[minmax(18rem,0.72fr)_minmax(0,1.28fr)] lg:gap-24">
+        <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(18rem,0.72fr)_minmax(0,1.28fr)] lg:items-start lg:gap-16">
           <div>
             <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
               Staffing models
@@ -42,35 +44,29 @@ export function WorkforceBlueprint() {
             </nav>
           </div>
 
-          <div>
+          <EditorialImage
+            image={homeImages.staffingModels}
+            sizes="(min-width: 1024px) 56vw, 100vw"
+            className="w-full"
+          />
+        </div>
+
+        <div className="mt-20 border-t border-border pt-10 sm:mt-24 sm:pt-12">
+          <div className="grid gap-5 lg:grid-cols-[minmax(14rem,0.42fr)_minmax(0,1.58fr)] lg:gap-16">
+            <div>
             <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
               How the partnership works
             </p>
-            <ol className="relative mt-5 border-t border-border">
-              {employerProcess.map((step, index) => (
-                <li
-                  key={step.step}
-                  className="group relative grid gap-4 border-b border-border py-6 sm:grid-cols-[5rem_1fr] sm:gap-8 sm:py-7"
-                >
-                  <span
-                    aria-hidden
-                    className="absolute top-0 left-0 h-px w-0 bg-primary transition-[width] duration-500 ease-brand group-hover:w-full"
-                  />
-                  <span className="font-heading text-sm font-bold tracking-[0.12em] text-primary tabular-nums">
-                    {String(index + 1).padStart(2, "0")} / 05
-                  </span>
-                  <div>
-                    <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-foreground">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 max-w-[58ch] text-sm leading-relaxed text-muted-foreground">
-                      {step.description}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <p className="mt-3 max-w-[54ch] text-sm leading-relaxed text-muted-foreground">
+              A five-step route from understanding the need to supporting the
+              relationship after placement.
+            </p>
+            </div>
+            <p className="max-w-2xl font-heading text-2xl leading-tight font-semibold tracking-[-0.03em] text-foreground sm:text-3xl">
+              One connected journey, with a clear handoff at every stage.
+            </p>
           </div>
+          <PartnershipJourney />
         </div>
       </Container>
     </section>

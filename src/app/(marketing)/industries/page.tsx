@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
-import { BrandGraphic } from "@/components/brand/brand-graphic";
 import { Container } from "@/components/layout/container";
-import { Eyebrow } from "@/components/layout/eyebrow";
-import { Heading } from "@/components/layout/heading";
-import { Prose } from "@/components/layout/prose";
+import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
 import { FinalCta } from "@/components/sections/final-cta";
 import { IndustriesGrid } from "@/components/sections/industries-grid";
 import { ProcessSteps } from "@/components/sections/process-steps";
-import { Button } from "@/components/ui/button";
 import { employerProcess } from "@/content/process";
 
 export const metadata: Metadata = {
@@ -50,34 +45,21 @@ const commonRoles = [
 export default function IndustriesPage() {
   return (
     <>
-      <section className="border-b border-border">
-        <Container className="grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
-          <div>
-            <Eyebrow>Industries We Serve</Eyebrow>
-            <Heading as="h1" level="h1" className="mt-4">
-              Industry Expertise That Delivers Workforce Solutions
-            </Heading>
-            <Prose size="lg" className="mt-5">
-              <p>
-                Every industry has its own workforce challenges, hiring demands,
-                and operational goals. Platinum Staffing & Recruitment provides
-                customized staffing and recruitment solutions designed to help
-                organizations build dependable teams, maintain productivity, and
-                achieve long-term success.
-              </p>
-            </Prose>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link href="#industries">Explore Industries</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/contact#request-talent">Request Talent</Link>
-              </Button>
-            </div>
-          </div>
-          <BrandGraphic className="aspect-[4/3] min-h-64" />
-        </Container>
-      </section>
+      <EditorialPageHero
+        index="03"
+        eyebrow="Industries We Serve"
+        title="Industry expertise that moves work forward."
+        description={
+          <p>
+            Each sector has its own demands, pace, and operational realities. We
+            shape staffing solutions around those differences so employers can
+            build dependable teams and maintain productivity.
+          </p>
+        }
+        primary={{ label: "Explore Industries", href: "#industries" }}
+        secondary={{ label: "Request Talent", href: "/contact#request-talent" }}
+        note="Six sectors · One accountable partner"
+      />
 
       <div id="industries">
         <IndustriesGrid

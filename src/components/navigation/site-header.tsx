@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { CaretDown, List } from "@phosphor-icons/react/dist/ssr";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, CaretDown, List } from "@phosphor-icons/react/dist/ssr";
 
 import { Logo } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
@@ -28,32 +28,60 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelMenuClose = () => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  };
+
+  const openDesktopMenu = (label: string) => {
+    cancelMenuClose();
+    setOpenMenu(label);
+  };
+
+  const scheduleMenuClose = () => {
+    cancelMenuClose();
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 140);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
   }, []);
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b bg-background transition-colors duration-300 ease-brand",
-        scrolled ? "border-border" : "border-silver/60",
+        "sticky top-0 z-40 border-b bg-surface transition-[border-color,box-shadow] duration-300 ease-brand",
+        scrolled
+          ? "border-border shadow-[var(--shadow-float)]"
+          : "border-silver/70",
       )}
     >
       <div
         className={cn(
-          "mx-auto flex max-w-[90rem] items-center gap-5 px-5 transition-[height] duration-300 ease-brand sm:px-6 lg:px-8",
+          "mx-auto flex max-w-[94rem] items-center gap-5 px-5 transition-[height] duration-300 ease-brand sm:px-6 lg:px-8",
           scrolled ? "h-16" : "h-[4.75rem]",
         )}
       >
-        <Logo priority className="shrink-0" />
+        <div className="flex shrink-0 items-center gap-5 xl:border-r xl:border-border xl:pr-6">
+          <Logo priority />
+          <p className="hidden max-w-[11ch] text-[0.62rem] leading-tight font-semibold tracking-[0.12em] text-muted-foreground uppercase 2xl:block">
+            Pennsylvania workforce partner
+          </p>
+        </div>
 
         <nav
           aria-label="Primary"
-          className="ml-auto hidden items-center gap-0 xl:flex"
+          className="ml-auto hidden h-full items-center gap-0.5 xl:flex"
           onKeyDown={(e) => {
             if (e.key === "Escape") setOpenMenu(null);
           }}
@@ -66,7 +94,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative px-3 py-2 text-[0.82rem] font-medium transition-colors after:absolute after:inset-x-3 after:-bottom-0.5 after:h-px after:origin-left after:bg-primary after:transition-transform",
+                    "relative inline-flex h-full items-center px-3 py-2 text-[0.8rem] font-medium transition-colors after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:bg-primary after:transition-transform",
                     active
                       ? "text-primary after:scale-x-100"
                       : "text-foreground/80 after:scale-x-0 hover:text-primary hover:after:scale-x-100",
@@ -82,9 +110,9 @@ export function SiteHeader() {
             return (
               <div
                 key={item.href}
-                className="relative"
-                onMouseEnter={() => setOpenMenu(item.label)}
-                onMouseLeave={() => setOpenMenu(null)}
+                className="relative h-full"
+                onMouseEnter={() => openDesktopMenu(item.label)}
+                onMouseLeave={scheduleMenuClose}
                 onBlur={(e) => {
                   if (!e.currentTarget.contains(e.relatedTarget as Node)) {
                     setOpenMenu(null);
@@ -94,7 +122,7 @@ export function SiteHeader() {
                 <button
                   type="button"
                   className={cn(
-                    "relative inline-flex items-center gap-1 px-3 py-2 text-[0.82rem] font-medium transition-colors after:absolute after:inset-x-3 after:-bottom-0.5 after:h-px after:origin-left after:bg-primary after:transition-transform",
+                    "relative inline-flex h-full items-center gap-1 px-3 py-2 text-[0.8rem] font-medium transition-colors after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:bg-primary after:transition-transform",
                     active || open
                       ? "text-primary after:scale-x-100"
                       : "text-foreground/80 after:scale-x-0 hover:text-primary hover:after:scale-x-100",
@@ -102,7 +130,6 @@ export function SiteHeader() {
                   aria-expanded={open}
                   aria-haspopup="true"
                   onClick={() => setOpenMenu(open ? null : item.label)}
-                  onFocus={() => setOpenMenu(item.label)}
                 >
                   {item.label}
                   <CaretDown
@@ -115,45 +142,68 @@ export function SiteHeader() {
                 </button>
                 {open ? (
                   <div
-                    role="menu"
-                    className="absolute top-[calc(100%+0.75rem)] left-0 z-50 rounded-lg border border-border bg-surface p-2 shadow-[var(--shadow-float)]"
+                    className="absolute top-full left-0 z-50 pt-3"
+                    onMouseEnter={cancelMenuClose}
+                    onMouseLeave={scheduleMenuClose}
                   >
-                    <div className="border-b border-border/70 px-3 pb-2 pt-1">
-                      <Link
-                        href={item.href}
-                        role="menuitem"
-                        onClick={() => setOpenMenu(null)}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-primary"
-                      >
-                        {item.label} overview
-                      </Link>
-                    </div>
-                    <ul
+                    <div
+                      role="menu"
                       className={cn(
-                        "mt-1 grid gap-0.5",
-                        twoCol
-                          ? "w-[min(34rem,86vw)] grid-cols-2"
-                          : "w-[min(19rem,86vw)] grid-cols-1",
+                        "overflow-hidden rounded-xl border border-border bg-surface shadow-[var(--shadow-float)]",
+                        twoCol ? "w-[min(38rem,86vw)]" : "w-[min(21rem,86vw)]",
                       )}
                     >
-                      {item.children.map((child) => (
-                        <li key={child.href}>
-                          <Link
-                            href={child.href}
-                            role="menuitem"
-                            onClick={() => setOpenMenu(null)}
-                            className="block rounded-md px-3 py-2.5 text-sm text-foreground/85 transition-colors hover:bg-accent hover:text-primary"
-                          >
-                            <span className="font-medium">{child.label}</span>
-                            {child.description ? (
-                              <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">
-                                {child.description}
+                      <div className="flex items-center justify-between gap-6 border-b border-border bg-surface-muted px-5 py-4">
+                        <div>
+                          <p className="text-[0.66rem] font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+                            Explore
+                          </p>
+                          <p className="mt-1 font-heading text-base font-semibold text-foreground">
+                            {item.label}
+                          </p>
+                        </div>
+                        <Link
+                          href={item.href}
+                          role="menuitem"
+                          onClick={() => setOpenMenu(null)}
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary"
+                        >
+                          Overview
+                          <ArrowUpRight className="size-3.5" aria-hidden />
+                        </Link>
+                      </div>
+                      <ul
+                        className={cn(
+                          "grid p-2",
+                          twoCol ? "grid-cols-2" : "grid-cols-1",
+                        )}
+                      >
+                        {item.children.map((child, childIndex) => (
+                          <li key={child.href}>
+                            <Link
+                              href={child.href}
+                              role="menuitem"
+                              onClick={() => setOpenMenu(null)}
+                              className="group grid grid-cols-[2rem_1fr] gap-2 rounded-lg px-3 py-3 text-foreground transition-colors hover:bg-accent hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
+                            >
+                              <span className="pt-0.5 text-[0.66rem] font-semibold tracking-[0.08em] text-muted-foreground tabular-nums">
+                                {String(childIndex + 1).padStart(2, "0")}
                               </span>
-                            ) : null}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                              <span>
+                                <span className="block text-sm font-semibold">
+                                  {child.label}
+                                </span>
+                                {child.description ? (
+                                  <span className="mt-1 block text-xs leading-snug text-muted-foreground">
+                                    {child.description}
+                                  </span>
+                                ) : null}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 ) : null}
               </div>
@@ -161,7 +211,7 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2.5 xl:ml-6">
+        <div className="ml-auto flex items-center gap-2 xl:ml-5">
           <span
             aria-hidden
             className="mr-1 hidden h-6 w-px bg-border xl:block"

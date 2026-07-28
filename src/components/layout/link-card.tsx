@@ -16,9 +16,8 @@ type LinkCardProps = {
 };
 
 /**
- * Elegant, fully-clickable content card. The whole surface is the target (a
- * stretched link) for larger tap areas on touch devices; the arrow is a hover
- * affordance. Hairline-first: a border that warms to primary on hover, no shadow.
+ * Fully-clickable editorial story row with a generous touch target. Hairline
+ * borders and an offset corner marker replace the old repeated card catalogue.
  */
 export function LinkCard({
   href,
@@ -33,21 +32,23 @@ export function LinkCard({
     <article
       id={id}
       className={cn(
-        "group relative flex h-full flex-col rounded-xl border border-border bg-surface p-6 transition-colors duration-300 ease-brand hover:border-primary/60 sm:p-7",
+        "group relative flex h-full min-h-60 flex-col overflow-hidden rounded-[1.25rem] border border-border bg-surface p-6 transition-[border-color,background-color,transform] duration-300 ease-brand hover:-translate-y-1 hover:border-primary sm:p-7",
         className,
       )}
     >
-      {IconCmp ? (
-        <IconCmp
-          className="size-6 text-primary"
-          weight="regular"
-          aria-hidden
-        />
-      ) : null}
+      <div className="flex items-center justify-between gap-5 border-b border-border pb-5">
+        <span className="text-[0.68rem] font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+          Platinum field note
+        </span>
+        {IconCmp ? (
+          <IconCmp className="size-5 text-primary" weight="regular" aria-hidden />
+        ) : (
+          <span className="size-2 rounded-full border border-primary" aria-hidden />
+        )}
+      </div>
       <h3
         className={cn(
-          "font-heading text-lg font-bold text-foreground",
-          IconCmp && "mt-4",
+          "mt-6 max-w-[18ch] font-heading text-xl leading-tight font-semibold tracking-[-0.025em] text-foreground",
         )}
       >
         {title}
@@ -55,10 +56,10 @@ export function LinkCard({
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
         {summary}
       </p>
-      <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+      <span className="mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
         <Link
           href={href}
-          className="absolute inset-0 rounded-xl focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
+          className="absolute inset-0 rounded-[1.25rem] focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
           aria-label={cta}
         >
           <span className="sr-only">{cta}</span>

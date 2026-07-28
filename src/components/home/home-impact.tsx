@@ -4,7 +4,7 @@ import { HomeStatLedger } from "./home-stat-ledger";
 export function HomeImpact() {
   return (
     <section className="bg-navy py-14 text-navy-foreground sm:py-18">
-      <Container>
+      <Container className="max-w-[90rem]">
         <div className="mb-10 grid gap-6 lg:grid-cols-[8rem_1fr]">
           <p className="text-xs font-semibold tracking-[0.16em] text-silver uppercase">
             01 / Proven scale

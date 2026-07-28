@@ -14,9 +14,11 @@ Items required from the client. None block the current build; the site degrades 
 
 ## Missing assets
 
-- [ ] Replace the eleven labelled homepage art-direction frames in `public/brand/home/` with
-      authentic workplace photography. `docs/HOMEPAGE_IMAGE_PROMPTS.md` provides exact prompts,
-      filenames, dimensions, crops, focal points, negative prompts, and alt-text drafts.
+- [x] Twelve homepage workplace images supplied and connected through the typed image manifest.
+      The delivered files are 1152 × 1536 portrait images, so the implementation preserves their
+      full 3:4 compositions rather than applying the landscape crops in the original prompt guide.
+- [x] Five coordinated Partnership Journey illustrations supplied and implemented. The responsive
+      code-rendered connector now continues through the complete card sequence.
 - [ ] The unused `public/brand/hero.jpg` remains an off-brand generic SaaS stock image and should
       be removed from the asset library after confirming no external workflow references it. It is
       no longer rendered anywhere on the site.

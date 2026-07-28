@@ -76,7 +76,7 @@ export function HomeHero() {
             image={homeImages.hero}
             priority
             sizes="(min-width: 1024px) 58vw, 100vw"
-            className="aspect-[4/3] sm:aspect-[16/10] lg:min-h-[38rem]"
+            className="mx-auto w-full max-w-[34rem] lg:mr-0 lg:min-h-[42rem]"
           />
           <div className="absolute -bottom-7 left-5 grid grid-cols-2 border border-border bg-background sm:left-8">
             <div className="border-r border-border px-4 py-3 sm:px-5">

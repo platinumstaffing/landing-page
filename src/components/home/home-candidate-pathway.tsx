@@ -10,13 +10,13 @@ export function HomeCandidatePathway() {
   return (
     <section className="border-y border-border bg-surface py-8 sm:py-12">
       <Container>
-        <div className="grid overflow-hidden border border-border bg-background lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="grid overflow-hidden border border-border bg-background lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
           <EditorialImage
             image={homeImages.candidatePathway}
             sizes="(min-width: 1024px) 55vw, 100vw"
-            className="min-h-[22rem] border-0 border-b lg:min-h-[36rem] lg:border-r lg:border-b-0"
+            className="relative z-0 min-h-[22rem] border-0 border-b lg:min-h-[36rem] lg:border-r lg:border-b-0"
           />
-          <div className="flex flex-col justify-between p-7 sm:p-10 lg:p-12">
+          <div className="relative z-10 flex min-w-0 flex-col justify-between bg-background p-7 sm:p-10 lg:-ml-px lg:p-12">
             <div>
               <p className="text-xs font-semibold tracking-[0.16em] text-primary uppercase">
                 05 / For job seekers

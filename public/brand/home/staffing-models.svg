@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1350" role="img" aria-labelledby="title desc">
+  <title id="title">Staffing models photography placeholder</title>
+  <desc id="desc">Art direction frame for a staffing strategist and operations leader mapping shift requirements.</desc>
+  <rect width="1800" height="1350" fill="#ecedf2"/>
+  <path d="M120 130h1560v1090H120zM120 675h1560M900 130v1090" fill="none" stroke="#8a92a3" stroke-opacity=".55"/>
+  <path d="M220 1040c220-310 390-190 580-420s360-70 780-340" fill="none" stroke="#4b2e83" stroke-width="4" stroke-dasharray="18 22"/>
+  <circle cx="220" cy="1040" r="12" fill="#4b2e83"/>
+  <circle cx="800" cy="620" r="12" fill="#4b2e83"/>
+  <circle cx="1580" cy="280" r="12" fill="#4b2e83"/>
+  <text x="170" y="540" fill="#1e2a44" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="5">IMAGE 12 / STAFFING MODELS</text>
+  <text x="170" y="630" fill="#1e2a44" font-family="Arial, sans-serif" font-size="68" font-weight="700">A workforce model built to fit</text>
+  <text x="170" y="700" fill="#55607a" font-family="Arial, sans-serif" font-size="28">Shift requirements and staffing plan · 4:3</text>
+</svg>

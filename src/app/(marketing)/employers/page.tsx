@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { BrandGraphic } from "@/components/brand/brand-graphic";
 import { Container } from "@/components/layout/container";
-import { Eyebrow } from "@/components/layout/eyebrow";
-import { Heading } from "@/components/layout/heading";
-import { Prose } from "@/components/layout/prose";
+import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
 import { FaqList } from "@/components/sections/faq-list";
@@ -28,35 +25,24 @@ export const metadata: Metadata = {
 export default function EmployersPage() {
   return (
     <>
-      <section className="border-b border-border">
-        <Container className="grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
-          <div>
-            <Eyebrow>Employer Solutions</Eyebrow>
-            <Heading as="h1" level="h1" className="mt-4">
-              Workforce Solutions Designed Around Your Business
-            </Heading>
-            <Prose size="lg" className="mt-5">
-              <p>
-                Every organization has unique workforce challenges, and no two
-                hiring needs are the same. At Platinum Staffing & Recruitment, we
-                provide flexible staffing and recruitment solutions designed to
-                help businesses hire with confidence, respond to changing
-                workforce demands, and build dependable teams that support
-                long-term growth.
-              </p>
-            </Prose>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link href="/contact#request-talent">Request Talent</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/contact#consultation">Schedule a Consultation</Link>
-              </Button>
-            </div>
-          </div>
-          <BrandGraphic className="aspect-4/3 min-h-64" />
-        </Container>
-      </section>
+      <EditorialPageHero
+        index="02"
+        eyebrow="Employer Solutions"
+        title="Workforce solutions designed around your business."
+        description={
+          <p>
+            No two hiring needs are the same. We build flexible staffing and
+            recruitment solutions that help organizations respond to demand,
+            hire with confidence, and build dependable teams.
+          </p>
+        }
+        primary={{ label: "Request Talent", href: "/contact#request-talent" }}
+        secondary={{
+          label: "Schedule a Consultation",
+          href: "/contact#consultation",
+        }}
+        note="Employer-first · Built for operational reality"
+      />
 
       <Section>
         <Container>

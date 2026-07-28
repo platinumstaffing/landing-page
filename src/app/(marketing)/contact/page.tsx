@@ -5,10 +5,8 @@ import { Briefcase, EnvelopeSimple, MapPin, Phone, User } from "@phosphor-icons/
 import { GeneralContactForm } from "@/components/forms/general-contact-form";
 import { RequestTalentForm } from "@/components/forms/request-talent-form";
 import { Container } from "@/components/layout/container";
-import { Eyebrow } from "@/components/layout/eyebrow";
-import { Heading } from "@/components/layout/heading";
+import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
 import { LinkCard } from "@/components/layout/link-card";
-import { Prose } from "@/components/layout/prose";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
 import { FaqList } from "@/components/sections/faq-list";
@@ -26,30 +24,21 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="border-b border-border">
-        <Container className="py-14 sm:py-16">
-          <Eyebrow>Contact</Eyebrow>
-          <Heading as="h1" level="h1" className="mt-4 max-w-3xl">
-            Let&apos;s Build Your Workforce or Advance Your Career
-          </Heading>
-          <Prose size="lg" className="mt-5">
-            <p>
-              Whether you&apos;re an employer seeking dependable workforce
-              solutions or a job seeker exploring new opportunities, our team is
-              here to help. Contact Platinum Staffing & Recruitment to discuss
-              your staffing needs, career goals, or general questions.
-            </p>
-          </Prose>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link href="#request-talent">Request Talent</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="#message">Contact Our Team</Link>
-            </Button>
-          </div>
-        </Container>
-      </section>
+      <EditorialPageHero
+        index="06"
+        eyebrow="Contact"
+        title="Let’s build your workforce—or advance your career."
+        description={
+          <p>
+            Tell us what you need. Employers can start a hiring conversation,
+            while job seekers can ask about opportunities, applications, or
+            career support.
+          </p>
+        }
+        primary={{ label: "Request Talent", href: "#request-talent" }}
+        secondary={{ label: "Contact Our Team", href: "#message" }}
+        note="Two clear paths · One responsive team"
+      />
 
       <Section>
         <Container>

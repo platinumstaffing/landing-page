@@ -9,6 +9,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 import { Container } from "@/components/layout/container";
+import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
 import { Eyebrow } from "@/components/layout/eyebrow";
 import { Heading } from "@/components/layout/heading";
 import { LinkCard } from "@/components/layout/link-card";
@@ -37,35 +38,26 @@ const categoryIcons = {
 export default function ResourcesPage() {
   return (
     <>
-      <section className="border-b border-border">
-        <Container className="max-w-3xl py-16 sm:py-20">
-          <Eyebrow>Resource Center</Eyebrow>
-          <Heading as="h1" level="h1" className="mt-4">
-            Workforce Knowledge That Helps People and Businesses Grow
-          </Heading>
-          <Prose size="lg" className="mt-5">
+      <EditorialPageHero
+        index="07"
+        eyebrow="Resource Center"
+        title="Workforce knowledge for better decisions."
+        description={
+          <>
             <p>
-              The Platinum Staffing &amp; Recruitment Resource Center provides
-              employers and job seekers with practical information to support
-              better hiring decisions, stronger workforce strategies, and
-              successful career development.
+              Practical information for employers and job seekers—designed to
+              support stronger workforce strategies and career development.
             </p>
-            <p className="mt-4">
-              Explore workforce trends, industry research, employer guides,
-              career advice, and company updates designed to help you make
-              informed decisions and prepare for what comes next.
+            <p>
+              Articles and reports are in progress; the pathways already
+              available are clearly marked below.
             </p>
-          </Prose>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link href="#employer">Employer resources</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="#career">Career advice</Link>
-            </Button>
-          </div>
-        </Container>
-      </section>
+          </>
+        }
+        primary={{ label: "Employer resources", href: "#employer" }}
+        secondary={{ label: "Career advice", href: "#career" }}
+        note="Guides in progress · Honest by design"
+      />
 
       <Section tone="muted">
         <Container>

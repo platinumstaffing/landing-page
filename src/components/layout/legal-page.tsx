@@ -28,15 +28,19 @@ export function LegalPage({
 }: LegalPageProps) {
   return (
     <>
-      <section className="border-b border-border bg-muted">
-        <Container className="max-w-3xl py-14 sm:py-16">
-          <Eyebrow>Legal</Eyebrow>
-          <Heading as="h1" level="h1" className="mt-4">
-            {title}
-          </Heading>
-          <p className="mt-4 text-sm font-medium text-muted-foreground">
-            {status}
-          </p>
+      <section className="border-b border-border bg-surface-muted">
+        <Container className="grid max-w-5xl gap-8 py-16 sm:py-20 lg:grid-cols-[8rem_1fr] lg:py-24">
+          <div className="border-t border-primary pt-4">
+            <Eyebrow>Legal desk</Eyebrow>
+          </div>
+          <div>
+            <Heading as="h1" level="h1" className="max-w-[18ch]">
+              {title}
+            </Heading>
+            <p className="mt-5 text-sm font-medium text-muted-foreground">
+              {status}
+            </p>
+          </div>
         </Container>
       </section>
 

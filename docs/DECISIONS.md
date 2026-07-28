@@ -103,7 +103,62 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
 - **Rationale:** The page now earns distinction through typography, pacing, photography, and
   industry-specific interaction rather than a shader. This improves content access, reduces the
   client bundle, and returns the implementation to the repository's default motion law.
-- **Photography boundary:** Eleven labelled SVG art-direction frames reserve final crops without
+- **Photography boundary:** Twelve labelled SVG art-direction frames reserve final crops without
   fabricating people or workplaces. `docs/HOMEPAGE_IMAGE_PROMPTS.md` defines the replacement assets.
 - **Consequence:** D11 supersedes D10 for the homepage. The old hero and WebGL canvas components are
   removed rather than retained as dead fallback code.
+
+## D12 — Motion SVG journey foundation; superseded artwork noted in D15
+
+- **Context:** The employer process needed a more playful horizontal journey with rounded cards,
+  a non-linear connector, hover/click affordances, and a detail modal. Lottie was considered for
+  the five process illustrations.
+- **Decision:** Build the interaction with five small custom SVG vignettes animated by the
+  existing Motion runtime. Each card is a semantic button and opens a Radix/shadcn dialog
+  containing the approved process copy. The connector draws once in sequence and becomes static
+  under reduced motion.
+- **Rationale:** A coherent five-file Lottie set does not yet exist. Pulling unrelated animation
+  assets would add visual inconsistency, network weight, and another runtime without improving
+  comprehension. The SVG approach is art-directed to the brand, accessible, and inexpensive.
+- **Future boundary:** Lottie remains acceptable only when five coordinated production assets are
+  supplied and tested for reduced motion, loading failure, keyboard behavior, and bundle impact.
+- **Status:** The abstract vignette artwork in this decision was superseded by the supplied
+  illustrations in D15. The semantic buttons, dialogs, Motion route, and reduced-motion behavior
+  remain the interaction foundation.
+
+## D13 — Industrial Field Journal expands across the marketing site
+
+- **Context:** The homepage established a stronger employer-first editorial language, while inner
+  pages still opened with generic split heroes and repeated catalogue cards.
+- **Decision:** Introduce one shared asymmetric page-hero primitive and apply it to About,
+  Employers, Industries, Job Seekers, Jobs, Contact, and Resources. Extend the same language to
+  shared section headings, link surfaces, legal introductions, spacing, and final CTAs.
+- **Rationale:** Reusing principles—large type contrast, production-line hairlines, indexed
+  structure, restrained purple, and flat navy—creates cohesion without cloning the homepage
+  section-by-section.
+- **Consequence:** Routes, forms, facts, content boundaries, and conversion destinations remain
+  unchanged. The `type-specimen` utility route remains intentionally outside the marketing system.
+
+## D14 — Preserve supplied image geometry
+
+- **Context:** The delivered homepage photography is consistently 1152 × 1536 portrait, while the
+  original art-direction manifest reserved several landscape frames. Using `object-cover` hid
+  meaningful portions of every image, and the placeholder caption exposed implementation metadata
+  beneath the artwork.
+- **Decision:** Update the manifest to the real 3:4 geometry, render each complete image with
+  centered `object-contain`, and remove the visible label/aspect-ratio footer. Partnership
+  illustrations retain their near-4:3 source geometry in a separate typed manifest.
+- **Consequence:** The supplied artwork is displayed without cropping. Layouts now respond to the
+  files that exist rather than preserving obsolete placeholder proportions.
+
+## D15 — Partnership illustrations supersede abstract step glyphs
+
+- **Context:** Five coordinated 2400 × 1792 journey illustrations were supplied from the approved
+  prompt system.
+- **Decision:** Replace the abstract Motion glyphs with the full illustrations in both the cards
+  and their dialogs. Keep the connector as code-rendered SVG so it remains crisp, responsive, and
+  reduced-motion aware.
+- **Consequence:** Desktop uses a dedicated curved track beneath the complete card row, with
+  anchored stems, waypoints, and a directional finish. Smaller screens use a vertical route with
+  branches and waypoints into each card. D15 supersedes the abstract-glyph artwork in D12 while
+  retaining its accessible dialog behavior.

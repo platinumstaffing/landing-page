@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { BrandGraphic } from "@/components/brand/brand-graphic";
 import { Container } from "@/components/layout/container";
+import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
 import { Eyebrow } from "@/components/layout/eyebrow";
 import { Heading } from "@/components/layout/heading";
 import { Prose } from "@/components/layout/prose";
@@ -31,50 +31,26 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="border-b border-border">
-        <Container className="grid items-center gap-10 py-16 lg:grid-cols-2 lg:gap-14 lg:py-24">
-          <div>
-            <Eyebrow>About Platinum</Eyebrow>
-            <Heading as="h1" level="h1" className="mt-4">
-              Building Stronger Workforces Since 2019
-            </Heading>
-            <Prose size="lg" className="mt-5">
-              <p>
-                At Platinum Staffing &amp; Recruitment, we believe every
-                successful business begins with the right people. Since 2019, we
-                have partnered with employers across Pennsylvania to deliver
-                dependable staffing and recruitment solutions that help
-                organizations overcome workforce challenges, strengthen
-                operations, and achieve long-term success.
-              </p>
-              <p className="mt-4">
-                With a growing network of more than{" "}
-                <strong className="font-semibold text-foreground">
-                  40,000 professionals
-                </strong>{" "}
-                and over{" "}
-                <strong className="font-semibold text-foreground">
-                  10,000 successful placements
-                </strong>
-                , we connect businesses with qualified talent while creating
-                meaningful career opportunities.
-              </p>
-            </Prose>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link href="/employers">Explore employer solutions</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/contact">Contact our team</Link>
-              </Button>
-            </div>
-          </div>
-          <BrandGraphic
-            className="aspect-4/3 w-full min-h-64"
-            label="Platinum Staffing & Recruitment — a Pennsylvania workforce solutions partner since 2019"
-          />
-        </Container>
-      </section>
+      <EditorialPageHero
+        index="01"
+        eyebrow="About Platinum"
+        title="Building stronger workforces since 2019."
+        description={
+          <>
+            <p>
+              We partner with employers across Pennsylvania to solve workforce
+              challenges, strengthen operations, and support long-term success.
+            </p>
+            <p>
+              Our network includes more than <strong>40,000 professionals</strong>{" "}
+              and over <strong>10,000 successful placements</strong>.
+            </p>
+          </>
+        }
+        primary={{ label: "Explore employer solutions", href: "/employers" }}
+        secondary={{ label: "Contact our team", href: "/contact" }}
+        note="Established 2019 · Pennsylvania"
+      />
 
       <Section tone="muted">
         <Container>

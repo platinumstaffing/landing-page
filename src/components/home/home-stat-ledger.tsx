@@ -45,11 +45,11 @@ function LedgerValue({
 
 export function HomeStatLedger() {
   return (
-    <dl className="grid border-t border-silver/35 sm:grid-cols-2 lg:grid-cols-4">
+    <dl className="grid gap-px border border-silver/35 bg-silver/35 sm:grid-cols-2 lg:grid-cols-4">
       {workforceStats.map((stat, index) => (
         <div
           key={stat.id}
-          className="relative border-b border-silver/35 px-0 py-7 sm:px-6 lg:border-r lg:last:border-r-0"
+          className="relative flex min-h-48 flex-col justify-between bg-navy px-5 py-7 sm:min-h-52 sm:px-7 lg:min-h-56 lg:px-8"
         >
           <span
             aria-hidden
@@ -58,12 +58,14 @@ export function HomeStatLedger() {
           <dt className="text-xs font-semibold tracking-[0.14em] text-silver uppercase">
             {String(index + 1).padStart(2, "0")} / {stat.label}
           </dt>
-          <dd className="mt-4 font-heading text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none tracking-[-0.05em] text-navy-foreground tabular-nums">
-            <LedgerValue value={stat.value} display={stat.display} />
+          <dd className="mt-auto pt-8">
+            <span className="block font-heading text-[clamp(2.75rem,4.5vw,4.75rem)] leading-none font-bold tracking-[-0.055em] text-navy-foreground tabular-nums">
+              <LedgerValue value={stat.value} display={stat.display} />
+            </span>
+            <span className="mt-4 block min-h-4 text-xs text-silver">
+              {stat.suffix.trim() || "\u00a0"}
+            </span>
           </dd>
-          {stat.suffix.trim() ? (
-            <p className="mt-2 text-xs text-silver">{stat.suffix.trim()}</p>
-          ) : null}
         </div>
       ))}
     </dl>
