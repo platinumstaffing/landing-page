@@ -92,3 +92,18 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   grain and parallax are disabled under `prefers-reduced-motion`; the WebGL loop pauses when the
   hero is off-screen. The H1 remains real SSR text. If a future audit wants to drop the extra
   deps, the hero can fall back to the Motion-only sticky variant without touching other sections.
+
+## D11 — Industrial Field Journal homepage supersedes the WebGL hero
+
+- **Context:** The follow-up homepage direction prioritizes an employer-first editorial narrative,
+  authentic workplace photography, fast comprehension, and a lighter interaction model.
+- **Decision:** Replace the pinned WebGL hero and generic SaaS stock image with an asymmetric,
+  image-led hero and seven supporting editorial beats. Motion v12 is again the only animation
+  library; `gsap`, `@gsap/react`, and `ogl` are removed.
+- **Rationale:** The page now earns distinction through typography, pacing, photography, and
+  industry-specific interaction rather than a shader. This improves content access, reduces the
+  client bundle, and returns the implementation to the repository's default motion law.
+- **Photography boundary:** Eleven labelled SVG art-direction frames reserve final crops without
+  fabricating people or workplaces. `docs/HOMEPAGE_IMAGE_PROMPTS.md` defines the replacement assets.
+- **Consequence:** D11 supersedes D10 for the homepage. The old hero and WebGL canvas components are
+  removed rather than retained as dead fallback code.

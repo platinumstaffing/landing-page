@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Career resource photography placeholder</title>
+  <desc id="desc">Art direction frame for a job seeker preparing application materials with a recruiter.</desc>
+  <rect width="1500" height="1000" fill="#1e2a44"/>
+  <path d="M100 110h1300v780H100zM100 500h1300M750 110v780" fill="none" stroke="#c7ccd6" stroke-opacity=".4"/>
+  <text x="140" y="430" fill="#f8f9fb" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4">IMAGE 11 / RESOURCE</text>
+  <text x="140" y="500" fill="#f8f9fb" font-family="Arial, sans-serif" font-size="62" font-weight="700">Career preparation</text>
+  <text x="140" y="560" fill="#c7ccd6" font-family="Arial, sans-serif" font-size="24">Supportive recruiter conversation · 3:2</text>
+</svg>

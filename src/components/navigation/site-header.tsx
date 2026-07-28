@@ -39,23 +39,21 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b bg-background/95 backdrop-blur-sm transition-[box-shadow,border-color] duration-300 ease-brand",
-        scrolled
-          ? "border-border shadow-[0_1px_16px_rgba(30,42,68,0.08)]"
-          : "border-transparent",
+        "sticky top-0 z-40 border-b bg-background transition-colors duration-300 ease-brand",
+        scrolled ? "border-border" : "border-silver/60",
       )}
     >
       <div
         className={cn(
-          "mx-auto flex max-w-7xl items-center gap-6 px-5 transition-[height] duration-300 ease-brand sm:px-6 lg:px-10",
-          scrolled ? "h-16 sm:h-18" : "h-19 sm:h-20",
+          "mx-auto flex max-w-[90rem] items-center gap-5 px-5 transition-[height] duration-300 ease-brand sm:px-6 lg:px-8",
+          scrolled ? "h-16" : "h-[4.75rem]",
         )}
       >
         <Logo priority className="shrink-0" />
 
         <nav
           aria-label="Primary"
-          className="ml-auto hidden items-center gap-0.5 xl:flex"
+          className="ml-auto hidden items-center gap-0 xl:flex"
           onKeyDown={(e) => {
             if (e.key === "Escape") setOpenMenu(null);
           }}
@@ -68,10 +66,10 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                    "relative px-3 py-2 text-[0.82rem] font-medium transition-colors after:absolute after:inset-x-3 after:-bottom-0.5 after:h-px after:origin-left after:bg-primary after:transition-transform",
                     active
-                      ? "text-primary"
-                      : "text-foreground/80 hover:text-primary",
+                      ? "text-primary after:scale-x-100"
+                      : "text-foreground/80 after:scale-x-0 hover:text-primary hover:after:scale-x-100",
                   )}
                 >
                   {item.label}
@@ -96,10 +94,10 @@ export function SiteHeader() {
                 <button
                   type="button"
                   className={cn(
-                    "inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                    "relative inline-flex items-center gap-1 px-3 py-2 text-[0.82rem] font-medium transition-colors after:absolute after:inset-x-3 after:-bottom-0.5 after:h-px after:origin-left after:bg-primary after:transition-transform",
                     active || open
-                      ? "text-primary"
-                      : "text-foreground/80 hover:text-primary",
+                      ? "text-primary after:scale-x-100"
+                      : "text-foreground/80 after:scale-x-0 hover:text-primary hover:after:scale-x-100",
                   )}
                   aria-expanded={open}
                   aria-haspopup="true"
@@ -118,7 +116,7 @@ export function SiteHeader() {
                 {open ? (
                   <div
                     role="menu"
-                    className="absolute top-[calc(100%+0.5rem)] left-0 z-50 rounded-xl border border-border bg-surface p-2 shadow-[0_12px_40px_rgba(30,42,68,0.14)]"
+                    className="absolute top-[calc(100%+0.75rem)] left-0 z-50 rounded-lg border border-border bg-surface p-2 shadow-[var(--shadow-float)]"
                   >
                     <div className="border-b border-border/70 px-3 pb-2 pt-1">
                       <Link
@@ -144,7 +142,7 @@ export function SiteHeader() {
                             href={child.href}
                             role="menuitem"
                             onClick={() => setOpenMenu(null)}
-                            className="block rounded-lg px-3 py-2.5 text-sm text-foreground/85 transition-colors hover:bg-accent hover:text-primary"
+                            className="block rounded-md px-3 py-2.5 text-sm text-foreground/85 transition-colors hover:bg-accent hover:text-primary"
                           >
                             <span className="font-medium">{child.label}</span>
                             {child.description ? (

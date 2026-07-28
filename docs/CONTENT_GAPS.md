@@ -14,14 +14,12 @@ Items required from the client. None block the current build; the site degrades 
 
 ## Missing assets
 
-- [ ] Photography for hero and industry sections (real workplaces; see BRAND_DIRECTION).
-      Interim: brand-graphic compositions from the logo geometry — NOT stock/AI imagery.
-- [ ] **Replace `public/brand/hero.jpg` before launch.** The current file is a generic stock
-      shot (a laptop showing an unrelated SaaS landing page + coffee cup) — off-brand and a
-      direct anti-reference. It is used as a temporary stand-in only because the homepage hero
-      runs it through a navy duotone + grain WebGL shader (DECISIONS D10), which disguises it.
-      Swap in a real PA manufacturing / warehouse / logistics workplace photo (landscape,
-      ~2400px+ wide); the shader will brand it automatically. No other code change needed.
+- [ ] Replace the eleven labelled homepage art-direction frames in `public/brand/home/` with
+      authentic workplace photography. `docs/HOMEPAGE_IMAGE_PROMPTS.md` provides exact prompts,
+      filenames, dimensions, crops, focal points, negative prompts, and alt-text drafts.
+- [ ] The unused `public/brand/hero.jpg` remains an off-brand generic SaaS stock image and should
+      be removed from the asset library after confirming no external workflow references it. It is
+      no longer rendered anywhere on the site.
 - [ ] Logo variants: only a horizontal lockup on white (`logo.png`) was supplied. The brand
       guide itself calls for stacked, light/dark, and favicon variants. Interim assets are
       derived from the supplied lockup + mark; confirm or replace with official files.

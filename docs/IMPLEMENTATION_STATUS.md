@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: end of vertical-slice build session._
+_Last updated: Industrial Field Journal homepage redesign._
 
 ## Completed
 
@@ -28,13 +28,18 @@ _Last updated: end of vertical-slice build session._
 ## Impeccable design pass (this session)
 
 - Added `PRODUCT.md` + `DESIGN.md` (+ `DESIGN.json`) design context; pointer in `AGENTS.md`.
-- Homepage hero rebuilt as a full-bleed, GSAP-pinned WebGL hero (navy duotone + grain via
-  `ogl`) — deviates from the Motion-only rule for this surface only (DECISIONS D10). Pin is
-  desktop-only via `matchMedia`; reduced-motion + no-WebGL fallbacks in place.
+- Homepage rebuilt as an eight-beat Industrial Field Journal narrative: employer-first hero,
+  credibility ledger, employer proof, interactive industries, workforce blueprint, candidate
+  pathway, resource desk, and conversion close.
+- The prior GSAP-pinned WebGL hero has been retired. Motion v12 is again the sole animation
+  library, and the generic SaaS hero image is no longer used.
 - Navbar polish: wider/taller with a scrolled shrink+shadow, roomier two-column dropdowns,
   desktop nav at `xl` (Sheet below) to remove crowding.
-- Homepage + shared sections: deliberate alternating tone rhythm, shared `LinkCard` and
-  `PillarGrid` (removed identical-card-grid anti-patterns), clarified ambiguous CTAs.
+- Global shell restyled with opaque Soft White navigation, production-line hairlines, stronger
+  active states, and a typographic employer-first footer.
+- Added a typed homepage image manifest, eleven designed art-direction frames, and
+  `docs/HOMEPAGE_IMAGE_PROMPTS.md` with production prompts, crops, filenames, alt text, and
+  negative prompts.
 - `/about` and `/resources` are now **real pages** built from approved brand copy:
   About (story, mission, vision, core values, honest leadership placeholder, reused
   impact/why/careers sections); Resources (category directory with honest "articles in
@@ -46,6 +51,8 @@ _Last updated: end of vertical-slice build session._
 
 ## Remaining (next pass)
 
+- Replace the eleven homepage art-direction frames with commissioned or generated documentary
+  workplace photography using `docs/HOMEPAGE_IMAGE_PROMPTS.md`.
 - 6 employer service detail pages + 6 industry detail pages.
 - Job detail (`/jobs/[slug]`) + apply flow.
 - Resource article template + real articles per category (directory is live; articles pending).
@@ -65,6 +72,8 @@ _Last updated: end of vertical-slice build session._
 - `pnpm lint` — pass
 - `pnpm typecheck` — pass
 - `pnpm build` — pass (16 routes)
+- Responsive browser review — pass at 320, 390, 768, 1280, and 1920 px; no horizontal overflow
+- Keyboard review — desktop dropdown opens with Enter and closes with Escape
 
 ## Recommended next action
 

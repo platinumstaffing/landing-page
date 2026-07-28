@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Manufacturing photography placeholder</title>
+  <desc id="desc">Art direction frame for a skilled operator inspecting a production line.</desc>
+  <rect width="1200" height="900" fill="#1e2a44"/>
+  <path d="M80 90h1040v720H80zM80 450h1040M600 90v720" fill="none" stroke="#c7ccd6" stroke-opacity=".4"/>
+  <text x="110" y="390" fill="#f8f9fb" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4">INDUSTRY 01</text>
+  <text x="110" y="455" fill="#f8f9fb" font-family="Arial, sans-serif" font-size="56" font-weight="700">Manufacturing</text>
+  <text x="110" y="510" fill="#c7ccd6" font-family="Arial, sans-serif" font-size="22">Production line inspection · 4:3</text>
+</svg>
