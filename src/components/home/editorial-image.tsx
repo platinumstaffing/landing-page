@@ -8,7 +8,6 @@ const aspectClasses = {
   "4:5": "aspect-[4/5]",
   "4:3": "aspect-[4/3]",
   "3:2": "aspect-[3/2]",
-  "3:4": "aspect-[3/4]",
 } as const;
 
 export function EditorialImage({
@@ -36,7 +35,7 @@ export function EditorialImage({
         fill
         priority={priority}
         sizes={sizes}
-        className="object-contain object-center"
+        className="object-cover object-center"
         style={{ objectPosition: image.focalPoint }}
       />
       <span

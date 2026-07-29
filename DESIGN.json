@@ -4,29 +4,152 @@
   "title": "Design System: Platinum Staffing & Recruitment",
   "extensions": {
     "colorMeta": {
-      "executive-purple": { "role": "primary", "displayName": "Executive Purple", "canonical": "#4b2e83", "tonalRamp": ["#150c26", "#241548", "#33206a", "#4b2e83", "#6b4fa3", "#9179bd", "#c0b1d9", "#eee9f5"] },
-      "deep-navy": { "role": "secondary", "displayName": "Deep Navy", "canonical": "#1e2a44", "tonalRamp": ["#0b1020", "#141c32", "#1e2a44", "#2c3d61", "#465d8a", "#6f84b0", "#a7b5d0", "#dde3ef"] },
-      "emerald": { "role": "tertiary", "displayName": "Emerald", "canonical": "#2e8b57", "tonalRamp": ["#0e2c1c", "#164429", "#1f5f39", "#2e8b57", "#4aa974", "#75c398", "#a9dcc0", "#e0f2e8"] },
-      "soft-white": { "role": "neutral", "displayName": "Soft White", "canonical": "#f8f9fb", "tonalRamp": ["#2c2c2c", "#55607a", "#8a92a3", "#c7ccd6", "#ecedf2", "#f1f2f6", "#f8f9fb", "#ffffff"] },
-      "charcoal": { "role": "neutral", "displayName": "Charcoal", "canonical": "#2c2c2c", "tonalRamp": ["#141414", "#2c2c2c", "#454545", "#55607a", "#8a92a3", "#c7ccd6", "#ecedf2", "#f8f9fb"] },
-      "platinum-silver": { "role": "neutral", "displayName": "Platinum Silver", "canonical": "#c7ccd6", "tonalRamp": ["#3a3f4a", "#55607a", "#727b8f", "#8a92a3", "#a7adba", "#c7ccd6", "#e0e3ea", "#f1f2f6"] }
+      "executive-purple": {
+        "role": "primary",
+        "displayName": "Executive Purple",
+        "canonical": "#4b2e83",
+        "tonalRamp": [
+          "#150c26",
+          "#241548",
+          "#33206a",
+          "#4b2e83",
+          "#6b4fa3",
+          "#9179bd",
+          "#c0b1d9",
+          "#eee9f5"
+        ]
+      },
+      "deep-navy": {
+        "role": "secondary",
+        "displayName": "Deep Navy",
+        "canonical": "#1e2a44",
+        "tonalRamp": [
+          "#0b1020",
+          "#141c32",
+          "#1e2a44",
+          "#2c3d61",
+          "#465d8a",
+          "#6f84b0",
+          "#a7b5d0",
+          "#dde3ef"
+        ]
+      },
+      "emerald": {
+        "role": "tertiary",
+        "displayName": "Emerald",
+        "canonical": "#2e8b57",
+        "tonalRamp": [
+          "#0e2c1c",
+          "#164429",
+          "#1f5f39",
+          "#2e8b57",
+          "#4aa974",
+          "#75c398",
+          "#a9dcc0",
+          "#e0f2e8"
+        ]
+      },
+      "soft-white": {
+        "role": "neutral",
+        "displayName": "Soft White",
+        "canonical": "#f8f9fb",
+        "tonalRamp": [
+          "#2c2c2c",
+          "#55607a",
+          "#8a92a3",
+          "#c7ccd6",
+          "#ecedf2",
+          "#f1f2f6",
+          "#f8f9fb",
+          "#ffffff"
+        ]
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "canonical": "#2c2c2c",
+        "tonalRamp": [
+          "#141414",
+          "#2c2c2c",
+          "#454545",
+          "#55607a",
+          "#8a92a3",
+          "#c7ccd6",
+          "#ecedf2",
+          "#f8f9fb"
+        ]
+      },
+      "platinum-silver": {
+        "role": "neutral",
+        "displayName": "Platinum Silver",
+        "canonical": "#c7ccd6",
+        "tonalRamp": [
+          "#3a3f4a",
+          "#55607a",
+          "#727b8f",
+          "#8a92a3",
+          "#a7adba",
+          "#c7ccd6",
+          "#e0e3ea",
+          "#f1f2f6"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Hero statements only; Manrope 700, tight leading." },
-      "headline": { "displayName": "Headline", "purpose": "Section openers (h1/h2)." },
-      "title": { "displayName": "Title", "purpose": "Card and subsection headings (h3)." },
-      "body": { "displayName": "Body", "purpose": "Running text, Libre Franklin, ~65ch measure." },
-      "label": { "displayName": "Label", "purpose": "Uppercase eyebrows and small structural labels." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statements only; Manrope 700, tight leading."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section openers (h1/h2)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and subsection headings (h3)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, Libre Franklin, ~65ch measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase eyebrows and small structural labels."
+      }
     },
     "shadows": [
-      { "name": "shadow-sm", "value": "0 1px 2px rgba(30, 42, 68, 0.06)", "purpose": "Dropdowns and popovers only; the lightest lift off the page." },
-      { "name": "shadow-md", "value": "0 8px 24px rgba(30, 42, 68, 0.10)", "purpose": "Mobile navigation sheet and genuinely floating overlays." }
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px rgba(30, 42, 68, 0.06)",
+        "purpose": "Dropdowns and popovers only; the lightest lift off the page."
+      },
+      {
+        "name": "shadow-md",
+        "value": "0 8px 24px rgba(30, 42, 68, 0.10)",
+        "purpose": "Mobile navigation sheet and genuinely floating overlays."
+      }
     ],
     "motion": [
-      { "name": "ease-brand", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "The single shared easing token for every state transition and reveal." },
-      { "name": "duration-fast", "value": "200ms", "purpose": "Button and link state changes." },
-      { "name": "duration-base", "value": "300ms", "purpose": "Section reveals (8px rise + fade)." },
-      { "name": "duration-slow", "value": "400ms", "purpose": "Larger entrances and the mobile sheet." }
+      {
+        "name": "ease-brand",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The single shared easing token for every state transition and reveal."
+      },
+      {
+        "name": "duration-fast",
+        "value": "200ms",
+        "purpose": "Button and link state changes."
+      },
+      {
+        "name": "duration-base",
+        "value": "300ms",
+        "purpose": "Section reveals (8px rise + fade)."
+      },
+      {
+        "name": "duration-slow",
+        "value": "400ms",
+        "purpose": "Larger entrances and the mobile sheet."
+      }
     ],
     "breakpoints": [
       { "name": "sm", "value": "640px" },
@@ -96,10 +219,26 @@
       "Hairline-first elevation; shadows reserved for genuinely floating surfaces."
     ],
     "rules": [
-      { "name": "The Rare Signature Rule", "body": "Executive Purple appears on roughly 10% of any given screen, and only where it means 'act': CTAs, links, focus rings, a single key heading. If purple is carrying a whole section, it has become a wash and must be pulled back to navy or silver.", "section": "colors" },
-      { "name": "The Flat Navy Rule", "body": "Navy is a structural color, not an effect. Never gradient it, never glow it, never fade it into purple.", "section": "colors" },
-      { "name": "The Two-Weight Rule", "body": "Headings live at 600 or 700, body at 400 or 500. No thin display weights, no black weights, no in-between improvisation.", "section": "typography" },
-      { "name": "The Hairline-First Rule", "body": "If a surface is not literally floating over the page, it gets a 1px border-silver (#c7ccd6) and no shadow. Shadows are a response to elevation state, not a default decoration.", "section": "elevation" }
+      {
+        "name": "The Rare Signature Rule",
+        "body": "Executive Purple appears on roughly 10% of any given screen, and only where it means 'act': CTAs, links, focus rings, a single key heading. If purple is carrying a whole section, it has become a wash and must be pulled back to navy or silver.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat Navy Rule",
+        "body": "Navy is a structural color, not an effect. Never gradient it, never glow it, never fade it into purple.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Weight Rule",
+        "body": "Headings live at 600 or 700, body at 400 or 500. No thin display weights, no black weights, no in-between improvisation.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline-First Rule",
+        "body": "If a surface is not literally floating over the page, it gets a 1px border-silver (#c7ccd6) and no shadow. Shadows are a response to elevation state, not a default decoration.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do spend Executive Purple (#4b2e83) sparingly, on ≤10% of a screen and only where it means 'act' (CTAs, links, focus).",

@@ -17,7 +17,7 @@ _Last updated: Production CI/CD and release protection._
   solutions → process → resources → final CTA).
 - Core pages: `/employers`, `/industries`, `/job-seekers`, `/jobs` (searchParams filters), `/contact`.
 - Forms: Request Talent, Submit Résumé (Blob upload), General Contact — RHF + zod + Server Actions
-  + Resend boundary + honeypot. Honest loading/success/error states.
+  - Resend boundary + honeypot. Honest loading/success/error states.
 - SEO: metadata, OG, sitemap, robots, Organization JSON-LD; `not-found` + `error`.
 - Motion: Reveal + AnimatedStat with reduced-motion support.
 - Legal pages built via a shared `LegalPage` layout: `/accessibility` is a real, indexable
@@ -51,9 +51,17 @@ _Last updated: Production CI/CD and release protection._
 - Added a typed homepage image manifest, twelve designed art-direction frames, and
   `docs/HOMEPAGE_IMAGE_PROMPTS.md` with production prompts, crops, filenames, alt text, and
   negative prompts.
-- Connected all twelve supplied 1152 × 1536 workplace WebP assets. Shared image frames now use
-  their true 3:4 geometry, center the complete image with `object-contain`, and omit the former
+- Connected all twelve resized workplace WebP assets using the intended prompt-guide formats:
+  16:10 hero, 4:5 employer partnership, 4:3 industry/staffing imagery, and 3:2
+  candidate/resource imagery. Shared frames use art-directed focal points and omit the former
   label/aspect-ratio footer.
+- Increased the homepage hero image footprint on desktop while retaining the approved 16:10 crop,
+  focal point, and mobile stacking behavior.
+- Replaced the boxed Proven Scale metric grid with a stepped open measurement rail. Verified facts
+  now sit on hairline rules with varied spans and responsive linear ordering.
+- Added `docs/SITEWIDE_IMAGE_PROMPTS.md`, a 37-asset production guide covering the seven remaining
+  marketing pages with exact filenames, dimensions, ratios, placements, prompts, negative
+  direction, and alt-text drafts.
 - `/about` and `/resources` are now **real pages** built from approved brand copy:
   About (story, mission, vision, core values, honest leadership placeholder, reused
   impact/why/careers sections); Resources (category directory with honest "articles in

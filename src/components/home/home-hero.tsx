@@ -23,7 +23,7 @@ export function HomeHero() {
 
   return (
     <section className="border-border bg-background relative isolate overflow-hidden border-b">
-      <Container className="relative grid min-h-[calc(100svh-4.75rem)] items-center gap-12 py-12 sm:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(28rem,1.1fr)] lg:gap-8 lg:py-18">
+      <Container className="relative grid min-h-[calc(100svh-4.75rem)] items-center gap-12 py-12 sm:py-16 lg:grid-cols-[minmax(0,0.82fr)_minmax(32rem,1.18fr)] lg:gap-6 lg:py-18">
         <div className="relative z-10 max-w-3xl">
           <motion.p
             initial={reduce ? false : { y: 14 }}
@@ -85,13 +85,13 @@ export function HomeHero() {
           initial={reduce ? false : { x: 24 }}
           animate={{ x: 0 }}
           transition={{ duration: 0.75, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-          className="relative lg:-mr-[8vw]"
+          className="relative lg:-mr-[10vw]"
         >
           <EditorialImage
             image={homeImages.hero}
             priority
             sizes="(min-width: 1024px) 58vw, 100vw"
-            className="mx-auto w-full max-w-[34rem] lg:mr-0 lg:min-h-[42rem]"
+            className="mx-auto w-full max-w-[44rem] lg:mr-0 lg:w-[calc(100%+6vw)] lg:max-w-[50rem]"
           />
           <div className="border-border bg-background absolute -bottom-7 left-5 grid grid-cols-2 border sm:left-8">
             <div className="border-border border-r px-4 py-3 sm:px-5">

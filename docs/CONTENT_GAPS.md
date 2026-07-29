@@ -14,11 +14,16 @@ Items required from the client. None block the current build; the site degrades 
 
 ## Missing assets
 
-- [x] Twelve homepage workplace images supplied and connected through the typed image manifest.
-      The delivered files are 1152 × 1536 portrait images, so the implementation preserves their
-      full 3:4 compositions rather than applying the landscape crops in the original prompt guide.
+- [x] Twelve homepage workplace images supplied, resized into their intended art-directed formats,
+      and connected through the typed image manifest: 16:10 hero, 4:5 employer partnership, 4:3
+      industry/staffing imagery, and 3:2 candidate/resource imagery.
 - [x] Five coordinated Partnership Journey illustrations supplied and implemented. The responsive
       code-rendered connector now continues through the complete card sequence.
+- [ ] Thirty-seven sitewide photographs defined in `docs/SITEWIDE_IMAGE_PROMPTS.md` for About,
+      Employers, Industries, Job Seekers, Jobs, Contact, and Resources. Generate in the documented
+      sizes and filenames before connecting the image-enabled inner-page layouts.
+- [ ] Real leadership headshots. Do not generate or fabricate named executives; commissioned
+      photography is required when leadership identities and biographies are supplied.
 - [ ] The unused `public/brand/hero.jpg` remains an off-brand generic SaaS stock image and should
       be removed from the asset library after confirming no external workflow references it. It is
       no longer rendered anywhere on the site.
