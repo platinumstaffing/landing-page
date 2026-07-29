@@ -211,9 +211,11 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   promoted only after runtime verification. Fork and non-collaborator pull requests are closed by
   a metadata-only workflow that never executes their code. Dependabot may target `release/dev`.
 - **Enforcement:** Both long-lived branches require the tracked checks, strict up-to-date pull
-  requests, resolved conversations, signed commits, and linear history, with no bypass actors.
-  Full-SHA-pinned Actions, CodeQL, dependency review/audit, Secretlint, actionlint, zizmor,
-  Playwright/axe, Lighthouse, ZAP, and CycloneDX SBOMs form the delivery evidence.
+  requests, resolved conversations, and linear history, with no bypass actors. Signed commits are
+  not required because the current collaborator signing key cannot be recovered; PR-only updates
+  and required checks remain mandatory. Full-SHA-pinned Actions, CodeQL, dependency review/audit,
+  Secretlint, actionlint, zizmor, Playwright/axe, Lighthouse, ZAP, and CycloneDX SBOMs form the
+  delivery evidence.
 - **Boundary:** GitHub rulesets and Vercel project settings require owner/admin application using
   `docs/CI_CD_OWNER_RUNBOOK.md`. Human approval is not required. HSTS remains deferred until every
   production subdomain is confirmed permanently HTTPS.
