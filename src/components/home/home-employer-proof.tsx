@@ -26,20 +26,20 @@ export function HomeEmployerProof() {
             />
           </div>
 
-          <div className="border-t border-border">
+          <div className="border-border border-t">
             {employerPillars.map((pillar, index) => (
               <article
                 key={pillar.id}
-                className="group grid gap-4 border-b border-border py-7 sm:grid-cols-[4rem_1fr] sm:py-9"
+                className="group border-border grid gap-4 border-b py-7 sm:grid-cols-[4rem_1fr] sm:py-9"
               >
-                <span className="font-heading text-sm font-bold tracking-[0.12em] text-primary tabular-nums">
+                <span className="font-heading text-primary text-sm font-bold tracking-[0.12em] tabular-nums">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h3 className="font-heading text-xl font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
+                  <h3 className="font-heading text-foreground text-xl font-semibold tracking-[-0.02em] sm:text-2xl">
                     {pillar.title}
                   </h3>
-                  <p className="mt-3 max-w-[55ch] leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground mt-3 max-w-[55ch] leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
@@ -47,7 +47,7 @@ export function HomeEmployerProof() {
             ))}
             <Link
               href="/employers"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
+              className="text-primary focus-visible:ring-ring/40 mt-8 inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline focus-visible:rounded-sm focus-visible:ring-3 focus-visible:outline-none"
             >
               See how we support employers
               <ArrowUpRight className="size-4" aria-hidden />

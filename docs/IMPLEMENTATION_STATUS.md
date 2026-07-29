@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: Industrial Field Journal site-wide expansion._
+_Last updated: Production CI/CD and release protection._
 
 ## Completed
 
@@ -17,13 +17,24 @@ _Last updated: Industrial Field Journal site-wide expansion._
   solutions → process → resources → final CTA).
 - Core pages: `/employers`, `/industries`, `/job-seekers`, `/jobs` (searchParams filters), `/contact`.
 - Forms: Request Talent, Submit Résumé (Blob upload), General Contact — RHF + zod + Server Actions
-  + Resend boundary + honeypot. Honest loading/success/error states.
+  - Resend boundary + honeypot. Honest loading/success/error states.
 - SEO: metadata, OG, sitemap, robots, Organization JSON-LD; `not-found` + `error`.
 - Motion: Reveal + AnimatedStat with reduced-motion support.
 - Legal pages built via a shared `LegalPage` layout: `/accessibility` is a real, indexable
   statement (truthful to the site's a11y posture); `/privacy` and `/terms` are grounded drafts,
   `noindex`, with a "pending legal review" banner and `[bracketed]` items for counsel.
 - Validation: `pnpm lint`, `pnpm typecheck`, `pnpm build` all pass.
+- Production CI/CD: pinned Node/pnpm, frozen installs, Prettier, ESLint, TypeScript, Vitest,
+  Knip, Playwright/axe, Lighthouse, Secretlint, production audit, CodeQL, Dependency Review,
+  actionlint, zizmor, weekly browser/security runs, CycloneDX SBOMs, and retained diagnostics.
+- Release protection: metadata-only collaborator/source policy, tracked no-bypass rulesets for
+  `release/dev` and `main`, CODEOWNERS, Dependabot targeting `release/dev`, and tiered Lefthook
+  pre-commit/pre-push controls.
+- Isolated Vercel delivery: environment validation, staging/production branch filters, hardened
+  response headers, immutable deployment identity checks, Playwright/Lighthouse/ZAP verification,
+  and owner runbook for protected promotion and rollback.
+- Fonts are self-hosted as licensed, subsetted WOFF2 assets. The internal `/type-specimen` route
+  and its external font dependency were removed.
 
 ## Impeccable design pass (this session)
 
@@ -40,9 +51,17 @@ _Last updated: Industrial Field Journal site-wide expansion._
 - Added a typed homepage image manifest, twelve designed art-direction frames, and
   `docs/HOMEPAGE_IMAGE_PROMPTS.md` with production prompts, crops, filenames, alt text, and
   negative prompts.
-- Connected all twelve supplied 1152 × 1536 workplace WebP assets. Shared image frames now use
-  their true 3:4 geometry, center the complete image with `object-contain`, and omit the former
+- Connected all twelve resized workplace WebP assets using the intended prompt-guide formats:
+  16:10 hero, 4:5 employer partnership, 4:3 industry/staffing imagery, and 3:2
+  candidate/resource imagery. Shared frames use art-directed focal points and omit the former
   label/aspect-ratio footer.
+- Increased the homepage hero image footprint on desktop while retaining the approved 16:10 crop,
+  focal point, and mobile stacking behavior.
+- Replaced the boxed Proven Scale metric grid with a stepped open measurement rail. Verified facts
+  now sit on hairline rules with varied spans and responsive linear ordering.
+- Added `docs/SITEWIDE_IMAGE_PROMPTS.md`, a 37-asset production guide covering the seven remaining
+  marketing pages with exact filenames, dimensions, ratios, placements, prompts, negative
+  direction, and alt-text drafts.
 - `/about` and `/resources` are now **real pages** built from approved brand copy:
   About (story, mission, vision, core values, honest leadership placeholder, reused
   impact/why/careers sections); Resources (category directory with honest "articles in
@@ -59,7 +78,7 @@ _Last updated: Industrial Field Journal site-wide expansion._
 
 ## In progress
 
-- Nothing actively in progress. Vertical slice is shippable for review.
+- Repository-owner application of the tracked GitHub rulesets and Vercel administrator setup.
 
 ## Remaining (next pass)
 
@@ -77,7 +96,8 @@ _Last updated: Industrial Field Journal site-wide expansion._
 - Leadership section on `/about` needs real bios + headshots when supplied.
 - Legal copy pages once client provides Privacy / Terms / Accessibility.
 - Client sign-off on Libre Franklin; replace sample jobs with real openings.
-- Turnstile spam upgrade when keys are provided.
+- Full service-integrated form E2E for email delivery, Blob upload, and Turnstile remains deferred;
+  blocking tests cover safe client/server validation without sending or uploading.
 - Impeccable visual polish pass against live review feedback.
 - Added `docs/PARTNERSHIP_JOURNEY_IMAGE_PROMPTS.md`: a coordinated five-asset infographic
   direction with shared route geometry, individual step prompts, negative prompts, alt-text
@@ -93,9 +113,18 @@ _Last updated: Industrial Field Journal site-wide expansion._
 
 ## Last validation
 
-- `pnpm lint` — pass
-- `pnpm typecheck` — pass
-- `pnpm build` — pass (16 routes)
+- `CI=true pnpm verify` — pass (format, lint, types, 9 unit tests with scoped 100% coverage,
+  dependency hygiene, production build)
+- `pnpm test:smoke` — pass (27 Chromium tests across route availability, navigation, metadata,
+  responsive overflow, keyboard behavior, safe validation for all three forms, console errors,
+  headers, and axe)
+- `pnpm security:secrets` — pass
+- `pnpm security:audit` — pass; no known production vulnerabilities
+- actionlint — pass
+- zizmor offline audit — pass with no findings; one documented metadata-only trigger exception
+- Lighthouse CI — pass against four production routes at accessibility/SEO 1.00, best practices
+  ≥0.95, performance ≥0.85, and explicit script/image budgets
+- `pnpm build` — pass (15 routes; internal type specimen removed)
 - Responsive homepage review — pass at 320, 390, 768, 1280, and 1920 px in the original homepage
   pass; current site-wide route review passes at 1280 px with no horizontal overflow
 - Interaction review — partnership cards open accessible dialogs from real button controls;
@@ -106,6 +135,6 @@ _Last updated: Industrial Field Journal site-wide expansion._
 
 1. Review the new journey and the seven redesigned marketing-page heroes at
    390 / 768 / 1280 / 1920.
-2. Sign off body typeface via `/type-specimen`.
+2. Apply `docs/CI_CD_OWNER_RUNBOOK.md` with repository and Vercel administrator access.
 3. Provide contact details and permissioned partner logos from CONTENT_GAPS.
-4. Build deferred detail pages (services, industries, job detail).
+4. Build deferred detail pages (services, industries, job detail) and service-integrated form E2E.

@@ -60,7 +60,7 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b bg-surface transition-[border-color,box-shadow] duration-300 ease-brand",
+        "bg-surface ease-brand sticky top-0 z-40 border-b transition-[border-color,box-shadow] duration-300",
         scrolled
           ? "border-border shadow-[var(--shadow-float)]"
           : "border-silver/70",
@@ -68,13 +68,13 @@ export function SiteHeader() {
     >
       <div
         className={cn(
-          "mx-auto flex max-w-[94rem] items-center gap-5 px-5 transition-[height] duration-300 ease-brand sm:px-6 lg:px-8",
+          "ease-brand mx-auto flex max-w-[94rem] items-center gap-5 px-5 transition-[height] duration-300 sm:px-6 lg:px-8",
           scrolled ? "h-16" : "h-[4.75rem]",
         )}
       >
-        <div className="flex shrink-0 items-center gap-5 xl:border-r xl:border-border xl:pr-6">
+        <div className="xl:border-border flex shrink-0 items-center gap-5 xl:border-r xl:pr-6">
           <Logo priority />
-          <p className="hidden max-w-[11ch] text-[0.62rem] leading-tight font-semibold tracking-[0.12em] text-muted-foreground uppercase 2xl:block">
+          <p className="text-muted-foreground hidden max-w-[11ch] text-[0.62rem] leading-tight font-semibold tracking-[0.12em] uppercase 2xl:block">
             Pennsylvania workforce partner
           </p>
         </div>
@@ -94,10 +94,10 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "relative inline-flex h-full items-center px-3 py-2 text-[0.8rem] font-medium transition-colors after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:bg-primary after:transition-transform",
+                    "after:bg-primary relative inline-flex h-full items-center px-3 py-2 text-[0.8rem] font-medium transition-colors after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:transition-transform",
                     active
                       ? "text-primary after:scale-x-100"
-                      : "text-foreground/80 after:scale-x-0 hover:text-primary hover:after:scale-x-100",
+                      : "text-foreground/80 hover:text-primary after:scale-x-0 hover:after:scale-x-100",
                   )}
                 >
                   {item.label}
@@ -122,10 +122,10 @@ export function SiteHeader() {
                 <button
                   type="button"
                   className={cn(
-                    "relative inline-flex h-full items-center gap-1 px-3 py-2 text-[0.8rem] font-medium transition-colors after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:bg-primary after:transition-transform",
+                    "after:bg-primary relative inline-flex h-full items-center gap-1 px-3 py-2 text-[0.8rem] font-medium transition-colors after:absolute after:inset-x-3 after:bottom-0 after:h-px after:origin-left after:transition-transform",
                     active || open
                       ? "text-primary after:scale-x-100"
-                      : "text-foreground/80 after:scale-x-0 hover:text-primary hover:after:scale-x-100",
+                      : "text-foreground/80 hover:text-primary after:scale-x-0 hover:after:scale-x-100",
                   )}
                   aria-expanded={open}
                   aria-haspopup="true"
@@ -134,7 +134,7 @@ export function SiteHeader() {
                   {item.label}
                   <CaretDown
                     className={cn(
-                      "size-3.5 transition-transform duration-300 ease-brand",
+                      "ease-brand size-3.5 transition-transform duration-300",
                       open && "rotate-180",
                     )}
                     aria-hidden
@@ -149,16 +149,16 @@ export function SiteHeader() {
                     <div
                       role="menu"
                       className={cn(
-                        "overflow-hidden rounded-xl border border-border bg-surface shadow-[var(--shadow-float)]",
+                        "border-border bg-surface overflow-hidden rounded-xl border shadow-[var(--shadow-float)]",
                         twoCol ? "w-[min(38rem,86vw)]" : "w-[min(21rem,86vw)]",
                       )}
                     >
-                      <div className="flex items-center justify-between gap-6 border-b border-border bg-surface-muted px-5 py-4">
+                      <div className="border-border bg-surface-muted flex items-center justify-between gap-6 border-b px-5 py-4">
                         <div>
-                          <p className="text-[0.66rem] font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+                          <p className="text-muted-foreground text-[0.66rem] font-semibold tracking-[0.14em] uppercase">
                             Explore
                           </p>
-                          <p className="mt-1 font-heading text-base font-semibold text-foreground">
+                          <p className="font-heading text-foreground mt-1 text-base font-semibold">
                             {item.label}
                           </p>
                         </div>
@@ -166,7 +166,7 @@ export function SiteHeader() {
                           href={item.href}
                           role="menuitem"
                           onClick={() => setOpenMenu(null)}
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary"
+                          className="text-primary inline-flex items-center gap-1.5 text-xs font-semibold"
                         >
                           Overview
                           <ArrowUpRight className="size-3.5" aria-hidden />
@@ -184,9 +184,9 @@ export function SiteHeader() {
                               href={child.href}
                               role="menuitem"
                               onClick={() => setOpenMenu(null)}
-                              className="group grid grid-cols-[2rem_1fr] gap-2 rounded-lg px-3 py-3 text-foreground transition-colors hover:bg-accent hover:text-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
+                              className="group text-foreground hover:bg-accent hover:text-primary focus-visible:ring-ring/40 grid grid-cols-[2rem_1fr] gap-2 rounded-lg px-3 py-3 transition-colors focus-visible:ring-3 focus-visible:outline-none"
                             >
-                              <span className="pt-0.5 text-[0.66rem] font-semibold tracking-[0.08em] text-muted-foreground tabular-nums">
+                              <span className="text-muted-foreground pt-0.5 text-[0.66rem] font-semibold tracking-[0.08em] tabular-nums">
                                 {String(childIndex + 1).padStart(2, "0")}
                               </span>
                               <span>
@@ -194,7 +194,7 @@ export function SiteHeader() {
                                   {child.label}
                                 </span>
                                 {child.description ? (
-                                  <span className="mt-1 block text-xs leading-snug text-muted-foreground">
+                                  <span className="text-muted-foreground mt-1 block text-xs leading-snug">
                                     {child.description}
                                   </span>
                                 ) : null}
@@ -214,7 +214,7 @@ export function SiteHeader() {
         <div className="ml-auto flex items-center gap-2 xl:ml-5">
           <span
             aria-hidden
-            className="mr-1 hidden h-6 w-px bg-border xl:block"
+            className="bg-border mr-1 hidden h-6 w-px xl:block"
           />
           <Button
             asChild
@@ -240,7 +240,7 @@ export function SiteHeader() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[min(100%,23rem)] p-0">
-              <SheetHeader className="border-b border-border px-5 py-4">
+              <SheetHeader className="border-border border-b px-5 py-4">
                 <SheetTitle className="flex items-center justify-between pr-10">
                   <Logo variant="mark" href={null} />
                   <span className="sr-only">Menu</span>
@@ -248,7 +248,10 @@ export function SiteHeader() {
               </SheetHeader>
               <div className="flex flex-col gap-1 overflow-y-auto px-3 py-4">
                 {primaryNav.map((item) => (
-                  <div key={item.href} className="border-b border-border/60 py-2">
+                  <div
+                    key={item.href}
+                    className="border-border/60 border-b py-2"
+                  >
                     <SheetClose asChild>
                       <Link
                         href={item.href}
@@ -269,7 +272,7 @@ export function SiteHeader() {
                             <SheetClose asChild>
                               <Link
                                 href={child.href}
-                                className="block rounded-md px-2 py-1.5 text-sm text-muted-foreground hover:text-primary"
+                                className="text-muted-foreground hover:text-primary block rounded-md px-2 py-1.5 text-sm"
                               >
                                 {child.label}
                               </Link>
@@ -281,7 +284,7 @@ export function SiteHeader() {
                   </div>
                 ))}
               </div>
-              <div className="mt-auto flex flex-col gap-2 border-t border-border p-4">
+              <div className="border-border mt-auto flex flex-col gap-2 border-t p-4">
                 <SheetClose asChild>
                   <Button asChild>
                     <Link href="/contact#request-talent">Request Talent</Link>

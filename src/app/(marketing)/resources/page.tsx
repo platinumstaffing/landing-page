@@ -70,29 +70,30 @@ export default function ResourcesPage() {
           </Reveal>
           <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {resourceCategories.map((category, index) => {
-              const Icon = categoryIcons[category.id as keyof typeof categoryIcons];
+              const Icon =
+                categoryIcons[category.id as keyof typeof categoryIcons];
               return (
                 <Reveal as="li" key={category.id} delay={index * 0.04}>
                   <article
                     id={category.id}
-                    className="flex h-full scroll-mt-28 flex-col rounded-xl border border-border bg-surface p-6 sm:p-7"
+                    className="border-border bg-surface flex h-full scroll-mt-28 flex-col rounded-xl border p-6 sm:p-7"
                   >
                     <div className="flex items-center justify-between gap-3">
-                      <Icon className="size-6 text-primary" aria-hidden />
-                      <span className="rounded-full border border-border px-2.5 py-0.5 text-[0.7rem] font-medium uppercase tracking-wide text-muted-foreground">
+                      <Icon className="text-primary size-6" aria-hidden />
+                      <span className="border-border text-muted-foreground rounded-full border px-2.5 py-0.5 text-[0.7rem] font-medium tracking-wide uppercase">
                         {category.audience}
                       </span>
                     </div>
-                    <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
+                    <h3 className="font-heading text-foreground mt-4 text-lg font-bold">
                       {category.name}
                     </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
                       {category.description}
                     </p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary/70">
+                    <span className="text-primary/70 mt-6 inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase">
                       <span
                         aria-hidden
-                        className="size-1.5 rounded-full bg-primary/60"
+                        className="bg-primary/60 size-1.5 rounded-full"
                       />
                       Articles in progress
                     </span>
@@ -147,7 +148,7 @@ export default function ResourcesPage() {
 
       <Section tone="muted">
         <Container>
-          <div className="flex flex-col gap-6 rounded-xl border border-border bg-surface p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="border-border bg-surface flex flex-col gap-6 rounded-xl border p-8 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
               <Eyebrow>Stay Informed</Eyebrow>
               <Heading level="h2" className="mt-3">

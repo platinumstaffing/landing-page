@@ -42,8 +42,9 @@ export default function AboutPage() {
               challenges, strengthen operations, and support long-term success.
             </p>
             <p>
-              Our network includes more than <strong>40,000 professionals</strong>{" "}
-              and over <strong>10,000 successful placements</strong>.
+              Our network includes more than{" "}
+              <strong>40,000 professionals</strong> and over{" "}
+              <strong>10,000 successful placements</strong>.
             </p>
           </>
         }
@@ -85,11 +86,11 @@ export default function AboutPage() {
 
       <Section>
         <Container>
-          <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
+          <div className="border-border bg-border grid gap-px overflow-hidden rounded-xl border sm:grid-cols-2">
             <Reveal className="bg-surface">
               <div className="flex h-full flex-col p-8 sm:p-10">
                 <Eyebrow>Our Mission</Eyebrow>
-                <p className="mt-4 font-heading text-xl font-semibold leading-snug text-foreground text-balance sm:text-2xl">
+                <p className="font-heading text-foreground mt-4 text-xl leading-snug font-semibold text-balance sm:text-2xl">
                   {mission}
                 </p>
               </div>
@@ -97,7 +98,7 @@ export default function AboutPage() {
             <Reveal delay={0.06} className="bg-surface">
               <div className="flex h-full flex-col p-8 sm:p-10">
                 <Eyebrow>Our Vision</Eyebrow>
-                <p className="mt-4 font-heading text-xl font-semibold leading-snug text-foreground text-balance sm:text-2xl">
+                <p className="font-heading text-foreground mt-4 text-xl leading-snug font-semibold text-balance sm:text-2xl">
                   {vision}
                 </p>
               </div>
@@ -118,14 +119,14 @@ export default function AboutPage() {
           <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
             {coreValues.map((value, index) => (
               <Reveal as="li" key={value.name} delay={index * 0.05}>
-                <div className="border-t border-border pt-5">
-                  <span className="font-heading text-sm font-bold text-primary tabular-nums">
+                <div className="border-border border-t pt-5">
+                  <span className="font-heading text-primary text-sm font-bold tabular-nums">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-3 font-heading text-lg font-bold text-foreground">
+                  <h3 className="font-heading text-foreground mt-3 text-lg font-bold">
                     {value.name}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -151,7 +152,7 @@ export default function AboutPage() {
                 <Prose size="lg" className="max-w-2xl">
                   <p>{leadershipIntro}</p>
                 </Prose>
-                <p className="mt-6 rounded-lg border border-border bg-muted px-4 py-3 text-sm text-muted-foreground">
+                <p className="border-border bg-muted text-muted-foreground mt-6 rounded-lg border px-4 py-3 text-sm">
                   Leadership biographies and photographs will be added here as
                   they become available.
                 </p>

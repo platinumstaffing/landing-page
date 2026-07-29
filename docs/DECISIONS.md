@@ -150,6 +150,8 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   illustrations retain their near-4:3 source geometry in a separate typed manifest.
 - **Consequence:** The supplied artwork is displayed without cropping. Layouts now respond to the
   files that exist rather than preserving obsolete placeholder proportions.
+- **Status:** Superseded by D16 after the photography was resized into its intended art-directed
+  aspect ratios.
 
 ## D15 — Partnership illustrations supersede abstract step glyphs
 
@@ -162,3 +164,56 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   anchored stems, waypoints, and a directional finish. Smaller screens use a vertical route with
   branches and waypoints into each card. D15 supersedes the abstract-glyph artwork in D12 while
   retaining its accessible dialog behavior.
+
+## D16 — Restore intended homepage image formats
+
+- **Context:** The twelve workplace photographs were re-exported into the format families defined
+  by `docs/HOMEPAGE_IMAGE_PROMPTS.md`.
+- **Decision:** Restore the 16:10 hero, 4:5 employer partnership, 4:3 industry/staffing, and 3:2
+  candidate/resource frames. Record the delivered intrinsic dimensions in the image manifest and
+  use the prompt-defined focal points with `object-cover`.
+- **Rationale:** The source compositions now account for their final frames, so the editorial
+  layouts can regain their intended horizontal rhythm without hiding important subject matter.
+- **Consequence:** D16 supersedes the temporary all-portrait treatment in D14. The implementation
+  still omits all placeholder labels and aspect-ratio captions.
+
+## D17 — Proven Scale becomes an open measurement rail
+
+- **Context:** The four equal navy metric cells still read as a boxed dashboard component inside
+  an otherwise editorial homepage.
+- **Decision:** Remove the outer card frame and individual filled cells. Present the four verified
+  facts as a stepped open ledger using only horizontal measurement rules, registration ticks,
+  indexed labels, varied column spans, and large tabular values.
+- **Rationale:** The facts remain immediately scannable while the section gains the visual rhythm
+  of an industrial annual report instead of a generic stat-card grid.
+- **Consequence:** Desktop alternates two vertical baselines. Mobile returns to one clear linear
+  sequence, with no hover or motion dependency.
+
+## D18 — Sitewide photography expands through a controlled production map
+
+- **Context:** The redesigned inner pages currently rely mostly on typography, rules, and content
+  surfaces. The user requested substantially more imagery and generation guidance.
+- **Decision:** Use `docs/SITEWIDE_IMAGE_PROMPTS.md` as the production map for 37 additional
+  photographs across About, Employers, Industries, Job Seekers, Jobs, Contact, and Resources.
+- **Rationale:** A filename, size, aspect ratio, focal point, placement, prompt, and alt-text draft
+  for every asset lets photography be added intentionally without turning the site into an
+  unrelated stock-image catalogue.
+- **Boundary:** Generated leadership headshots remain prohibited. Named leaders require real,
+  commissioned photography.
+
+## D19 — Fail-closed promotion through isolated Vercel projects
+
+- **Context:** Staging and production require different trust boundaries, credentials, data stores,
+  domains, and release branches. Local hooks alone cannot enforce repository policy.
+- **Decision:** Promote collaborator changes through pull requests to `release/dev`, verify the
+  resulting immutable staging deployment, then accept only a same-repository `release/dev` pull
+  request into `main`. A separate production Vercel project builds only `main`; its domain is
+  promoted only after runtime verification. Fork and non-collaborator pull requests are closed by
+  a metadata-only workflow that never executes their code. Dependabot may target `release/dev`.
+- **Enforcement:** Both long-lived branches require the tracked checks, strict up-to-date pull
+  requests, resolved conversations, signed commits, and linear history, with no bypass actors.
+  Full-SHA-pinned Actions, CodeQL, dependency review/audit, Secretlint, actionlint, zizmor,
+  Playwright/axe, Lighthouse, ZAP, and CycloneDX SBOMs form the delivery evidence.
+- **Boundary:** GitHub rulesets and Vercel project settings require owner/admin application using
+  `docs/CI_CD_OWNER_RUNBOOK.md`. Human approval is not required. HSTS remains deferred until every
+  production subdomain is confirmed permanently HTTPS.

@@ -34,18 +34,18 @@ export function ProcessSteps({
             description={description}
           />
         </Reveal>
-        <ol className="mt-12 space-y-0 border-t border-border">
+        <ol className="border-border mt-12 space-y-0 border-t">
           {steps.map((step, index) => (
             <Reveal key={step.step} as="li" delay={index * 0.04}>
-              <div className="grid gap-4 border-b border-border py-6 sm:grid-cols-[5rem_1fr] sm:gap-8">
-                <span className="font-heading text-sm font-bold tracking-[0.14em] text-primary uppercase">
+              <div className="border-border grid gap-4 border-b py-6 sm:grid-cols-[5rem_1fr] sm:gap-8">
+                <span className="font-heading text-primary text-sm font-bold tracking-[0.14em] uppercase">
                   Step {step.step}
                 </span>
                 <div>
-                  <h3 className="font-heading text-lg font-bold text-foreground">
+                  <h3 className="font-heading text-foreground text-lg font-bold">
                     {step.title}
                   </h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed">
                     {step.description}
                   </p>
                 </div>

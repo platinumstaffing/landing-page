@@ -79,7 +79,7 @@ export default function IndustriesPage() {
             {benefits.map((benefit) => (
               <li
                 key={benefit}
-                className="rounded-lg border border-border bg-surface px-4 py-3 text-sm font-medium text-foreground"
+                className="border-border bg-surface text-foreground rounded-lg border px-4 py-3 text-sm font-medium"
               >
                 {benefit}
               </li>
@@ -100,7 +100,7 @@ export default function IndustriesPage() {
             title="Positions We Frequently Recruit"
             description="A sample of roles we regularly fill across the industries we serve."
           />
-          <ul className="mt-8 columns-1 gap-x-10 text-sm text-muted-foreground sm:columns-2 lg:columns-3">
+          <ul className="text-muted-foreground mt-8 columns-1 gap-x-10 text-sm sm:columns-2 lg:columns-3">
             {commonRoles.map((role) => (
               <li key={role} className="mb-2 break-inside-avoid">
                 {role}

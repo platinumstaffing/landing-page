@@ -12,7 +12,10 @@ export const metadata: Metadata = {
 
 export default function AccessibilityPage() {
   return (
-    <LegalPage title="Accessibility Statement" status="Last updated: July 27, 2026">
+    <LegalPage
+      title="Accessibility Statement"
+      status="Last updated: July 27, 2026"
+    >
       <p>
         {siteConfig.name} is committed to ensuring digital accessibility for
         people of all abilities. We want everyone, including employers and job
@@ -80,11 +83,10 @@ export default function AccessibilityPage() {
       <h2>Contact us about accessibility</h2>
       <p>
         If you have difficulty accessing any part of this website, or you have a
-        suggestion, please{" "}
-        <Link href="/contact">contact our team</Link>. Let us know the page, the
-        issue you experienced, and the assistive technology or browser you were
-        using, and we will work to provide the information or resolve the
-        barrier.
+        suggestion, please <Link href="/contact">contact our team</Link>. Let us
+        know the page, the issue you experienced, and the assistive technology
+        or browser you were using, and we will work to provide the information
+        or resolve the barrier.
       </p>
     </LegalPage>
   );

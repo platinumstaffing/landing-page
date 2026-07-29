@@ -5,16 +5,16 @@ export function TrustedBy() {
   if (employers.length === 0) return null;
 
   return (
-    <section className="border-b border-border bg-surface py-8">
+    <section className="border-border bg-surface border-b py-8">
       <Container>
-        <p className="text-center text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+        <p className="text-muted-foreground text-center text-xs font-semibold tracking-[0.18em] uppercase">
           Trusted by Employers
         </p>
         <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {employers.map((employer) => (
             <li
               key={employer.id}
-              className="font-heading text-sm font-semibold tracking-wide text-navy/70 uppercase"
+              className="font-heading text-navy/70 text-sm font-semibold tracking-wide uppercase"
             >
               {employer.name}
             </li>

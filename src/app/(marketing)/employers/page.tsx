@@ -67,12 +67,12 @@ export default function EmployersPage() {
               <article
                 key={solution.slug}
                 id={solution.slug}
-                className="scroll-mt-28 rounded-xl border border-border bg-surface p-6 sm:p-8"
+                className="border-border bg-surface scroll-mt-28 rounded-xl border p-6 sm:p-8"
               >
-                <h3 className="font-heading text-xl font-bold text-foreground">
+                <h3 className="font-heading text-foreground text-xl font-bold">
                   {solution.name}
                 </h3>
-                <p className="mt-3 max-w-3xl text-muted-foreground">
+                <p className="text-muted-foreground mt-3 max-w-3xl">
                   {solution.summary}
                 </p>
                 <Button asChild variant="link" className="mt-4 px-0">

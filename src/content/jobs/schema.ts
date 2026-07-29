@@ -56,9 +56,7 @@ export function parseJobs(data: unknown[]): Job[] {
   return data.map((item, index) => {
     const result = jobSchema.safeParse(item);
     if (!result.success) {
-      throw new Error(
-        `Invalid job at index ${index}: ${result.error.message}`,
-      );
+      throw new Error(`Invalid job at index ${index}: ${result.error.message}`);
     }
     return result.data;
   });

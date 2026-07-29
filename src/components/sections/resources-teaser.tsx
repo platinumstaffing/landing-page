@@ -34,14 +34,17 @@ export function ResourcesTeaser() {
         </Reveal>
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <Reveal>
-            <div className="rounded-xl border border-border bg-surface p-8">
-              <h3 className="font-heading text-xl font-bold text-foreground">
+            <div className="border-border bg-surface rounded-xl border p-8">
+              <h3 className="font-heading text-foreground text-xl font-bold">
                 Employer Resources
               </h3>
-              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
+              <ul className="text-muted-foreground mt-5 space-y-2 text-sm">
                 {employerTopics.map((topic) => (
                   <li key={topic} className="flex gap-2">
-                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+                    <span
+                      className="bg-primary mt-2 size-1.5 shrink-0 rounded-full"
+                      aria-hidden
+                    />
                     {topic}
                   </li>
                 ))}
@@ -52,14 +55,17 @@ export function ResourcesTeaser() {
             </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <div className="rounded-xl border border-border bg-surface p-8">
-              <h3 className="font-heading text-xl font-bold text-foreground">
+            <div className="border-border bg-surface rounded-xl border p-8">
+              <h3 className="font-heading text-foreground text-xl font-bold">
                 Career Resources
               </h3>
-              <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
+              <ul className="text-muted-foreground mt-5 space-y-2 text-sm">
                 {careerTopics.map((topic) => (
                   <li key={topic} className="flex gap-2">
-                    <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+                    <span
+                      className="bg-primary mt-2 size-1.5 shrink-0 rounded-full"
+                      aria-hidden
+                    />
                     {topic}
                   </li>
                 ))}

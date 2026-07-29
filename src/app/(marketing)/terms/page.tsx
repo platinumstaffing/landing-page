@@ -19,17 +19,18 @@ export default function TermsPage() {
     >
       <p>
         These Terms &amp; Conditions govern your use of the {siteConfig.name}{" "}
-        website. By accessing or using this website, you agree to these terms. If
-        you do not agree, please do not use the site. [Confirm legal entity name
-        and any separate client or candidate agreements that take precedence.]
+        website. By accessing or using this website, you agree to these terms.
+        If you do not agree, please do not use the site. [Confirm legal entity
+        name and any separate client or candidate agreements that take
+        precedence.]
       </p>
 
       <h2>Use of this website</h2>
       <p>
         You may use this website for lawful purposes, to learn about our
         services, search opportunities, and contact our team. You agree not to
-        misuse the site, interfere with its operation, attempt to access it in an
-        unauthorized way, or submit false or misleading information.
+        misuse the site, interfere with its operation, attempt to access it in
+        an unauthorized way, or submit false or misleading information.
       </p>
 
       <h2>Our services</h2>
@@ -37,15 +38,15 @@ export default function TermsPage() {
         This website provides information about Platinum Staffing&rsquo;s
         workforce solutions. Nothing on this site is a guarantee of employment,
         placement, or a particular result. Staffing and recruitment services are
-        provided under separate agreements. [Confirm how services are
-        contracted and any terms that should be referenced here.]
+        provided under separate agreements. [Confirm how services are contracted
+        and any terms that should be referenced here.]
       </p>
 
       <h2>Submissions you provide</h2>
       <p>
         When you submit information, including résumés, applications, or
-        inquiries, you confirm that it is accurate and that you have the right to
-        share it. Your submissions are also handled as described in our{" "}
+        inquiries, you confirm that it is accurate and that you have the right
+        to share it. Your submissions are also handled as described in our{" "}
         <Link href="/privacy">Privacy Policy</Link>.
       </p>
 
@@ -54,14 +55,15 @@ export default function TermsPage() {
         The content on this website, including text, graphics, logos, and the
         Platinum Staffing name and marks, is owned by or licensed to Platinum
         Staffing and is protected by applicable law. You may not reproduce or
-        reuse it without permission, except as reasonably needed to use the site.
+        reuse it without permission, except as reasonably needed to use the
+        site.
       </p>
 
       <h2>Third-party links</h2>
       <p>
         This site may link to third-party websites we do not control. We are not
-        responsible for the content or practices of those sites, and linking does
-        not imply endorsement.
+        responsible for the content or practices of those sites, and linking
+        does not imply endorsement.
       </p>
 
       <h2>Disclaimers</h2>

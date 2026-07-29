@@ -17,10 +17,7 @@ export function BrandGraphic({
     <div
       role="img"
       aria-label={label}
-      className={cn(
-        "relative overflow-hidden rounded-xl bg-navy",
-        className,
-      )}
+      className={cn("bg-navy relative overflow-hidden rounded-xl", className)}
     >
       <div
         aria-hidden
@@ -32,20 +29,20 @@ export function BrandGraphic({
       />
       <div
         aria-hidden
-        className="absolute -right-8 -bottom-16 h-[140%] w-[70%] rounded-full border border-silver/30"
+        className="border-silver/30 absolute -right-8 -bottom-16 h-[140%] w-[70%] rounded-full border"
       />
       <div
         aria-hidden
-        className="absolute top-1/4 left-[18%] h-[55%] w-3 rounded-full bg-primary"
+        className="bg-primary absolute top-1/4 left-[18%] h-[55%] w-3 rounded-full"
       />
       <div
         aria-hidden
-        className="absolute top-[22%] left-[22%] h-[38%] w-[38%] rounded-full border-[10px] border-silver/70"
+        className="border-silver/70 absolute top-[22%] left-[22%] h-[38%] w-[38%] rounded-full border-[10px]"
         style={{ clipPath: "inset(0 0 0 45%)" }}
       />
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/80 to-transparent"
+        className="from-navy/80 absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t to-transparent"
       />
     </div>
   );

@@ -6,29 +6,29 @@ import { industryLabel, type Job } from "@/content/jobs";
 
 export function JobCard({ job }: { job: Job }) {
   return (
-    <article className="rounded-xl border border-border bg-surface p-5 sm:p-6">
+    <article className="border-border bg-surface rounded-xl border p-5 sm:p-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
+          <p className="text-primary text-xs font-semibold tracking-[0.14em] uppercase">
             {industryLabel(job.industry)}
           </p>
-          <h3 className="mt-2 font-heading text-xl font-bold text-foreground">
+          <h3 className="font-heading text-foreground mt-2 text-xl font-bold">
             {job.title}
           </h3>
-          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
             {job.summary}
           </p>
-          <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-foreground/80">
+          <ul className="text-foreground/80 mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
             <li className="inline-flex items-center gap-1.5">
-              <MapPin className="size-4 text-primary" aria-hidden />
+              <MapPin className="text-primary size-4" aria-hidden />
               {job.location.city}, {job.location.state}
             </li>
             <li className="inline-flex items-center gap-1.5">
-              <Briefcase className="size-4 text-primary" aria-hidden />
+              <Briefcase className="text-primary size-4" aria-hidden />
               {job.employmentType}
             </li>
             <li className="inline-flex items-center gap-1.5">
-              <Clock className="size-4 text-primary" aria-hidden />
+              <Clock className="text-primary size-4" aria-hidden />
               {job.shift}
             </li>
             {job.payRange ? <li>{job.payRange}</li> : null}
@@ -38,7 +38,7 @@ export function JobCard({ job }: { job: Job }) {
           <Button asChild size="sm">
             <Link href={`/job-seekers#submit-resume`}>Apply Now</Link>
           </Button>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-muted-foreground text-xs">
             Ref. {job.referenceNumber}
           </p>
         </div>

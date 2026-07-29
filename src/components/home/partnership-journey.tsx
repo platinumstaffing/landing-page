@@ -136,33 +136,33 @@ export function PartnershipJourney() {
               >
                 <span
                   aria-hidden
-                  className="absolute top-[9.25rem] -left-7 h-0.5 w-7 bg-primary lg:hidden"
+                  className="bg-primary absolute top-[9.25rem] -left-7 h-0.5 w-7 lg:hidden"
                 />
                 <span
                   aria-hidden
-                  className="absolute top-[9rem] -left-8 size-2.5 rounded-full border-2 border-primary bg-background lg:hidden"
+                  className="border-primary bg-background absolute top-[9rem] -left-8 size-2.5 rounded-full border-2 lg:hidden"
                 />
                 <span
                   aria-hidden
-                  className="absolute top-full left-1/2 hidden h-[1.125rem] w-px -translate-x-1/2 bg-border lg:block"
+                  className="bg-border absolute top-full left-1/2 hidden h-[1.125rem] w-px -translate-x-1/2 lg:block"
                 />
 
                 <Dialog>
                   <DialogTrigger asChild>
                     <motion.button
                       type="button"
-                      className="group relative flex w-full flex-col overflow-hidden rounded-[1.5rem] border border-border bg-surface text-left outline-none transition-[border-color,background-color] hover:border-primary focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+                      className="group border-border bg-surface hover:border-primary focus-visible:border-ring focus-visible:ring-ring/40 relative flex w-full flex-col overflow-hidden rounded-[1.5rem] border text-left transition-[border-color,background-color] outline-none focus-visible:ring-3"
                       whileHover={reduce ? undefined : { y: -5 }}
                       whileTap={reduce ? undefined : { scale: 0.985 }}
                     >
                       <span className="flex items-center justify-between gap-4 px-5 py-4">
-                        <span className="font-heading text-xs font-bold tracking-[0.14em] text-primary tabular-nums">
+                        <span className="font-heading text-primary text-xs font-bold tracking-[0.14em] tabular-nums">
                           {String(index + 1).padStart(2, "0")} / 05
                         </span>
-                        <span className="size-2 rounded-full border border-primary bg-background transition-colors group-hover:bg-primary group-focus-visible:bg-primary" />
+                        <span className="border-primary bg-background group-hover:bg-primary group-focus-visible:bg-primary size-2 rounded-full border transition-colors" />
                       </span>
 
-                      <span className="relative block aspect-[75/56] w-full overflow-hidden border-y border-border bg-surface-muted">
+                      <span className="border-border bg-surface-muted relative block aspect-[75/56] w-full overflow-hidden border-y">
                         <Image
                           src={image.src}
                           alt=""
@@ -173,10 +173,10 @@ export function PartnershipJourney() {
                       </span>
 
                       <span className="flex min-h-40 flex-col p-5">
-                        <span className="max-w-[15ch] font-heading text-lg leading-tight font-semibold tracking-[-0.025em] text-foreground">
+                        <span className="font-heading text-foreground max-w-[15ch] text-lg leading-tight font-semibold tracking-[-0.025em]">
                           {step.title}
                         </span>
-                        <span className="mt-auto inline-flex items-center gap-2 pt-5 text-xs font-semibold tracking-[0.08em] text-primary uppercase">
+                        <span className="text-primary mt-auto inline-flex items-center gap-2 pt-5 text-xs font-semibold tracking-[0.08em] uppercase">
                           Open step
                           <ArrowRight
                             className="size-3.5 transition-transform group-hover:translate-x-1"
@@ -187,12 +187,12 @@ export function PartnershipJourney() {
                     </motion.button>
                   </DialogTrigger>
 
-                  <DialogContent className="max-h-[min(92vh,54rem)] overflow-y-auto rounded-[1.5rem] border border-border bg-surface p-0 sm:max-w-2xl">
-                    <div className="border-b border-border bg-surface-muted">
+                  <DialogContent className="border-border bg-surface max-h-[min(92vh,54rem)] overflow-y-auto rounded-[1.5rem] border p-0 sm:max-w-2xl">
+                    <div className="border-border bg-surface-muted border-b">
                       <div className="flex items-center justify-between gap-4 px-6 py-4 sm:px-8">
-                        <span className="font-heading text-xs font-bold tracking-[0.14em] text-primary tabular-nums">
-                          Partnership step{" "}
-                          {String(index + 1).padStart(2, "0")} / 05
+                        <span className="font-heading text-primary text-xs font-bold tracking-[0.14em] tabular-nums">
+                          Partnership step {String(index + 1).padStart(2, "0")}{" "}
+                          / 05
                         </span>
                       </div>
                       <Image
@@ -201,7 +201,7 @@ export function PartnershipJourney() {
                         width={image.width}
                         height={image.height}
                         sizes="(min-width: 640px) 42rem, calc(100vw - 2rem)"
-                        className="h-auto w-full border-t border-border object-contain"
+                        className="border-border h-auto w-full border-t object-contain"
                       />
                     </div>
                     <DialogHeader className="px-6 pt-2 pb-8 sm:px-8">
@@ -220,7 +220,7 @@ export function PartnershipJourney() {
         </ol>
       </div>
 
-      <p className="mt-9 pl-10 text-xs leading-relaxed text-muted-foreground lg:mt-20 lg:pl-0">
+      <p className="text-muted-foreground mt-9 pl-10 text-xs leading-relaxed lg:mt-20 lg:pl-0">
         Follow the route, then select any step for the full partnership detail.
       </p>
     </div>

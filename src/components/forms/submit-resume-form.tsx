@@ -16,7 +16,12 @@ import {
   type SubmitResumeInput,
 } from "@/lib/forms/schemas";
 
-const employmentTypes = ["Temporary", "Temp-to-Hire", "Direct Hire", "Seasonal"];
+const employmentTypes = [
+  "Temporary",
+  "Temp-to-Hire",
+  "Direct Hire",
+  "Seasonal",
+];
 const shifts = ["First", "Second", "Third", "Flexible"];
 
 export function SubmitResumeForm() {
@@ -80,26 +85,66 @@ export function SubmitResumeForm() {
   });
 
   return (
-<form onSubmit={onSubmit} className="relative space-y-5" noValidate>
+    <form onSubmit={onSubmit} className="relative space-y-5" noValidate>
       <Honeypot register={register} />
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="First Name" htmlFor="firstName" required error={errors.firstName?.message}>
+        <Field
+          label="First Name"
+          htmlFor="firstName"
+          required
+          error={errors.firstName?.message}
+        >
           <Input id="firstName" className="h-11" {...register("firstName")} />
         </Field>
-        <Field label="Last Name" htmlFor="lastName" required error={errors.lastName?.message}>
+        <Field
+          label="Last Name"
+          htmlFor="lastName"
+          required
+          error={errors.lastName?.message}
+        >
           <Input id="lastName" className="h-11" {...register("lastName")} />
         </Field>
-        <Field label="Email Address" htmlFor="email" required error={errors.email?.message}>
-          <Input id="email" type="email" className="h-11" {...register("email")} />
+        <Field
+          label="Email Address"
+          htmlFor="email"
+          required
+          error={errors.email?.message}
+        >
+          <Input
+            id="email"
+            type="email"
+            className="h-11"
+            {...register("email")}
+          />
         </Field>
-        <Field label="Phone Number" htmlFor="phone" required error={errors.phone?.message}>
-          <Input id="phone" type="tel" className="h-11" {...register("phone")} />
+        <Field
+          label="Phone Number"
+          htmlFor="phone"
+          required
+          error={errors.phone?.message}
+        >
+          <Input
+            id="phone"
+            type="tel"
+            className="h-11"
+            {...register("phone")}
+          />
         </Field>
-        <Field label="City" htmlFor="city" required error={errors.city?.message}>
+        <Field
+          label="City"
+          htmlFor="city"
+          required
+          error={errors.city?.message}
+        >
           <Input id="city" className="h-11" {...register("city")} />
         </Field>
-        <Field label="State" htmlFor="state" required error={errors.state?.message}>
+        <Field
+          label="State"
+          htmlFor="state"
+          required
+          error={errors.state?.message}
+        >
           <Input id="state" className="h-11" {...register("state")} />
         </Field>
         <Field
@@ -110,7 +155,7 @@ export function SubmitResumeForm() {
         >
           <select
             id="preferredIndustry"
-            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+            className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
             {...register("preferredIndustry")}
             defaultValue=""
           >
@@ -130,7 +175,11 @@ export function SubmitResumeForm() {
           required
           error={errors.desiredPosition?.message}
         >
-          <Input id="desiredPosition" className="h-11" {...register("desiredPosition")} />
+          <Input
+            id="desiredPosition"
+            className="h-11"
+            {...register("desiredPosition")}
+          />
         </Field>
         <Field
           label="Employment Type"
@@ -140,7 +189,7 @@ export function SubmitResumeForm() {
         >
           <select
             id="employmentType"
-            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+            className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
             {...register("employmentType")}
             defaultValue=""
           >
@@ -157,7 +206,7 @@ export function SubmitResumeForm() {
         <Field label="Preferred Shift" htmlFor="preferredShift">
           <select
             id="preferredShift"
-            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+            className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
             {...register("preferredShift")}
             defaultValue=""
           >
@@ -170,7 +219,11 @@ export function SubmitResumeForm() {
           </select>
         </Field>
         <Field label="Years of Experience" htmlFor="yearsExperience">
-          <Input id="yearsExperience" className="h-11" {...register("yearsExperience")} />
+          <Input
+            id="yearsExperience"
+            className="h-11"
+            {...register("yearsExperience")}
+          />
         </Field>
         <Field label="Highest Level of Education" htmlFor="education">
           <Input id="education" className="h-11" {...register("education")} />
@@ -178,7 +231,11 @@ export function SubmitResumeForm() {
       </div>
 
       <Field label="Certifications or Licenses" htmlFor="certifications">
-        <Input id="certifications" className="h-11" {...register("certifications")} />
+        <Input
+          id="certifications"
+          className="h-11"
+          {...register("certifications")}
+        />
       </Field>
 
       <Field
@@ -196,31 +253,40 @@ export function SubmitResumeForm() {
       </Field>
 
       <Field label="Additional Comments" htmlFor="additionalComments">
-        <Textarea id="additionalComments" rows={3} {...register("additionalComments")} />
+        <Textarea
+          id="additionalComments"
+          rows={3}
+          {...register("additionalComments")}
+        />
       </Field>
 
       <div className="flex items-start gap-3">
         <input
           id="consent"
           type="checkbox"
-          className="mt-1 size-4 rounded border border-input accent-primary"
+          className="border-input accent-primary mt-1 size-4 rounded border"
           {...register("consent")}
           aria-invalid={!!errors.consent}
         />
         <label htmlFor="consent" className="text-sm leading-snug">
-          I confirm this information is accurate and grant Platinum Staffing permission
-          to contact me about this and other relevant opportunities.
+          I confirm this information is accurate and grant Platinum Staffing
+          permission to contact me about this and other relevant opportunities.
         </label>
       </div>
       {errors.consent ? (
-        <p className="text-xs text-destructive" role="alert">
+        <p className="text-destructive text-xs" role="alert">
           {errors.consent.message}
         </p>
       ) : null}
 
       <FormStatus status={result.status} message={result.message} />
 
-      <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">
+      <Button
+        type="submit"
+        size="lg"
+        disabled={pending}
+        className="w-full sm:w-auto"
+      >
         {pending ? "Submitting…" : "Join Our Talent Network"}
       </Button>
     </form>

@@ -8,13 +8,13 @@ export default function NotFound() {
       id="main"
       className="mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center px-5 py-20"
     >
-      <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+      <p className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
         404
       </p>
-      <h1 className="mt-3 font-heading text-4xl font-bold tracking-tight text-foreground">
+      <h1 className="font-heading text-foreground mt-3 text-4xl font-bold tracking-tight">
         Page not found
       </h1>
-      <p className="mt-4 text-muted-foreground">
+      <p className="text-muted-foreground mt-4">
         The page you&apos;re looking for doesn&apos;t exist or has moved. Try
         returning home, searching jobs, or contacting our team.
       </p>

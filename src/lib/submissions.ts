@@ -9,10 +9,7 @@
 import { Resend } from "resend";
 
 export type SubmissionKind =
-  | "request-talent"
-  | "submit-resume"
-  | "general-contact"
-  | "consultation";
+  "request-talent" | "submit-resume" | "general-contact" | "consultation";
 
 export type SubmissionPayload = {
   kind: SubmissionKind;
@@ -22,12 +19,13 @@ export type SubmissionPayload = {
 };
 
 export type DeliveryResult =
-  | { ok: true; id?: string }
-  | { ok: false; error: string };
+  { ok: true; id?: string } | { ok: false; error: string };
 
 function formatFields(fields: SubmissionPayload["fields"]): string {
   return Object.entries(fields)
-    .filter(([, value]) => value !== undefined && value !== null && value !== "")
+    .filter(
+      ([, value]) => value !== undefined && value !== null && value !== "",
+    )
     .map(([key, value]) => `${key}: ${String(value)}`)
     .join("\n");
 }
@@ -76,13 +74,19 @@ export async function deliverSubmission(
 
     if (error) {
       console.error("[submissions] Resend error", error);
-      return { ok: false, error: "We could not send your message. Please try again." };
+      return {
+        ok: false,
+        error: "We could not send your message. Please try again.",
+      };
     }
 
     return { ok: true, id: data?.id };
   } catch (error) {
     console.error("[submissions] Unexpected error", error);
-    return { ok: false, error: "We could not send your message. Please try again." };
+    return {
+      ok: false,
+      error: "We could not send your message. Please try again.",
+    };
   }
 }
 
