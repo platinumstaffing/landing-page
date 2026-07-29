@@ -163,7 +163,8 @@ Do this only after the CI/CD bootstrap pull request has been merged into `releas
    - **Restrict deletions**: enabled.
    - **Block force pushes**: enabled.
    - **Require linear history**: enabled.
-   - **Require signed commits**: enabled.
+   - **Require signed commits**: disabled. PR-only updates, required checks, strict
+     up-to-date branches, linear history, and an empty bypass list remain the enforcement boundary.
    - **Require a pull request before merging**: enabled.
    - Required approvals: `0`.
    - Required code-owner approval: disabled.
