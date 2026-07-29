@@ -106,10 +106,12 @@ jobs:
             exit 1
           }
 
-          echo "target=$target" >> "$GITHUB_OUTPUT"
-          echo "ref=$expected_ref" >> "$GITHUB_OUTPUT"
-          echo "sha=$EVENT_SHA" >> "$GITHUB_OUTPUT"
-          echo "url=${EVENT_URL%/}" >> "$GITHUB_OUTPUT"
+          {
+            echo "target=$target"
+            echo "ref=$expected_ref"
+            echo "sha=$EVENT_SHA"
+            echo "url=${EVENT_URL%/}"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Register blocking Vercel check
         if: github.event_name == 'repository_dispatch'
@@ -118,7 +120,7 @@ jobs:
           name: Vercel - ${{ steps.deployment.outputs.target }} runtime verification
 
       - name: Checkout deployed commit
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ steps.deployment.outputs.sha }}
           fetch-depth: 0
@@ -142,7 +144,7 @@ jobs:
           run_install: false
 
       - name: Set up Node
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .node-version
           package-manager-cache: false
@@ -189,7 +191,7 @@ jobs:
 
       - name: Upload runtime diagnostics
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: deployment-${{ steps.deployment.outputs.target }}-${{ steps.deployment.outputs.sha }}
           path: |
