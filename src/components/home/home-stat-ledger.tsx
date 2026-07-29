@@ -45,11 +45,11 @@ export function HomeStatLedger() {
           key={stat.id}
           className="bg-navy relative flex min-h-48 flex-col justify-between px-5 py-7 sm:min-h-52 sm:px-7 lg:min-h-56 lg:px-8"
         >
-          <span
-            aria-hidden
-            className="bg-navy-foreground absolute top-0 left-0 h-px w-10"
-          />
           <dt className="text-silver text-xs font-semibold tracking-[0.14em] uppercase">
+            <span
+              aria-hidden
+              className="bg-navy-foreground absolute top-0 left-0 h-px w-10"
+            />
             {String(index + 1).padStart(2, "0")} / {stat.label}
           </dt>
           <dd className="mt-auto pt-8">
