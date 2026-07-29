@@ -89,7 +89,7 @@ export default function JobSeekersPage() {
               title="Submit Your Résumé"
               description="Don't see the right opportunity today? Submit your résumé and join our growing talent network. Our recruiters will review your qualifications and contact you when opportunities become available that match your experience and career goals."
             />
-            <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
+            <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
               <SubmitResumeForm />
             </div>
           </div>
@@ -107,10 +107,10 @@ export default function JobSeekersPage() {
             {benefits.map((benefit) => (
               <li
                 key={benefit}
-                className="flex items-start gap-3 border-b border-border/70 py-3.5 text-sm font-medium text-foreground"
+                className="border-border/70 text-foreground flex items-start gap-3 border-b py-3.5 text-sm font-medium"
               >
                 <Check
-                  className="mt-0.5 size-4 shrink-0 text-primary"
+                  className="text-primary mt-0.5 size-4 shrink-0"
                   weight="bold"
                   aria-hidden
                 />

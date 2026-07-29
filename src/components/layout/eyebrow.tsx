@@ -8,7 +8,7 @@ export function Eyebrow({ className, onDark = false, ...props }: EyebrowProps) {
   return (
     <p
       className={cn(
-        "font-heading text-xs font-semibold uppercase tracking-[0.18em]",
+        "font-heading text-xs font-semibold tracking-[0.18em] uppercase",
         onDark ? "text-silver" : "text-primary",
         className,
       )}

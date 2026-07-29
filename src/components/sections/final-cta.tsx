@@ -15,22 +15,28 @@ export function FinalCta({
   title,
   description,
   primary = { label: "Request Talent", href: "/contact#request-talent" },
-  secondary = { label: "Schedule a Consultation", href: "/contact#consultation" },
+  secondary = {
+    label: "Schedule a Consultation",
+    href: "/contact#consultation",
+  },
 }: FinalCtaProps) {
   return (
-    <Section tone="navy" className="relative overflow-hidden py-20 sm:py-24 lg:py-32">
+    <Section
+      tone="navy"
+      className="relative overflow-hidden py-20 sm:py-24 lg:py-32"
+    >
       <Container>
-        <div className="grid gap-12 border-t border-silver/35 pt-7 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:gap-20">
+        <div className="border-silver/35 grid gap-12 border-t pt-7 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:gap-20">
           <div>
-            <p className="text-xs font-semibold tracking-[0.15em] text-silver uppercase">
+            <p className="text-silver text-xs font-semibold tracking-[0.15em] uppercase">
               Your next move
             </p>
-            <h2 className="mt-6 max-w-[14ch] font-heading text-[clamp(2.75rem,6vw,5.75rem)] leading-[0.96] font-semibold tracking-[-0.055em] text-balance text-navy-foreground">
+            <h2 className="font-heading text-navy-foreground mt-6 max-w-[14ch] text-[clamp(2.75rem,6vw,5.75rem)] leading-[0.96] font-semibold tracking-[-0.055em] text-balance">
               {title}
             </h2>
           </div>
-          <div className="flex flex-col justify-between border-t border-silver/25 pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
-            <p className="max-w-[54ch] text-base leading-relaxed text-silver sm:text-lg">
+          <div className="border-silver/25 flex flex-col justify-between border-t pt-6 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+            <p className="text-silver max-w-[54ch] text-base leading-relaxed sm:text-lg">
               {description}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">

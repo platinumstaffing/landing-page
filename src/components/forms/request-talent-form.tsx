@@ -68,7 +68,7 @@ export function RequestTalentForm() {
   });
 
   return (
-<form onSubmit={onSubmit} className="relative space-y-5" noValidate>
+    <form onSubmit={onSubmit} className="relative space-y-5" noValidate>
       <Honeypot register={register} />
 
       <div className="grid gap-5 sm:grid-cols-2">
@@ -78,7 +78,12 @@ export function RequestTalentForm() {
           required
           error={errors.companyName?.message}
         >
-          <Input id="companyName" className="h-11" {...register("companyName")} aria-invalid={!!errors.companyName} />
+          <Input
+            id="companyName"
+            className="h-11"
+            {...register("companyName")}
+            aria-invalid={!!errors.companyName}
+          />
         </Field>
         <Field
           label="Contact Name"
@@ -86,9 +91,18 @@ export function RequestTalentForm() {
           required
           error={errors.contactName?.message}
         >
-          <Input id="contactName" className="h-11" {...register("contactName")} aria-invalid={!!errors.contactName} />
+          <Input
+            id="contactName"
+            className="h-11"
+            {...register("contactName")}
+            aria-invalid={!!errors.contactName}
+          />
         </Field>
-        <Field label="Job Title" htmlFor="jobTitle" error={errors.jobTitle?.message}>
+        <Field
+          label="Job Title"
+          htmlFor="jobTitle"
+          error={errors.jobTitle?.message}
+        >
           <Input id="jobTitle" className="h-11" {...register("jobTitle")} />
         </Field>
         <Field
@@ -106,16 +120,36 @@ export function RequestTalentForm() {
             aria-invalid={!!errors.businessEmail}
           />
         </Field>
-        <Field label="Phone Number" htmlFor="phone" required error={errors.phone?.message}>
-          <Input id="phone" type="tel" className="h-11" {...register("phone")} aria-invalid={!!errors.phone} />
+        <Field
+          label="Phone Number"
+          htmlFor="phone"
+          required
+          error={errors.phone?.message}
+        >
+          <Input
+            id="phone"
+            type="tel"
+            className="h-11"
+            {...register("phone")}
+            aria-invalid={!!errors.phone}
+          />
         </Field>
         <Field label="Company Address" htmlFor="companyAddress">
-          <Input id="companyAddress" className="h-11" {...register("companyAddress")} />
+          <Input
+            id="companyAddress"
+            className="h-11"
+            {...register("companyAddress")}
+          />
         </Field>
-        <Field label="Industry" htmlFor="industry" required error={errors.industry?.message}>
+        <Field
+          label="Industry"
+          htmlFor="industry"
+          required
+          error={errors.industry?.message}
+        >
           <select
             id="industry"
-            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+            className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
             {...register("industry")}
             aria-invalid={!!errors.industry}
             defaultValue=""
@@ -137,7 +171,11 @@ export function RequestTalentForm() {
           required
           error={errors.employeesNeeded?.message}
         >
-          <Input id="employeesNeeded" className="h-11" {...register("employeesNeeded")} />
+          <Input
+            id="employeesNeeded"
+            className="h-11"
+            {...register("employeesNeeded")}
+          />
         </Field>
         <Field
           label="Position(s) Hiring For"
@@ -155,7 +193,7 @@ export function RequestTalentForm() {
         >
           <select
             id="employmentType"
-            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+            className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
             {...register("employmentType")}
             defaultValue=""
           >
@@ -170,7 +208,12 @@ export function RequestTalentForm() {
           </select>
         </Field>
         <Field label="Preferred Start Date" htmlFor="preferredStartDate">
-          <Input id="preferredStartDate" type="date" className="h-11" {...register("preferredStartDate")} />
+          <Input
+            id="preferredStartDate"
+            type="date"
+            className="h-11"
+            {...register("preferredStartDate")}
+          />
         </Field>
         <Field label="How Did You Hear About Us?" htmlFor="howHeard">
           <Input id="howHeard" className="h-11" {...register("howHeard")} />
@@ -193,12 +236,21 @@ export function RequestTalentForm() {
       </Field>
 
       <Field label="Additional Comments" htmlFor="additionalComments">
-        <Textarea id="additionalComments" rows={3} {...register("additionalComments")} />
+        <Textarea
+          id="additionalComments"
+          rows={3}
+          {...register("additionalComments")}
+        />
       </Field>
 
       <FormStatus status={result.status} message={result.message} />
 
-      <Button type="submit" size="lg" disabled={pending} className="w-full sm:w-auto">
+      <Button
+        type="submit"
+        size="lg"
+        disabled={pending}
+        className="w-full sm:w-auto"
+      >
         {pending ? "Submitting…" : "Submit Employer Inquiry"}
       </Button>
     </form>

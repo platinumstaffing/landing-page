@@ -143,7 +143,8 @@ export function filterJobs(filters: JobFilters): Job[] {
 
   return getOpenJobs().filter((job) => {
     if (q) {
-      const haystack = `${job.title} ${job.summary} ${job.referenceNumber}`.toLowerCase();
+      const haystack =
+        `${job.title} ${job.summary} ${job.referenceNumber}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
     if (location) {
@@ -152,10 +153,7 @@ export function filterJobs(filters: JobFilters): Job[] {
       if (!loc.includes(location)) return false;
     }
     if (filters.industry && job.industry !== filters.industry) return false;
-    if (
-      filters.employmentType &&
-      job.employmentType !== filters.employmentType
-    )
+    if (filters.employmentType && job.employmentType !== filters.employmentType)
       return false;
     if (filters.shift && job.shift !== filters.shift) return false;
     if (

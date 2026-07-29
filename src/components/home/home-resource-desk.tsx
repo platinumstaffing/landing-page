@@ -32,11 +32,11 @@ export function HomeResourceDesk() {
           description="The resource library is being built carefully. These pathways show what is coming without pretending unfinished articles are already available."
         />
 
-        <div className="mt-14 border-t border-border">
+        <div className="border-border mt-14 border-t">
           {resourceRows.map((row, index) => (
             <article
               key={row.label}
-              className="grid gap-7 border-b border-border py-8 lg:grid-cols-[13rem_minmax(0,1fr)_minmax(18rem,0.62fr)] lg:items-center lg:gap-10"
+              className="border-border grid gap-7 border-b py-8 lg:grid-cols-[13rem_minmax(0,1fr)_minmax(18rem,0.62fr)] lg:items-center lg:gap-10"
             >
               <EditorialImage
                 image={row.image}
@@ -44,23 +44,23 @@ export function HomeResourceDesk() {
                 className="max-w-lg"
               />
               <div>
-                <p className="text-xs font-semibold tracking-[0.14em] text-primary uppercase">
+                <p className="text-primary text-xs font-semibold tracking-[0.14em] uppercase">
                   {String(index + 1).padStart(2, "0")} / {row.label}
                 </p>
-                <h3 className="mt-4 max-w-2xl font-heading text-2xl font-semibold leading-tight tracking-[-0.025em] sm:text-3xl">
+                <h3 className="font-heading mt-4 max-w-2xl text-2xl leading-tight font-semibold tracking-[-0.025em] sm:text-3xl">
                   {row.title}
                 </h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
                   {row.topics}
                 </p>
               </div>
               <div className="lg:text-right">
-                <span className="block text-xs font-medium text-muted-foreground">
+                <span className="text-muted-foreground block text-xs font-medium">
                   Articles in progress
                 </span>
                 <Link
                   href="/resources"
-                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary underline-offset-4 hover:underline"
+                  className="text-primary mt-4 inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline"
                 >
                   Visit the resource center
                   <ArrowUpRight className="size-4" aria-hidden />

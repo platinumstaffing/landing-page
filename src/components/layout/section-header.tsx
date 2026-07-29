@@ -26,17 +26,13 @@ export function SectionHeader({
     <div
       className={cn(
         "max-w-3xl",
-        align === "left" && "border-t border-border pt-6",
+        align === "left" && "border-border border-t pt-6",
         align === "center" && "mx-auto text-center",
         className,
       )}
     >
       {eyebrow ? <Eyebrow onDark={onDark}>{eyebrow}</Eyebrow> : null}
-      <Heading
-        level={level}
-        onDark={onDark}
-        className={cn(eyebrow && "mt-4")}
-      >
+      <Heading level={level} onDark={onDark} className={cn(eyebrow && "mt-4")}>
         {title}
       </Heading>
       {description ? (

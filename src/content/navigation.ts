@@ -31,7 +31,10 @@ export const primaryNav: NavItem[] = [
       { label: "Temp-to-Hire", href: "/employers#temp-to-hire" },
       { label: "Direct Hire", href: "/employers#direct-hire" },
       { label: "Seasonal Staffing", href: "/employers#seasonal-staffing" },
-      { label: "High-Volume Staffing", href: "/employers#high-volume-staffing" },
+      {
+        label: "High-Volume Staffing",
+        href: "/employers#high-volume-staffing",
+      },
       { label: "Workforce Planning", href: "/employers#workforce-planning" },
       { label: "Request Talent", href: "/contact#request-talent" },
     ],

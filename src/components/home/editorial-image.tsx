@@ -25,7 +25,7 @@ export function EditorialImage({
   return (
     <figure
       className={cn(
-        "relative isolate overflow-hidden border border-border bg-surface-muted",
+        "border-border bg-surface-muted relative isolate overflow-hidden border",
         aspectClasses[image.aspectRatio],
         className,
       )}
@@ -41,11 +41,11 @@ export function EditorialImage({
       />
       <span
         aria-hidden
-        className="absolute top-4 left-4 z-10 size-3 border-t border-l border-silver"
+        className="border-silver absolute top-4 left-4 z-10 size-3 border-t border-l"
       />
       <span
         aria-hidden
-        className="absolute right-4 bottom-4 z-10 size-3 border-r border-b border-silver"
+        className="border-silver absolute right-4 bottom-4 z-10 size-3 border-r border-b"
       />
     </figure>
   );

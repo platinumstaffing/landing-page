@@ -36,9 +36,7 @@ export function AnimatedStat({
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(value * eased);
       setShown(
-        current >= 1000
-          ? `${current.toLocaleString("en-US")}+`
-          : `${current}+`,
+        current >= 1000 ? `${current.toLocaleString("en-US")}+` : `${current}+`,
       );
       if (progress < 1) {
         frame = requestAnimationFrame(tick);
@@ -53,15 +51,15 @@ export function AnimatedStat({
 
   return (
     <div ref={ref} className="flex flex-col items-center sm:items-start">
-      <span aria-hidden className="mb-4 block h-px w-8 bg-silver/45" />
+      <span aria-hidden className="bg-silver/45 mb-4 block h-px w-8" />
       <p className="font-heading text-3xl font-bold tracking-tight text-white tabular-nums sm:text-4xl">
         {shown}
       </p>
-      <p className="mt-2 text-sm font-medium tracking-wide text-silver uppercase">
+      <p className="text-silver mt-2 text-sm font-medium tracking-wide uppercase">
         {label}
       </p>
       {suffix?.trim() ? (
-        <p className="mt-1 text-xs leading-snug text-silver/70">
+        <p className="text-silver/70 mt-1 text-xs leading-snug">
           {suffix.trim()}
         </p>
       ) : null}

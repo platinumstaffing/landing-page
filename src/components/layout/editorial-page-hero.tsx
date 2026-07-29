@@ -34,25 +34,25 @@ export function EditorialPageHero({
   return (
     <section
       className={cn(
-        "relative overflow-hidden border-b border-border bg-background",
+        "border-border bg-background relative overflow-hidden border-b",
         className,
       )}
     >
       <Container className="relative grid gap-12 py-16 sm:py-20 lg:grid-cols-[minmax(0,1.35fr)_minmax(17rem,0.65fr)] lg:gap-20 lg:py-28">
         <div>
           <div className="flex items-center gap-4">
-            <span className="font-heading text-xs font-bold tracking-[0.16em] text-primary tabular-nums">
+            <span className="font-heading text-primary text-xs font-bold tracking-[0.16em] tabular-nums">
               {index}
             </span>
-            <span className="h-px w-10 bg-border" aria-hidden />
-            <p className="text-xs font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+            <span className="bg-border h-px w-10" aria-hidden />
+            <p className="text-muted-foreground text-xs font-semibold tracking-[0.14em] uppercase">
               {eyebrow}
             </p>
           </div>
-          <h1 className="mt-7 max-w-[18ch] font-heading text-[clamp(2.75rem,6vw,5.75rem)] leading-[0.96] font-semibold tracking-[-0.055em] text-balance text-foreground">
+          <h1 className="font-heading text-foreground mt-7 max-w-[18ch] text-[clamp(2.75rem,6vw,5.75rem)] leading-[0.96] font-semibold tracking-[-0.055em] text-balance">
             {title}
           </h1>
-          <div className="mt-7 max-w-[66ch] text-base leading-relaxed text-muted-foreground sm:text-lg [&_p+p]:mt-4 [&_strong]:font-semibold [&_strong]:text-foreground">
+          <div className="text-muted-foreground [&_strong]:text-foreground mt-7 max-w-[66ch] text-base leading-relaxed sm:text-lg [&_p+p]:mt-4 [&_strong]:font-semibold">
             {description}
           </div>
           {primary || secondary ? (
@@ -74,12 +74,12 @@ export function EditorialPageHero({
           ) : null}
         </div>
 
-        <aside className="relative min-h-64 border-t border-border pt-5 lg:min-h-full lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
+        <aside className="border-border relative min-h-64 border-t pt-5 lg:min-h-full lg:border-t-0 lg:border-l lg:pt-0 lg:pl-8">
           <div className="flex items-start justify-between gap-5">
-            <p className="max-w-[18ch] text-xs leading-relaxed font-semibold tracking-[0.1em] text-muted-foreground uppercase">
+            <p className="text-muted-foreground max-w-[18ch] text-xs leading-relaxed font-semibold tracking-[0.1em] uppercase">
               {note}
             </p>
-            <ArrowDownRight className="size-7 text-primary" aria-hidden />
+            <ArrowDownRight className="text-primary size-7" aria-hidden />
           </div>
           <div
             className="absolute right-0 bottom-0 left-0 grid h-40 grid-cols-6 items-end gap-2 lg:left-8"
@@ -88,14 +88,14 @@ export function EditorialPageHero({
             {[42, 68, 34, 86, 56, 100].map((height, itemIndex) => (
               <span
                 key={height}
-                className="border-t border-primary bg-surface-muted"
+                className="border-primary bg-surface-muted border-t"
                 style={{ height: `${height}%` }}
               >
                 <span className="sr-only">{itemIndex + 1}</span>
               </span>
             ))}
           </div>
-          <p className="absolute right-0 bottom-2 font-heading text-[clamp(4rem,9vw,7rem)] leading-none font-semibold tracking-[-0.08em] text-border select-none lg:-right-2">
+          <p className="font-heading text-border absolute right-0 bottom-2 text-[clamp(4rem,9vw,7rem)] leading-none font-semibold tracking-[-0.08em] select-none lg:-right-2">
             {index}
           </p>
         </aside>

@@ -75,4 +75,8 @@ export type ConsultationInput = z.infer<typeof consultationSchema>;
 
 export type ActionResult =
   | { status: "success"; message: string }
-  | { status: "error"; message: string; fieldErrors?: Record<string, string[]> };
+  | {
+      status: "error";
+      message: string;
+      fieldErrors?: Record<string, string[]>;
+    };

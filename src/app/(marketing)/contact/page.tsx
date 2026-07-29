@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Briefcase, EnvelopeSimple, MapPin, Phone, User } from "@phosphor-icons/react/dist/ssr";
+import {
+  Briefcase,
+  EnvelopeSimple,
+  MapPin,
+  Phone,
+  User,
+} from "@phosphor-icons/react/dist/ssr";
 
 import { GeneralContactForm } from "@/components/forms/general-contact-form";
 import { RequestTalentForm } from "@/components/forms/request-talent-form";
@@ -79,7 +85,7 @@ export default function ContactPage() {
               title="Request Talent"
               description="Tell us about your hiring needs and a Platinum Staffing representative will follow up."
             />
-            <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
+            <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
               <RequestTalentForm />
             </div>
           </div>
@@ -94,11 +100,11 @@ export default function ContactPage() {
                 title="Send Us a Message"
                 description="For general questions, partnerships, or website feedback."
               />
-              <div className="mt-8 space-y-4 text-sm text-muted-foreground">
+              <div className="text-muted-foreground mt-8 space-y-4 text-sm">
                 <p className="inline-flex items-start gap-3">
-                  <MapPin className="mt-0.5 size-5 text-primary" aria-hidden />
+                  <MapPin className="text-primary mt-0.5 size-5" aria-hidden />
                   <span>
-                    <strong className="block font-heading text-foreground">
+                    <strong className="font-heading text-foreground block">
                       Service Area
                     </strong>
                     {siteConfig.address.display}
@@ -108,9 +114,9 @@ export default function ContactPage() {
                   </span>
                 </p>
                 <p className="inline-flex items-start gap-3">
-                  <Phone className="mt-0.5 size-5 text-primary" aria-hidden />
+                  <Phone className="text-primary mt-0.5 size-5" aria-hidden />
                   <span>
-                    <strong className="block font-heading text-foreground">
+                    <strong className="font-heading text-foreground block">
                       Phone
                     </strong>
                     Pending confirmation
@@ -118,11 +124,11 @@ export default function ContactPage() {
                 </p>
                 <p className="inline-flex items-start gap-3">
                   <EnvelopeSimple
-                    className="mt-0.5 size-5 text-primary"
+                    className="text-primary mt-0.5 size-5"
                     aria-hidden
                   />
                   <span>
-                    <strong className="block font-heading text-foreground">
+                    <strong className="font-heading text-foreground block">
                       Email
                     </strong>
                     Use the form — public inbox pending confirmation
@@ -130,7 +136,7 @@ export default function ContactPage() {
                 </p>
               </div>
             </div>
-            <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
+            <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
               <GeneralContactForm />
             </div>
           </div>

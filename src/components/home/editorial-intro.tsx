@@ -35,7 +35,7 @@ export function EditorialIntro({
       <div className="max-w-4xl">
         <h2
           className={cn(
-            "font-heading text-[clamp(2.2rem,5vw,4.75rem)] font-bold leading-[0.98] tracking-[-0.04em] text-balance",
+            "font-heading text-[clamp(2.2rem,5vw,4.75rem)] leading-[0.98] font-bold tracking-[-0.04em] text-balance",
             onDark ? "text-navy-foreground" : "text-foreground",
           )}
         >

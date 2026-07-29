@@ -16,8 +16,7 @@ export const solutions: Solution[] = [
   {
     slug: "temp-to-hire",
     name: "Temp-to-Hire",
-    summary:
-      "Evaluate employees before making a permanent hiring decision.",
+    summary: "Evaluate employees before making a permanent hiring decision.",
     href: "/employers#temp-to-hire",
   },
   {

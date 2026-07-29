@@ -96,9 +96,9 @@ export default function PrivacyPage() {
       <h2>Data retention</h2>
       <p>
         We keep the information you provide for as long as needed to provide our
-        services and for legitimate business or legal purposes.
-        [Confirm specific retention periods for inquiries and for résumés in the
-        talent network.]
+        services and for legitimate business or legal purposes. [Confirm
+        specific retention periods for inquiries and for résumés in the talent
+        network.]
       </p>
 
       <h2>Your choices and rights</h2>

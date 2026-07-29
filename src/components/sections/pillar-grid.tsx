@@ -20,8 +20,13 @@ export function PillarGrid({
   className?: string;
 }) {
   return (
-    <div className={cn("overflow-hidden rounded-xl border border-border", className)}>
-      <ul className="grid gap-px bg-border sm:grid-cols-2">
+    <div
+      className={cn(
+        "border-border overflow-hidden rounded-xl border",
+        className,
+      )}
+    >
+      <ul className="bg-border grid gap-px sm:grid-cols-2">
         {pillars.map((pillar, index) => (
           <Reveal
             key={pillar.id}
@@ -30,13 +35,13 @@ export function PillarGrid({
             className="bg-surface"
           >
             <div className="flex h-full flex-col gap-3 p-6 sm:p-8">
-              <span className="font-heading text-xs font-bold uppercase tracking-[0.16em] text-primary tabular-nums">
+              <span className="font-heading text-primary text-xs font-bold tracking-[0.16em] uppercase tabular-nums">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <h3 className="font-heading text-lg font-bold text-foreground">
+              <h3 className="font-heading text-foreground text-lg font-bold">
                 {pillar.title}
               </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 {pillar.description}
               </p>
             </div>

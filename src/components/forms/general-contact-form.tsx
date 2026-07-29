@@ -63,24 +63,61 @@ export function GeneralContactForm() {
   });
 
   return (
-<form onSubmit={onSubmit} className="relative space-y-5" noValidate>
+    <form onSubmit={onSubmit} className="relative space-y-5" noValidate>
       <Honeypot register={register} />
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="First Name" htmlFor="gc-firstName" required error={errors.firstName?.message}>
-          <Input id="gc-firstName" className="h-11" {...register("firstName")} />
+        <Field
+          label="First Name"
+          htmlFor="gc-firstName"
+          required
+          error={errors.firstName?.message}
+        >
+          <Input
+            id="gc-firstName"
+            className="h-11"
+            {...register("firstName")}
+          />
         </Field>
-        <Field label="Last Name" htmlFor="gc-lastName" required error={errors.lastName?.message}>
+        <Field
+          label="Last Name"
+          htmlFor="gc-lastName"
+          required
+          error={errors.lastName?.message}
+        >
           <Input id="gc-lastName" className="h-11" {...register("lastName")} />
         </Field>
-        <Field label="Email Address" htmlFor="gc-email" required error={errors.email?.message}>
-          <Input id="gc-email" type="email" className="h-11" {...register("email")} />
+        <Field
+          label="Email Address"
+          htmlFor="gc-email"
+          required
+          error={errors.email?.message}
+        >
+          <Input
+            id="gc-email"
+            type="email"
+            className="h-11"
+            {...register("email")}
+          />
         </Field>
         <Field label="Phone Number" htmlFor="gc-phone">
-          <Input id="gc-phone" type="tel" className="h-11" {...register("phone")} />
+          <Input
+            id="gc-phone"
+            type="tel"
+            className="h-11"
+            {...register("phone")}
+          />
         </Field>
-        <Field label="Company Name (Optional)" htmlFor="gc-company" className="sm:col-span-2">
-          <Input id="gc-company" className="h-11" {...register("companyName")} />
+        <Field
+          label="Company Name (Optional)"
+          htmlFor="gc-company"
+          className="sm:col-span-2"
+        >
+          <Input
+            id="gc-company"
+            className="h-11"
+            {...register("companyName")}
+          />
         </Field>
         <Field
           label="Reason for Inquiry"
@@ -91,7 +128,7 @@ export function GeneralContactForm() {
         >
           <select
             id="gc-reason"
-            className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+            className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
             {...register("reason")}
             defaultValue=""
           >
@@ -107,8 +144,18 @@ export function GeneralContactForm() {
         </Field>
       </div>
 
-      <Field label="Message" htmlFor="gc-message" required error={errors.message?.message}>
-        <Textarea id="gc-message" rows={5} className="min-h-32" {...register("message")} />
+      <Field
+        label="Message"
+        htmlFor="gc-message"
+        required
+        error={errors.message?.message}
+      >
+        <Textarea
+          id="gc-message"
+          rows={5}
+          className="min-h-32"
+          {...register("message")}
+        />
       </Field>
 
       <FormStatus status={result.status} message={result.message} />
