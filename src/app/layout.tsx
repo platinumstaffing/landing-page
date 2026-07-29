@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Manrope, Libre_Franklin } from "next/font/google";
+import localFont from "next/font/local";
 
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { siteConfig } from "@/content/site";
 
 import "./globals.css";
 
-const manrope = Manrope({
-  subsets: ["latin"],
+const manrope = localFont({
+  src: "./fonts/manrope-latin.woff2",
   variable: "--font-manrope",
-  weight: ["500", "600", "700", "800"],
+  weight: "500 800",
   display: "swap",
 });
 
-const libreFranklin = Libre_Franklin({
-  subsets: ["latin"],
+const libreFranklin = localFont({
+  src: "./fonts/libre-franklin-latin.woff2",
   variable: "--font-libre",
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
   display: "swap",
 });
 
@@ -66,7 +66,7 @@ export default function RootLayout({
         <OrganizationJsonLd />
         <a
           href="#main"
-          className="sr-only rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100]"
+          className="bg-primary text-primary-foreground sr-only rounded-md px-4 py-2 text-sm font-medium focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100]"
         >
           Skip to main content
         </a>
