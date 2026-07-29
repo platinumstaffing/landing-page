@@ -1,0 +1,202 @@
+name: Deployment Verification
+
+on:
+  repository_dispatch:
+    types:
+      - vercel.deployment.ready
+  workflow_dispatch:
+    inputs:
+      target:
+        description: GitHub environment to verify
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      deployment_url:
+        description: Immutable HTTPS deployment URL
+        required: true
+        type: string
+      commit_sha:
+        description: Full deployed commit SHA
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  statuses: write
+
+concurrency:
+  group: deployment-${{ github.event.client_payload.project.id || inputs.target }}-${{ github.event.client_payload.git.sha || inputs.commit_sha }}
+  cancel-in-progress: false
+
+jobs:
+  runtime-verification:
+    name: runtime-verification
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.client_payload.project.id == vars.VERCEL_STAGING_PROJECT_ID ||
+      github.event.client_payload.project.id == vars.VERCEL_PRODUCTION_PROJECT_ID
+    environment: >-
+      ${{
+        github.event_name == 'workflow_dispatch'
+        && inputs.target
+        || (
+          github.event.client_payload.project.id == vars.VERCEL_STAGING_PROJECT_ID
+          && 'staging'
+          || 'production'
+        )
+      }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Validate deployment identity
+        id: deployment
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ENVIRONMENT: ${{ github.event.client_payload.environment }}
+          EVENT_PROJECT_ID: ${{ github.event.client_payload.project.id }}
+          EVENT_REF: ${{ github.event.client_payload.git.ref }}
+          EVENT_REPOSITORY: ${{ github.repository }}
+          EVENT_SHA: ${{ github.event.client_payload.git.sha || inputs.commit_sha }}
+          EVENT_URL: ${{ github.event.client_payload.url || inputs.deployment_url }}
+          EXPECTED_REPOSITORY: platinumstaffing/landing-page
+          INPUT_TARGET: ${{ inputs.target }}
+          PRODUCTION_PROJECT_ID: ${{ vars.VERCEL_PRODUCTION_PROJECT_ID }}
+          STAGING_PROJECT_ID: ${{ vars.VERCEL_STAGING_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+
+          [[ "$EVENT_REPOSITORY" == "$EXPECTED_REPOSITORY" ]] || {
+            echo "Workflow repository does not match the configured deployment repository."
+            exit 1
+          }
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            target="$INPUT_TARGET"
+          elif [[ "$EVENT_PROJECT_ID" == "$STAGING_PROJECT_ID" ]]; then
+            target="staging"
+          elif [[ "$EVENT_PROJECT_ID" == "$PRODUCTION_PROJECT_ID" ]]; then
+            target="production"
+          else
+            echo "Unrecognized Vercel project."
+            exit 1
+          fi
+
+          expected_ref="release/dev"
+          if [[ "$target" == "production" ]]; then expected_ref="main"; fi
+
+          if [[ "$EVENT_NAME" == "repository_dispatch" ]]; then
+            [[ "$EVENT_ENVIRONMENT" == "production" ]] || {
+              echo "Only production-target deployments from the isolated projects are verified."
+              exit 1
+            }
+            [[ "$EVENT_REF" == "$expected_ref" ]] || {
+              echo "Deployment ref does not match the protected environment."
+              exit 1
+            }
+          fi
+
+          [[ "$EVENT_SHA" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Deployment SHA is not a full Git commit SHA."
+            exit 1
+          }
+          [[ "$EVENT_URL" =~ ^https://[A-Za-z0-9.-]+\\.vercel\\.app/?$ ]] || {
+            echo "Deployment URL must be an immutable HTTPS vercel.app URL."
+            exit 1
+          }
+
+          echo "target=$target" >> "$GITHUB_OUTPUT"
+          echo "ref=$expected_ref" >> "$GITHUB_OUTPUT"
+          echo "sha=$EVENT_SHA" >> "$GITHUB_OUTPUT"
+          echo "url=${EVENT_URL%/}" >> "$GITHUB_OUTPUT"
+
+      - name: Register blocking Vercel check
+        if: github.event_name == 'repository_dispatch'
+        uses: vercel/repository-dispatch/actions/status@30f760c6640485cd92f8c785ef361382555fb712 # v1
+        with:
+          name: Vercel - ${{ steps.deployment.outputs.target }} runtime verification
+
+      - name: Checkout deployed commit
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ steps.deployment.outputs.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify commit belongs to protected branch
+        env:
+          DEPLOYED_SHA: ${{ steps.deployment.outputs.sha }}
+          EXPECTED_REF: ${{ steps.deployment.outputs.ref }}
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor "$DEPLOYED_SHA" "origin/$EXPECTED_REF" || {
+            echo "Deployment commit is not reachable from the protected branch."
+            exit 1
+          }
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@7088e561eb65bb68695d245aa206f005ef30921d # v4.1.0
+        with:
+          version: 11.17.0
+          run_install: false
+
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run deployed smoke and accessibility checks
+        env:
+          E2E_BASE_URL: ${{ steps.deployment.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: pnpm test:smoke
+
+      - name: Run Lighthouse budgets
+        env:
+          E2E_BASE_URL: ${{ steps.deployment.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: pnpm exec lhci autorun
+
+      - name: Prepare protected ZAP target
+        id: zap
+        env:
+          BASE_URL: ${{ steps.deployment.outputs.url }}
+          BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          set -euo pipefail
+          if [[ -n "$BYPASS_SECRET" ]]; then
+            echo "::add-mask::$BYPASS_SECRET"
+            echo "url=${BASE_URL}?x-vercel-protection-bypass=${BYPASS_SECRET}" >> "$GITHUB_OUTPUT"
+          else
+            echo "url=$BASE_URL" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run OWASP ZAP baseline
+        uses: zaproxy/action-baseline@6c5a007541891231cd9e0ddec25d4f25c59c9874 # v0.15.0
+        with:
+          target: ${{ steps.zap.outputs.url }}
+          fail_action: true
+          allow_issue_writing: false
+          cmd_options: "-a -j"
+
+      - name: Upload runtime diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: deployment-${{ steps.deployment.outputs.target }}-${{ steps.deployment.outputs.sha }}
+          path: |
+            .lighthouseci/
+            playwright-report/
+            test-results/
+            report_html.html
+            report_json.json
+          if-no-files-found: ignore
+          retention-days: 30
