@@ -54,8 +54,20 @@ Items required from the client. None block the current build; the site degrades 
 
 ## Decisions needing sign-off
 
-- Body typeface (Libre Franklin vs Inter) — see DECISIONS D1 and `/type-specimen`.
+- [x] Libre Franklin retained for body copy and self-hosted with Manrope as licensed, subsetted
+      WOFF2 assets. The internal `/type-specimen` route and network font dependency were removed.
 - Derived logo assets in `public/logos/` (transparent lockup + mark) — confirm or replace with
   official light/dark/stacked variants from the brand guide.
 - Sample job listings in `src/content/jobs/` — illustrative PA roles for the search UI; replace
   with real openings before launch.
+
+## Delivery ownership
+
+- [ ] A repository owner must apply and verify `.github/rulesets/release-dev.json` and
+      `.github/rulesets/main.json`; the implementation identity does not have repository-admin
+      authority.
+- [ ] A Vercel administrator must create the isolated staging and production projects, supply
+      their project IDs/domains, configure branch filters and Deployment Checks, and populate
+      environment-specific values without copying production secrets into staging or preview.
+- [ ] Confirm every production subdomain is permanently HTTPS before considering HSTS with
+      `includeSubDomains`. HSTS is intentionally not enabled today.

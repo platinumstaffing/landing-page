@@ -67,4 +67,32 @@ boundary are designed to accommodate them.
 
 ## Deployment
 
-Target Vercel. Env vars in `.env.example`. `sharp` approved for image optimization. No dark mode.
+Delivery is fail-closed:
+
+```text
+collaborator feature branch
+  -> pull request -> release/dev
+  -> isolated staging Vercel project
+  -> pull request -> main
+  -> isolated production Vercel project
+  -> immutable deployment verification
+  -> production domain promotion
+```
+
+GitHub Actions separates metadata-only contributor policy enforcement from unprivileged code
+execution. Required checks cover formatting, lint, strict types, unit coverage, dependency
+hygiene, production build, browser smoke/accessibility, CodeQL, dependency review, production
+audit, secret scanning, workflow security, and SBOM generation. Weekly runs add the full browser
+matrix and security refresh.
+
+The two Vercel projects never share application secrets, Blob stores, domains, or project IDs.
+`DEPLOYMENT_TARGET` and `scripts/validate-environment.mjs` fail staging/production builds when
+delivery, upload, anti-spam, or canonical URL configuration is incomplete. Runtime verification
+accepts only the expected project, repository branch, environment, and commit SHA before using an
+environment-scoped bypass secret. It then runs Playwright, security-header checks, Lighthouse
+budgets, and OWASP ZAP against the immutable deployment URL before alias promotion.
+
+`sharp` is explicitly allowed to run its install script for image optimization. Public source
+maps are disabled. HSTS intentionally remains off until every production subdomain is confirmed
+permanently HTTPS. See `docs/CI_CD_OWNER_RUNBOOK.md` for required checks, admin setup, promotion,
+and rollback.

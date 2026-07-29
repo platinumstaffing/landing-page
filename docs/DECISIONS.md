@@ -162,3 +162,20 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   anchored stems, waypoints, and a directional finish. Smaller screens use a vertical route with
   branches and waypoints into each card. D15 supersedes the abstract-glyph artwork in D12 while
   retaining its accessible dialog behavior.
+
+## D19 — Fail-closed promotion through isolated Vercel projects
+
+- **Context:** Staging and production require different trust boundaries, credentials, data stores,
+  domains, and release branches. Local hooks alone cannot enforce repository policy.
+- **Decision:** Promote collaborator changes through pull requests to `release/dev`, verify the
+  resulting immutable staging deployment, then accept only a same-repository `release/dev` pull
+  request into `main`. A separate production Vercel project builds only `main`; its domain is
+  promoted only after runtime verification. Fork and non-collaborator pull requests are closed by
+  a metadata-only workflow that never executes their code. Dependabot may target `release/dev`.
+- **Enforcement:** Both long-lived branches require the tracked checks, strict up-to-date pull
+  requests, resolved conversations, signed commits, and linear history, with no bypass actors.
+  Full-SHA-pinned Actions, CodeQL, dependency review/audit, Secretlint, actionlint, zizmor,
+  Playwright/axe, Lighthouse, ZAP, and CycloneDX SBOMs form the delivery evidence.
+- **Boundary:** GitHub rulesets and Vercel project settings require owner/admin application using
+  `docs/CI_CD_OWNER_RUNBOOK.md`. Human approval is not required. HSTS remains deferred until every
+  production subdomain is confirmed permanently HTTPS.
