@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Employer resource photography placeholder</title>
+  <desc id="desc">Art direction frame for a hiring manager reviewing workforce plans.</desc>
+  <rect width="1500" height="1000" fill="#ecedf2"/>
+  <path d="M100 110h1300v780H100zM100 500h1300M750 110v780" fill="none" stroke="#8a92a3" stroke-opacity=".6"/>
+  <text x="140" y="430" fill="#1e2a44" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4">IMAGE 10 / RESOURCE</text>
+  <text x="140" y="500" fill="#1e2a44" font-family="Arial, sans-serif" font-size="62" font-weight="700">Workforce planning</text>
+  <text x="140" y="560" fill="#55607a" font-family="Arial, sans-serif" font-size="24">Operational documents and context · 3:2</text>
+</svg>

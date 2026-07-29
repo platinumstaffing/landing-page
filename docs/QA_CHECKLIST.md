@@ -4,13 +4,28 @@ Reusable checks before declaring a page or the project done (MASTER §25).
 
 ## Engineering
 
-- [ ] `pnpm install` clean
-- [ ] `pnpm build` passes
+- [ ] `pnpm install --frozen-lockfile` is clean
+- [ ] `pnpm format:check` passes
 - [ ] `pnpm typecheck` passes
 - [ ] `pnpm lint` passes
+- [ ] `pnpm test:unit` passes with coverage thresholds
+- [ ] `pnpm deps:check` reports no unexplained dead files or dependencies
+- [ ] `pnpm build` passes
 - [ ] No unexplained console warnings
-- [ ] No dead imports / unused packages
 - [ ] Env vars documented in `.env.example`
+
+## Security and delivery
+
+- [ ] `pnpm security:secrets` passes
+- [ ] `pnpm security:audit` has no high/critical production advisory
+- [ ] actionlint and zizmor pass for every workflow
+- [ ] CodeQL and Dependency Review pass
+- [ ] CycloneDX SBOM is retained for the protected-branch build
+- [ ] Pull request author/source policy passes before code execution
+- [ ] Required GitHub rulesets are active with no bypass actors
+- [ ] Immutable Vercel deployment project, branch, environment, and SHA are verified
+- [ ] Runtime security headers and the tuned ZAP baseline pass
+- [ ] A failed deployment check leaves the prior domain alias active
 
 ## Visual
 
@@ -23,6 +38,7 @@ Reusable checks before declaring a page or the project done (MASTER §25).
 
 ## Accessibility (WCAG 2.2 AA)
 
+- [ ] Playwright axe suite passes on representative routes
 - [ ] Keyboard navigation works end-to-end
 - [ ] Visible focus on all interactive elements
 - [ ] Skip link present and functional
@@ -42,6 +58,8 @@ Reusable checks before declaring a page or the project done (MASTER §25).
 
 ## Performance
 
+- [ ] Lighthouse performance ≥ 0.85 and best practices ≥ 0.95
+- [ ] Script transfer ≤ 400 KB and image transfer ≤ 1.8 MB per audited route
 - [ ] Images optimized; dimensions set (no CLS)
 - [ ] Client components justified
 - [ ] Motion does not block interaction
@@ -49,6 +67,7 @@ Reusable checks before declaring a page or the project done (MASTER §25).
 
 ## SEO
 
+- [ ] Lighthouse accessibility and SEO scores are both 1.00
 - [ ] Unique title + meta description per page
 - [ ] Open Graph + social image
 - [ ] Canonical, sitemap, robots

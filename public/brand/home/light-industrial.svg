@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Light industrial photography placeholder</title>
+  <desc id="desc">Art direction frame for careful assembly or packaging work.</desc>
+  <rect width="1200" height="900" fill="#ecedf2"/>
+  <path d="M80 90h1040v720H80zM80 450h1040M600 90v720" fill="none" stroke="#8a92a3" stroke-opacity=".6"/>
+  <text x="110" y="390" fill="#1e2a44" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4">INDUSTRY 06</text>
+  <text x="110" y="455" fill="#1e2a44" font-family="Arial, sans-serif" font-size="56" font-weight="700">Light industrial</text>
+  <text x="110" y="510" fill="#55607a" font-family="Arial, sans-serif" font-size="22">Assembly and packaging · 4:3</text>
+</svg>

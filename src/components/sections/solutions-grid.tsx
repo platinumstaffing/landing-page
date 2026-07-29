@@ -1,6 +1,5 @@
-import Link from "next/link";
-
 import { Container } from "@/components/layout/container";
+import { LinkCard } from "@/components/layout/link-card";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
 import { Reveal } from "@/components/motion/reveal";
@@ -28,23 +27,13 @@ export function SolutionsGrid({
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {solutions.map((solution, index) => (
             <Reveal key={solution.slug} as="li" delay={index * 0.03}>
-              <article
+              <LinkCard
                 id={showIds ? solution.slug : undefined}
-                className="flex h-full flex-col rounded-xl border border-border bg-surface p-6"
-              >
-                <h3 className="font-heading text-lg font-bold text-foreground">
-                  {solution.name}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {solution.summary}
-                </p>
-                <Link
-                  href={solution.href}
-                  className="mt-5 inline-flex text-sm font-semibold text-primary underline-offset-4 hover:underline"
-                >
-                  Learn More
-                </Link>
-              </article>
+                href={solution.href}
+                title={solution.name}
+                summary={solution.summary}
+                cta={`How ${solution.name} works`}
+              />
             </Reveal>
           ))}
         </ul>

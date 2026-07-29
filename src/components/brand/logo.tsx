@@ -40,7 +40,7 @@ export function Logo({
           <span className="font-heading text-sm font-bold tracking-[0.08em] text-white uppercase">
             Platinum
           </span>
-          <span className="mt-1 font-heading text-[0.62rem] font-medium tracking-[0.16em] text-silver uppercase">
+          <span className="font-heading text-silver mt-1 text-[0.62rem] font-medium tracking-[0.16em] uppercase">
             Staffing & Recruitment
           </span>
         </span>
@@ -62,7 +62,7 @@ export function Logo({
   return (
     <Link
       href={href}
-      className="inline-flex items-center rounded-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
+      className="focus-visible:ring-ring/40 inline-flex items-center rounded-md focus-visible:ring-3 focus-visible:outline-none"
       aria-label="Platinum Staffing & Recruitment home"
     >
       {content}

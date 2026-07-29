@@ -8,11 +8,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     "",
+    "/about",
     "/employers",
     "/industries",
     "/job-seekers",
     "/jobs",
+    "/resources",
     "/contact",
+    "/accessibility",
   ];
 
   return routes.map((route) => ({

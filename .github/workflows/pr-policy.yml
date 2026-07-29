@@ -1,0 +1,74 @@
+name: PR Policy
+
+on:
+  pull_request_target: # zizmor: ignore[dangerous-triggers] metadata-only; never checks out or executes PR code
+    branches:
+      - main
+      - release/dev
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+      - ready_for_review
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: pr-policy-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  policy:
+    name: pr-policy
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Validate PR origin and promotion path
+        id: policy
+        env:
+          ASSOCIATION: ${{ github.event.pull_request.author_association }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          trusted_human=false
+          case "$ASSOCIATION" in
+            OWNER|MEMBER|COLLABORATOR) trusted_human=true ;;
+          esac
+
+          trusted_dependabot=false
+          if [[ "$AUTHOR" == "dependabot[bot]" && "$BASE_REF" == "release/dev" ]]; then
+            trusted_dependabot=true
+          fi
+
+          if [[ "$HEAD_REPOSITORY" != "$REPOSITORY" ]]; then
+            echo "reason=Fork pull requests are not accepted." >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+          if [[ "$trusted_human" != "true" && "$trusted_dependabot" != "true" ]]; then
+            echo "reason=Only repository collaborators and the approved Dependabot app may open pull requests." >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+          if [[ "$BASE_REF" == "main" && "$HEAD_REF" != "release/dev" ]]; then
+            echo "reason=Production pull requests must originate from the release/dev branch." >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+
+          echo "Pull request policy passed."
+
+      - name: Close untrusted or invalid pull request
+        if: failure() && steps.policy.outputs.reason != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          REASON: ${{ steps.policy.outputs.reason }}
+        run: gh pr close "$PR_URL" --comment "$REASON"

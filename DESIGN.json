@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-27T00:00:00Z",
+  "title": "Design System: Platinum Staffing & Recruitment",
+  "extensions": {
+    "colorMeta": {
+      "executive-purple": {
+        "role": "primary",
+        "displayName": "Executive Purple",
+        "canonical": "#4b2e83",
+        "tonalRamp": [
+          "#150c26",
+          "#241548",
+          "#33206a",
+          "#4b2e83",
+          "#6b4fa3",
+          "#9179bd",
+          "#c0b1d9",
+          "#eee9f5"
+        ]
+      },
+      "deep-navy": {
+        "role": "secondary",
+        "displayName": "Deep Navy",
+        "canonical": "#1e2a44",
+        "tonalRamp": [
+          "#0b1020",
+          "#141c32",
+          "#1e2a44",
+          "#2c3d61",
+          "#465d8a",
+          "#6f84b0",
+          "#a7b5d0",
+          "#dde3ef"
+        ]
+      },
+      "emerald": {
+        "role": "tertiary",
+        "displayName": "Emerald",
+        "canonical": "#2e8b57",
+        "tonalRamp": [
+          "#0e2c1c",
+          "#164429",
+          "#1f5f39",
+          "#2e8b57",
+          "#4aa974",
+          "#75c398",
+          "#a9dcc0",
+          "#e0f2e8"
+        ]
+      },
+      "soft-white": {
+        "role": "neutral",
+        "displayName": "Soft White",
+        "canonical": "#f8f9fb",
+        "tonalRamp": [
+          "#2c2c2c",
+          "#55607a",
+          "#8a92a3",
+          "#c7ccd6",
+          "#ecedf2",
+          "#f1f2f6",
+          "#f8f9fb",
+          "#ffffff"
+        ]
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "canonical": "#2c2c2c",
+        "tonalRamp": [
+          "#141414",
+          "#2c2c2c",
+          "#454545",
+          "#55607a",
+          "#8a92a3",
+          "#c7ccd6",
+          "#ecedf2",
+          "#f8f9fb"
+        ]
+      },
+      "platinum-silver": {
+        "role": "neutral",
+        "displayName": "Platinum Silver",
+        "canonical": "#c7ccd6",
+        "tonalRamp": [
+          "#3a3f4a",
+          "#55607a",
+          "#727b8f",
+          "#8a92a3",
+          "#a7adba",
+          "#c7ccd6",
+          "#e0e3ea",
+          "#f1f2f6"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statements only; Manrope 700, tight leading."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section openers (h1/h2)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and subsection headings (h3)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, Libre Franklin, ~65ch measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase eyebrows and small structural labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-sm",
+        "value": "0 1px 2px rgba(30, 42, 68, 0.06)",
+        "purpose": "Dropdowns and popovers only; the lightest lift off the page."
+      },
+      {
+        "name": "shadow-md",
+        "value": "0 8px 24px rgba(30, 42, 68, 0.10)",
+        "purpose": "Mobile navigation sheet and genuinely floating overlays."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-brand",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "The single shared easing token for every state transition and reveal."
+      },
+      {
+        "name": "duration-fast",
+        "value": "200ms",
+        "purpose": "Button and link state changes."
+      },
+      {
+        "name": "duration-base",
+        "value": "300ms",
+        "purpose": "Section reveals (8px rise + fade)."
+      },
+      {
+        "name": "duration-slow",
+        "value": "400ms",
+        "purpose": "Larger entrances and the mobile sheet."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The page's main action (Request Talent, Schedule a Consultation, Search Jobs).",
+      "html": "<button class=\"ds-btn-primary\">Request Talent</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 20px; border: 1px solid transparent; border-radius: 8px; background: var(--color-primary, #4b2e83); color: #fff; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: background-color 200ms cubic-bezier(0.22,1,0.36,1), transform 200ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #43297a; } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: none; border-color: #4b2e83; box-shadow: 0 0 0 3px rgba(75,46,131,0.4); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary emphasis action; purple outline that fills solid on hover.",
+      "html": "<button class=\"ds-btn-outline\">Schedule a Consultation</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 20px; border: 1px solid #4b2e83; border-radius: 8px; background: transparent; color: #4b2e83; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: background-color 200ms cubic-bezier(0.22,1,0.36,1), color 200ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-outline:hover { background: #4b2e83; color: #fff; } .ds-btn-outline:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(75,46,131,0.4); }"
+    },
+    {
+      "name": "Navy Button",
+      "kind": "button",
+      "refersTo": "button-navy",
+      "description": "Action living inside a Deep Navy structural band.",
+      "html": "<button class=\"ds-btn-navy\">Explore Solutions</button>",
+      "css": ".ds-btn-navy { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 20px; border: 1px solid transparent; border-radius: 8px; background: #1e2a44; color: #f8f9fb; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; cursor: pointer; transition: background-color 200ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-navy:hover { background: #27355480; background: #253251; } .ds-btn-navy:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(248,249,251,0.4); }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat content surface defined by a Platinum Silver hairline, no shadow at rest.",
+      "html": "<article class=\"ds-card\"><p class=\"ds-card-eyebrow\">Warehouse &amp; Distribution</p><h3 class=\"ds-card-title\">Dependable teams, on schedule</h3><p class=\"ds-card-body\">We place screened, reliable professionals who keep your operation moving.</p></article>",
+      "css": ".ds-card { background: #ffffff; border: 1px solid #c7ccd6; border-radius: 8px; padding: 24px; max-width: 360px; } .ds-card-eyebrow { margin: 0 0 8px; font-family: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #55607a; } .ds-card-title { margin: 0 0 8px; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 1.375rem; line-height: 1.25; color: #2c2c2c; } .ds-card-body { margin: 0; font-family: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif; font-weight: 400; font-size: 1rem; line-height: 1.6; color: #2c2c2c; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Form field with visible label, silver stroke, and a purple focus ring.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Work email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\" /></label>",
+      "css": ".ds-field { display: inline-flex; flex-direction: column; gap: 6px; } .ds-field-label { font-family: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.875rem; color: #2c2c2c; } .ds-input { height: 44px; padding: 0 12px; min-width: 280px; border: 1px solid #8a92a3; border-radius: 8px; background: #ffffff; color: #2c2c2c; font-family: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; transition: border-color 200ms cubic-bezier(0.22,1,0.36,1), box-shadow 200ms cubic-bezier(0.22,1,0.36,1); } .ds-input::placeholder { color: #8a92a3; } .ds-input:focus-visible { outline: none; border-color: #4b2e83; box-shadow: 0 0 0 3px rgba(75,46,131,0.4); }"
+    },
+    {
+      "name": "Eyebrow Label",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "The editorial eyebrow that opens sections above the heading.",
+      "html": "<span class=\"ds-eyebrow\">Workforce Solutions</span>",
+      "css": ".ds-eyebrow { display: inline-block; font-family: 'Libre Franklin', ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #4b2e83; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Considered Foreman",
+    "overview": "This is the visual language of a workforce solutions partner that has been placing people on real plant and warehouse floors since 2019, not a venture-backed hiring app. It reads industrial-editorial: the structural confidence of Franklin Gothic signage and the calm whitespace of a well-set annual report. Soft White carries almost every surface. Deep Navy appears as flat structural bands that anchor the page like steel. Executive Purple is the signature, spent deliberately and rarely so it always means 'act here.' The system is established, dependable, precise, and human. It explicitly rejects the generic 'AI SaaS' look: default Inter body type, purple-to-blue gradients, neon glow, glassmorphism, and 3D blobs are all forbidden.",
+    "keyCharacteristics": [
+      "Soft White canvas, Charcoal text, Platinum Silver hairlines: quiet by default.",
+      "Deep Navy as a flat structural anchor, never a gradient.",
+      "Executive Purple as a rare signature (CTAs, links, focus), never a wash.",
+      "Editorial hierarchy: eyebrow, heading, lede, content. Nothing centered by reflex.",
+      "Hairline-first elevation; shadows reserved for genuinely floating surfaces."
+    ],
+    "rules": [
+      {
+        "name": "The Rare Signature Rule",
+        "body": "Executive Purple appears on roughly 10% of any given screen, and only where it means 'act': CTAs, links, focus rings, a single key heading. If purple is carrying a whole section, it has become a wash and must be pulled back to navy or silver.",
+        "section": "colors"
+      },
+      {
+        "name": "The Flat Navy Rule",
+        "body": "Navy is a structural color, not an effect. Never gradient it, never glow it, never fade it into purple.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Weight Rule",
+        "body": "Headings live at 600 or 700, body at 400 or 500. No thin display weights, no black weights, no in-between improvisation.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline-First Rule",
+        "body": "If a surface is not literally floating over the page, it gets a 1px border-silver (#c7ccd6) and no shadow. Shadows are a response to elevation state, not a default decoration.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do spend Executive Purple (#4b2e83) sparingly, on ≤10% of a screen and only where it means 'act' (CTAs, links, focus).",
+      "Do use Deep Navy (#1e2a44) as flat structural bands to create page rhythm.",
+      "Do define cards and quiet surfaces with 1px Platinum Silver (#c7ccd6) hairlines, not shadows.",
+      "Do lead sections with the editorial pattern: eyebrow label, heading, lede, then content.",
+      "Do cap body measure near 65ch and keep the two-weight type discipline (headings 600/700, body 400/500).",
+      "Do respect prefers-reduced-motion; keep motion 200-400ms on the ease-brand curve."
+    ],
+    "donts": [
+      "Don't use default Inter as the body font, purple-to-blue gradients, neon glow, or glassmorphism anywhere.",
+      "Don't gradient, glow, or fade Deep Navy; it is a flat structural color.",
+      "Don't put an icon above every heading or an icon-in-a-circle on every card.",
+      "Don't ship marquees, parallax, cursor effects, or bento grids without a reason.",
+      "Don't nest a card inside a card, or reach for a shadow on a surface that isn't floating.",
+      "Don't fabricate logos, stats, or testimonials; unknown data goes to CONTENT_GAPS.",
+      "Don't make buttons pill-shaped; radius stays at 8px."
+    ]
+  }
+}

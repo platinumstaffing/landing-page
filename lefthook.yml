@@ -1,0 +1,35 @@
+min_version: 2.1.10
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: format staged files
+      glob: "*.{js,cjs,mjs,ts,tsx,json,jsonc,yml,yaml,css,md}"
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true
+
+    - name: lint staged source
+      glob: "*.{js,cjs,mjs,ts,tsx}"
+      run: pnpm exec eslint --fix --max-warnings=0 {staged_files}
+      stage_fixed: true
+
+    - name: scan staged secrets
+      run: pnpm exec secretlint {staged_files}
+
+    - name: validate staged files
+      run: node scripts/check-staged-files.mjs
+
+pre-push:
+  parallel: false
+  jobs:
+    - name: protect long-lived branches
+      run: node scripts/check-protected-push.mjs
+
+    - name: typecheck
+      run: pnpm typecheck
+
+    - name: unit tests
+      run: pnpm test:unit
+
+    - name: production build
+      run: pnpm build

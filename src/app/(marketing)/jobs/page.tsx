@@ -4,9 +4,7 @@ import Link from "next/link";
 import { JobCard } from "@/components/jobs/job-card";
 import { JobFiltersForm } from "@/components/jobs/job-filters";
 import { Container } from "@/components/layout/container";
-import { Eyebrow } from "@/components/layout/eyebrow";
-import { Heading } from "@/components/layout/heading";
-import { Prose } from "@/components/layout/prose";
+import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { filterJobs, type JobFilters } from "@/content/jobs";
@@ -44,22 +42,23 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
 
   return (
     <>
-      <section className="border-b border-border">
-        <Container className="py-14 sm:py-16">
-          <Eyebrow>Search Jobs</Eyebrow>
-          <Heading as="h1" level="h1" className="mt-4 max-w-3xl">
-            Find an Opportunity That Moves Your Career Forward
-          </Heading>
-          <Prose size="lg" className="mt-5">
-            <p>
-              Explore current employment opportunities available through Platinum
-              Staffing & Recruitment across manufacturing, warehousing and
-              distribution, logistics, administrative support, customer service,
-              and light industrial operations.
-            </p>
-          </Prose>
-        </Container>
-      </section>
+      <EditorialPageHero
+        index="05"
+        eyebrow="Search Jobs"
+        title="Find an opportunity that moves your career forward."
+        description={
+          <p>
+            Explore current opportunities across manufacturing, warehousing and
+            distribution, logistics, administrative support, customer service,
+            and light industrial operations.
+          </p>
+        }
+        primary={{
+          label: "Join Our Talent Network",
+          href: "/job-seekers#submit-resume",
+        }}
+        note="Current openings · Pennsylvania"
+      />
 
       <Section>
         <Container>
@@ -71,10 +70,10 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
             <div>
               <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <h2 className="font-heading text-2xl font-bold text-foreground">
+                  <h2 className="font-heading text-foreground text-2xl font-bold">
                     Current Open Positions
                   </h2>
-                  <p className="mt-1 text-sm text-muted-foreground">
+                  <p className="text-muted-foreground mt-1 text-sm">
                     {results.length}{" "}
                     {results.length === 1 ? "position" : "positions"}
                     {hasFilters ? " matching your search" : " available"}
@@ -83,11 +82,11 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
               </div>
 
               {results.length === 0 ? (
-                <div className="rounded-xl border border-border bg-surface p-8 sm:p-10">
-                  <h3 className="font-heading text-2xl font-bold text-foreground">
+                <div className="border-border bg-surface rounded-xl border p-8 sm:p-10">
+                  <h3 className="font-heading text-foreground text-2xl font-bold">
                     New Opportunities Are Coming
                   </h3>
-                  <p className="mt-3 max-w-2xl text-muted-foreground">
+                  <p className="text-muted-foreground mt-3 max-w-2xl">
                     We do not currently have an opportunity that matches your
                     search, but new positions are added as they become available
                     through our employer partners. Join the Platinum Staffing
@@ -115,14 +114,14 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                 </ul>
               )}
 
-              <div className="mt-10 rounded-xl border border-border bg-muted/60 p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
+              <div className="border-border bg-muted/60 mt-10 rounded-xl border p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
                 <div>
                   <h3 className="font-heading text-lg font-bold">
                     Don&apos;t see the right fit?
                   </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Submit your résumé and we&apos;ll contact you when a matching
-                    opportunity opens.
+                  <p className="text-muted-foreground mt-1 text-sm">
+                    Submit your résumé and we&apos;ll contact you when a
+                    matching opportunity opens.
                   </p>
                 </div>
                 <Button asChild className="mt-4 sm:mt-0">

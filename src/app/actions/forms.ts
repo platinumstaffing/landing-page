@@ -9,9 +9,9 @@ import {
 } from "@/lib/forms/schemas";
 import { deliverSubmission, passesSpamGate } from "@/lib/submissions";
 
-function fieldErrorsFromZod(
-  error: { flatten: () => { fieldErrors: Record<string, string[] | undefined> } },
-): Record<string, string[]> {
+function fieldErrorsFromZod(error: {
+  flatten: () => { fieldErrors: Record<string, string[] | undefined> };
+}): Record<string, string[]> {
   const flat = error.flatten().fieldErrors;
   const out: Record<string, string[]> = {};
   for (const [key, value] of Object.entries(flat)) {
@@ -41,7 +41,10 @@ export async function submitRequestTalent(
   }
 
   if (!passesSpamGate({ website: parsed.data.website })) {
-    return { status: "success", message: "Thank you. Your request has been received." };
+    return {
+      status: "success",
+      message: "Thank you. Your request has been received.",
+    };
   }
 
   const fields = withoutSpamFields(parsed.data);
@@ -81,7 +84,11 @@ export async function submitResumeAction(
     };
   }
 
-  const { consent: _consent, resumeUrl, ...rest } = withoutSpamFields(parsed.data);
+  const {
+    consent: _consent,
+    resumeUrl,
+    ...rest
+  } = withoutSpamFields(parsed.data);
   void _consent;
   const result = await deliverSubmission({
     kind: "submit-resume",
@@ -114,7 +121,10 @@ export async function submitGeneralContact(
   }
 
   if (!passesSpamGate({ website: parsed.data.website })) {
-    return { status: "success", message: "Thank you. Your message has been sent." };
+    return {
+      status: "success",
+      message: "Thank you. Your message has been sent.",
+    };
   }
 
   const fields = withoutSpamFields(parsed.data);

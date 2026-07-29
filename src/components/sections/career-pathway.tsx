@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 
 export function CareerPathway() {
   return (
-    <Section tone="muted">
+    <Section>
       <Container>
         <Reveal>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -22,7 +22,9 @@ export function CareerPathway() {
                 <Link href="/jobs">Search Open Positions</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/job-seekers#submit-resume">Submit Your Résumé</Link>
+                <Link href="/job-seekers#submit-resume">
+                  Submit Your Résumé
+                </Link>
               </Button>
               <Button asChild size="lg" variant="ghost">
                 <Link href="/job-seekers">Career Resources</Link>

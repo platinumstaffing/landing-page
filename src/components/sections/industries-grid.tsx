@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   Factory,
   HardHat,
@@ -9,6 +8,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 
 import { Container } from "@/components/layout/container";
+import { LinkCard } from "@/components/layout/link-card";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
 import { Reveal } from "@/components/motion/reveal";
@@ -51,24 +51,14 @@ export function IndustriesGrid({
             const Icon = icons[industry.slug as keyof typeof icons] ?? Factory;
             return (
               <Reveal key={industry.slug} as="li" delay={index * 0.03}>
-                <article
+                <LinkCard
                   id={industry.slug}
-                  className="flex h-full flex-col rounded-xl border border-border bg-surface p-6"
-                >
-                  <Icon className="size-6 text-primary" weight="regular" aria-hidden />
-                  <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
-                    {industry.name}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                    {industry.summary}
-                  </p>
-                  <Link
-                    href={industry.href}
-                    className="mt-5 inline-flex text-sm font-semibold text-primary underline-offset-4 hover:underline"
-                  >
-                    Learn More
-                  </Link>
-                </article>
+                  href={industry.href}
+                  icon={Icon}
+                  title={industry.name}
+                  summary={industry.summary}
+                  cta={`${industry.name} staffing`}
+                />
               </Reveal>
             );
           })}

@@ -21,13 +21,13 @@ export default function Error({
       id="main"
       className="mx-auto flex min-h-[70vh] max-w-2xl flex-col justify-center px-5 py-20"
     >
-      <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+      <p className="text-primary text-xs font-semibold tracking-[0.18em] uppercase">
         Something went wrong
       </p>
-      <h1 className="mt-3 font-heading text-4xl font-bold tracking-tight text-foreground">
+      <h1 className="font-heading text-foreground mt-3 text-4xl font-bold tracking-tight">
         We hit an unexpected error
       </h1>
-      <p className="mt-4 text-muted-foreground">
+      <p className="text-muted-foreground mt-4">
         Please try again. If the problem continues, contact Platinum Staffing
         and we&apos;ll help you from there.
       </p>

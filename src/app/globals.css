@@ -7,11 +7,14 @@
 @theme inline {
   /* Literal family names — Tailwind v4 @theme inline resolves at parse time.
      next/font still injects --font-manrope / --font-libre on <html> for fallback chaining. */
-  --font-sans: "Libre Franklin", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+  --font-sans:
+    "Libre Franklin", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
-  --font-heading: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-heading:
+    "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
   /* Semantic colors (shadcn vocabulary) mapped to the Platinum palette */
   --color-background: var(--background);
@@ -54,9 +57,13 @@
 
   /* Motion */
   --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-brand-fast: 180ms;
+  --duration-brand: 320ms;
 
   /* Layout */
   --spacing-gutter: 1.25rem;
+  --spacing-editorial-section: clamp(5rem, 9vw, 9rem);
+  --spacing-editorial-gap: clamp(2rem, 5vw, 5rem);
 }
 
 :root {
@@ -99,6 +106,10 @@
   --surface-muted: #f1f2f6;
   --success: #2e8b57;
   --success-foreground: #ffffff;
+
+  /* Floating surfaces only */
+  --shadow-float: 0 1rem 2.375rem
+    color-mix(in oklab, var(--navy) 13%, transparent);
 }
 
 @layer base {
@@ -115,6 +126,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   h1,

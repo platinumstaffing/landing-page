@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Briefcase, EnvelopeSimple, MapPin, Phone, User } from "@phosphor-icons/react/dist/ssr";
+import {
+  Briefcase,
+  EnvelopeSimple,
+  MapPin,
+  Phone,
+  User,
+} from "@phosphor-icons/react/dist/ssr";
 
 import { GeneralContactForm } from "@/components/forms/general-contact-form";
 import { RequestTalentForm } from "@/components/forms/request-talent-form";
 import { Container } from "@/components/layout/container";
-import { Eyebrow } from "@/components/layout/eyebrow";
-import { Heading } from "@/components/layout/heading";
-import { Prose } from "@/components/layout/prose";
+import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
+import { LinkCard } from "@/components/layout/link-card";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
 import { FaqList } from "@/components/sections/faq-list";
@@ -25,30 +30,21 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="border-b border-border">
-        <Container className="py-14 sm:py-16">
-          <Eyebrow>Contact</Eyebrow>
-          <Heading as="h1" level="h1" className="mt-4 max-w-3xl">
-            Let&apos;s Build Your Workforce or Advance Your Career
-          </Heading>
-          <Prose size="lg" className="mt-5">
-            <p>
-              Whether you&apos;re an employer seeking dependable workforce
-              solutions or a job seeker exploring new opportunities, our team is
-              here to help. Contact Platinum Staffing & Recruitment to discuss
-              your staffing needs, career goals, or general questions.
-            </p>
-          </Prose>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link href="#request-talent">Request Talent</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="#message">Contact Our Team</Link>
-            </Button>
-          </div>
-        </Container>
-      </section>
+      <EditorialPageHero
+        index="06"
+        eyebrow="Contact"
+        title="Let’s build your workforce—or advance your career."
+        description={
+          <p>
+            Tell us what you need. Employers can start a hiring conversation,
+            while job seekers can ask about opportunities, applications, or
+            career support.
+          </p>
+        }
+        primary={{ label: "Request Talent", href: "#request-talent" }}
+        secondary={{ label: "Contact Our Team", href: "#message" }}
+        note="Two clear paths · One responsive team"
+      />
 
       <Section>
         <Container>
@@ -57,48 +53,27 @@ export default function ContactPage() {
             title="Choose the path that fits your needs"
           />
           <div className="mt-10 grid gap-4 md:grid-cols-3">
-            <a
+            <LinkCard
               href="#request-talent"
-              className="rounded-xl border border-border bg-surface p-6 transition-colors hover:border-primary"
-            >
-              <Briefcase className="size-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-heading text-lg font-bold">Employers</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Looking to hire qualified professionals for your organization.
-              </p>
-              <span className="mt-4 inline-block text-sm font-semibold text-primary">
-                Request Talent →
-              </span>
-            </a>
-            <Link
+              icon={Briefcase}
+              title="Employers"
+              summary="Looking to hire qualified professionals for your organization."
+              cta="Request talent"
+            />
+            <LinkCard
               href="/job-seekers"
-              className="rounded-xl border border-border bg-surface p-6 transition-colors hover:border-primary"
-            >
-              <User className="size-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-heading text-lg font-bold">Job Seekers</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Looking for employment opportunities or assistance with an
-                application.
-              </p>
-              <span className="mt-4 inline-block text-sm font-semibold text-primary">
-                Career Center →
-              </span>
-            </Link>
-            <a
+              icon={User}
+              title="Job Seekers"
+              summary="Looking for employment opportunities or help with an application."
+              cta="Visit the Career Center"
+            />
+            <LinkCard
               href="#message"
-              className="rounded-xl border border-border bg-surface p-6 transition-colors hover:border-primary"
-            >
-              <EnvelopeSimple className="size-6 text-primary" aria-hidden />
-              <h3 className="mt-4 font-heading text-lg font-bold">
-                General Inquiry
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Questions about Platinum Staffing & Recruitment or our services.
-              </p>
-              <span className="mt-4 inline-block text-sm font-semibold text-primary">
-                Send a Message →
-              </span>
-            </a>
+              icon={EnvelopeSimple}
+              title="General Inquiry"
+              summary="Questions about Platinum Staffing & Recruitment or our services."
+              cta="Send a message"
+            />
           </div>
         </Container>
       </Section>
@@ -110,7 +85,7 @@ export default function ContactPage() {
               title="Request Talent"
               description="Tell us about your hiring needs and a Platinum Staffing representative will follow up."
             />
-            <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
+            <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
               <RequestTalentForm />
             </div>
           </div>
@@ -125,11 +100,11 @@ export default function ContactPage() {
                 title="Send Us a Message"
                 description="For general questions, partnerships, or website feedback."
               />
-              <div className="mt-8 space-y-4 text-sm text-muted-foreground">
+              <div className="text-muted-foreground mt-8 space-y-4 text-sm">
                 <p className="inline-flex items-start gap-3">
-                  <MapPin className="mt-0.5 size-5 text-primary" aria-hidden />
+                  <MapPin className="text-primary mt-0.5 size-5" aria-hidden />
                   <span>
-                    <strong className="block font-heading text-foreground">
+                    <strong className="font-heading text-foreground block">
                       Service Area
                     </strong>
                     {siteConfig.address.display}
@@ -139,9 +114,9 @@ export default function ContactPage() {
                   </span>
                 </p>
                 <p className="inline-flex items-start gap-3">
-                  <Phone className="mt-0.5 size-5 text-primary" aria-hidden />
+                  <Phone className="text-primary mt-0.5 size-5" aria-hidden />
                   <span>
-                    <strong className="block font-heading text-foreground">
+                    <strong className="font-heading text-foreground block">
                       Phone
                     </strong>
                     Pending confirmation
@@ -149,11 +124,11 @@ export default function ContactPage() {
                 </p>
                 <p className="inline-flex items-start gap-3">
                   <EnvelopeSimple
-                    className="mt-0.5 size-5 text-primary"
+                    className="text-primary mt-0.5 size-5"
                     aria-hidden
                   />
                   <span>
-                    <strong className="block font-heading text-foreground">
+                    <strong className="font-heading text-foreground block">
                       Email
                     </strong>
                     Use the form — public inbox pending confirmation
@@ -161,7 +136,7 @@ export default function ContactPage() {
                 </p>
               </div>
             </div>
-            <div className="rounded-xl border border-border bg-surface p-6 sm:p-8">
+            <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
               <GeneralContactForm />
             </div>
           </div>

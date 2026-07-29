@@ -24,13 +24,13 @@ export function JobFiltersForm({ filters }: JobFiltersFormProps) {
   return (
     <form
       method="get"
-      className="space-y-5 rounded-xl border border-border bg-surface p-5"
+      className="border-border bg-surface space-y-5 rounded-xl border p-5"
     >
       <div>
-        <h2 className="font-heading text-base font-bold text-foreground">
+        <h2 className="font-heading text-foreground text-base font-bold">
           Search Current Opportunities
         </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="text-muted-foreground mt-1 text-sm">
           Filter by keyword, location, industry, employment type, and shift.
         </p>
       </div>
@@ -63,7 +63,7 @@ export function JobFiltersForm({ filters }: JobFiltersFormProps) {
           id="industry"
           name="industry"
           defaultValue={filters.industry ?? ""}
-          className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+          className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
         >
           <option value="">All industries</option>
           {industryOptions.map((option) => (
@@ -80,7 +80,7 @@ export function JobFiltersForm({ filters }: JobFiltersFormProps) {
           id="employmentType"
           name="employmentType"
           defaultValue={filters.employmentType ?? ""}
-          className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+          className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
         >
           <option value="">All types</option>
           {employmentTypes.map((type) => (
@@ -97,7 +97,7 @@ export function JobFiltersForm({ filters }: JobFiltersFormProps) {
           id="shift"
           name="shift"
           defaultValue={filters.shift ?? ""}
-          className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+          className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
         >
           <option value="">All shifts</option>
           {shifts.map((shift) => (
@@ -114,7 +114,7 @@ export function JobFiltersForm({ filters }: JobFiltersFormProps) {
           id="workArrangement"
           name="workArrangement"
           defaultValue={filters.workArrangement ?? ""}
-          className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40"
+          className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
         >
           <option value="">All arrangements</option>
           {workArrangements.map((arrangement) => (

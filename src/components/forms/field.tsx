@@ -31,10 +31,14 @@ export function Field({
       </Label>
       {children}
       {hint && !error ? (
-        <p className="text-xs text-muted-foreground">{hint}</p>
+        <p className="text-muted-foreground text-xs">{hint}</p>
       ) : null}
       {error ? (
-        <p id={`${htmlFor}-error`} className="text-xs text-destructive" role="alert">
+        <p
+          id={`${htmlFor}-error`}
+          className="text-destructive text-xs"
+          role="alert"
+        >
           {error}
         </p>
       ) : null}
@@ -74,9 +78,18 @@ export function Honeypot({
   register: (name: "website") => Record<string, unknown>;
 }) {
   return (
-    <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden>
+    <div
+      className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
+      aria-hidden
+    >
       <label htmlFor="website">Website</label>
-      <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
+      <input
+        id="website"
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        {...register("website")}
+      />
     </div>
   );
 }

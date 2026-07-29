@@ -13,10 +13,30 @@ export function ComingSoon({
   description: string;
 }) {
   return (
-    <section className="border-b border-border">
-      <Container className="max-w-3xl py-20 sm:py-28">
-        <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
-          Coming soon
+    <section className="border-border bg-muted relative flex min-h-[calc(100svh-5rem)] items-center overflow-hidden border-b">
+      {/* Brand arc motif drawn from the logo geometry */}
+      <svg
+        aria-hidden
+        viewBox="0 0 400 400"
+        className="text-primary/10 pointer-events-none absolute -top-20 -right-20 h-120 w-120 sm:h-140 sm:w-140"
+      >
+        <path
+          d="M400 0 A400 400 0 0 0 0 400"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M400 90 A310 310 0 0 0 90 400"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+      </svg>
+
+      <Container className="relative max-w-3xl py-24 sm:py-32">
+        <p className="font-heading text-primary text-xs font-semibold tracking-[0.2em] uppercase">
+          In development
         </p>
         <Heading as="h1" level="h1" className="mt-4">
           {title}
@@ -24,12 +44,12 @@ export function ComingSoon({
         <Prose size="lg" className="mt-5">
           <p>{description}</p>
         </Prose>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild>
-            <Link href="/contact">Contact Us</Link>
+        <div className="border-border mt-8 flex flex-wrap gap-3 border-t pt-8">
+          <Button asChild size="lg">
+            <Link href="/contact">Contact our team</Link>
           </Button>
-          <Button asChild variant="outline">
-            <Link href="/">Back to Home</Link>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/">Back to home</Link>
           </Button>
         </div>
       </Container>

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": ["src/app/**/*.{ts,tsx}", "tests/**/*.ts", "scripts/**/*.mjs"],
+  "project": ["src/**/*.{ts,tsx}", "tests/**/*.ts", "scripts/**/*.mjs"],
+  "ignore": [
+    "src/components/brand/brand-graphic.tsx",
+    "src/components/layout/coming-soon.tsx",
+    "src/components/sections/resources-teaser.tsx",
+    "src/components/sections/trusted-by.tsx",
+    "src/components/ui/checkbox.tsx",
+    "src/components/ui/radio-group.tsx",
+    "src/components/ui/select.tsx",
+    "src/content/employers.ts"
+  ],
+  "ignoreDependencies": [
+    "@secretlint/secretlint-rule-preset-recommend",
+    "shadcn",
+    "tailwindcss",
+    "tw-animate-css"
+  ]
+}

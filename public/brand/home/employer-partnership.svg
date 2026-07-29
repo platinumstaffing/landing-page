@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">Employer partnership photography placeholder</title>
+  <desc id="desc">Art direction frame for a supervisor and staffing partner reviewing a production schedule.</desc>
+  <rect width="1200" height="1500" fill="#ecedf2"/>
+  <path d="M90 120h1020v1260H90zM90 750h1020M600 120v1260" fill="none" stroke="#8a92a3" stroke-opacity=".6"/>
+  <path d="M90 120h120M90 120v120M1110 1380H990M1110 1380v-120" stroke="#4b2e83" stroke-width="6"/>
+  <text x="130" y="680" fill="#1e2a44" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="4">IMAGE 02 / EMPLOYER</text>
+  <text x="130" y="745" fill="#1e2a44" font-family="Arial, sans-serif" font-size="50" font-weight="700">Partnership on the floor</text>
+  <text x="130" y="800" fill="#55607a" font-family="Arial, sans-serif" font-size="24">Candid operational planning · 4:5</text>
+</svg>
