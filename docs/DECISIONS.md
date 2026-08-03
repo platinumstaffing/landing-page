@@ -219,3 +219,17 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
 - **Boundary:** GitHub rulesets and Vercel project settings require owner/admin application using
   `docs/CI_CD_OWNER_RUNBOOK.md`. Human approval is not required. HSTS remains deferred until every
   production subdomain is confirmed permanently HTTPS.
+
+## D20 — Dependabot batch: accept compatible bumps, ignore breaking majors
+
+- **Context:** Dependabot opened Actions pins plus npm majors (TypeScript 7, ESLint 10,
+  `@types/node` 26) against `release/dev`. Several npm PRs also failed `format:check` because
+  Prettier touched regenerated `pnpm-lock.yaml`.
+- **Decision:** Consolidate compatible updates (React 19.2.8, Actions pins, `@types/node` ^24) via
+  a single PR; reject TypeScript ≥7 and ESLint ≥10 until Next/`eslint-config-next` support them;
+  keep `@types/node` on the Node 24 line; ignore `pnpm-lock.yaml` in Prettier; pin transitive
+  medium advisories (`uuid`, `@hono/node-server`) with `pnpm-workspace.yaml` overrides (pnpm 11
+  no longer reads `package.json#pnpm.overrides`).
+- **Consequence:** `.github/dependabot.yml` ignores those breaking ranges so noise does not
+  reopen. Security alerts on CI-only tooling clear once the override lockfile lands on
+  `release/dev`.
