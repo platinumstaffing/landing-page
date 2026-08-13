@@ -67,7 +67,7 @@
     "secretlint": "13.0.4",
     "shadcn": "4.16.1",
     "tailwindcss": "^4",
-    "typescript": "^5",
+    "typescript": "^6",
     "vitest": "4.1.10"
   }
 }
