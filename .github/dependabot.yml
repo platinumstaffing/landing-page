@@ -26,6 +26,16 @@ updates:
     labels:
       - dependencies
       - security
+    ignore:
+      # eslint-config-next / eslint-plugin-react are not ESLint 10 compatible yet
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
+      # Next.js 16 still requires the TypeScript 5/6 compiler API (TS 7 breaks builds)
+      - dependency-name: typescript
+        versions: [">=7.0.0"]
+      # Keep @types/node aligned with engines.node (>=24 <25)
+      - dependency-name: "@types/node"
+        versions: [">=25.0.0"]
 
   - package-ecosystem: github-actions
     directory: /

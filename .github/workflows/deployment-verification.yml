@@ -138,7 +138,7 @@ jobs:
           }
 
       - name: Install pnpm
-        uses: pnpm/action-setup@7088e561eb65bb68695d245aa206f005ef30921d # v4.1.0
+        uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6.0.10
         with:
           version: 11.17.0
           run_install: false
@@ -182,7 +182,7 @@ jobs:
           fi
 
       - name: Run OWASP ZAP baseline
-        uses: zaproxy/action-baseline@6c5a007541891231cd9e0ddec25d4f25c59c9874 # v0.15.0
+        uses: zaproxy/action-baseline@de8ad967d3548d44ef623df22cf95c3b0baf8b25 # v0.15.0
         with:
           target: ${{ steps.zap.outputs.url }}
           fail_action: true

@@ -219,3 +219,33 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
 - **Boundary:** GitHub rulesets and Vercel project settings require owner/admin application using
   `docs/CI_CD_OWNER_RUNBOOK.md`. Human approval is not required. HSTS remains deferred until every
   production subdomain is confirmed permanently HTTPS.
+
+## D20 — Dependabot batch: accept compatible bumps, ignore breaking majors
+
+- **Context:** Dependabot opened Actions pins plus npm majors (TypeScript 7, ESLint 10,
+  `@types/node` 26) against `release/dev`. Several npm PRs also failed `format:check` because
+  Prettier touched regenerated `pnpm-lock.yaml`.
+- **Decision:** Consolidate compatible updates (React 19.2.8, Actions pins, `@types/node` ^24) via
+  a single PR; reject TypeScript ≥7 and ESLint ≥10 until Next/`eslint-config-next` support them;
+  keep `@types/node` on the Node 24 line; ignore `pnpm-lock.yaml` in Prettier; pin transitive
+  medium advisories (`uuid`, `@hono/node-server`) with `pnpm-workspace.yaml` overrides (pnpm 11
+  no longer reads `package.json#pnpm.overrides`).
+- **Consequence:** `.github/dependabot.yml` ignores those breaking ranges so noise does not
+  reopen. Security alerts on CI-only tooling clear once the override lockfile lands on
+  `release/dev`.
+
+## D21 — Dependabot triage: consolidate bumps, pin patched transitives, dismiss unpatched CI-only
+
+- **Context:** Seven open Dependabot version-update PRs against `release/dev` were mostly blocked
+  by `pnpm security:audit` failing on production HIGH advisories in `fast-uri` and `nanoid`. No
+  Dependabot security-update PRs were opened for the open GitHub alerts. Split CodeQL Action pins
+  (`init` vs `analyze`) break `security-codeql`. `@types/node` 26 conflicts with `engines.node`.
+- **Decision:** Close the seven Dependabot PRs. Land one human PR that (1) pins patched
+  transitives in `pnpm-workspace.yaml` overrides — `fast-uri >=3.1.5`, `nanoid >=3.3.17 <4`,
+  `hono >=4.12.34`, `js-yaml@3`/`js-yaml@4` to 3.15.1/4.3.1 — (2) applies compatible npm and
+  Actions bumps (including CodeQL `init`+`analyze` on the same SHA), and (3) dismisses
+  `extract-zip` alert #14 as tolerable risk (no patched release; transitive via `@lhci/cli` /
+  Puppeteer browser extraction only — not used for user uploads). Keep motion on the 12.x line
+  (do not accept a major via `--latest`).
+- **Consequence:** Production audit stays green; Security tab clears after squash-merge into
+  `release/dev` and promotion to `main`. Revisit `extract-zip` when ≥2.0.2 ships.
