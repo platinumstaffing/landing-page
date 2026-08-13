@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: Production CI/CD and release protection._
+_Last updated: Dependabot triage + transitive vulnerability pins (D21)._
 
 ## Completed
 
@@ -75,6 +75,15 @@ _Last updated: Production CI/CD and release protection._
   `/job-seekers`, `/jobs`, `/contact`, and `/resources` through a shared asymmetric page hero.
   Shared section headers, story links, page spacing, legal-page introductions, and closing CTAs
   now use the same stronger editorial scale and hairline-first construction.
+
+## Dependabot / security (this session)
+
+- Consolidated open Dependabot version bumps into one PR (D21): production/dev minor-patch npm
+  updates, SHA-pinned Actions (`pnpm/action-setup` 6.0.10, `zizmor-action` 0.6.1, CodeQL
+  init+analyze 4.37.5 together). Rejected `@types/node` 26 and split CodeQL pins.
+- Pinned patched transitives in `pnpm-workspace.yaml`: `fast-uri`, `nanoid` (3.x), `hono`,
+  `js-yaml` 3.x/4.x. Production `pnpm security:audit` is clean.
+- `extract-zip` (unpatched, Lighthouse/Puppeteer CI-only) dismissed as tolerable risk on GitHub.
 
 ## In progress
 
