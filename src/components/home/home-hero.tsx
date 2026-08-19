@@ -31,7 +31,7 @@ export function HomeHero() {
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             className="text-primary text-xs font-semibold tracking-[0.18em] uppercase"
           >
-            Pennsylvania workforce partner · Since 2019
+            Workforce partner · Since 2019
           </motion.p>
 
           <h1 className="font-heading text-foreground mt-6 text-[clamp(3.5rem,7.2vw,7.25rem)] leading-[0.88] font-bold tracking-[-0.065em]">
@@ -66,9 +66,9 @@ export function HomeHero() {
             }}
           >
             <p className="text-muted-foreground mt-7 max-w-[60ch] text-base leading-relaxed text-pretty sm:text-lg">
-              We help Pennsylvania employers solve workforce gaps with
-              dependable professionals, responsive support, and staffing
-              strategies shaped around real operational needs.
+              We help solve workforce gaps with dependable professionals,
+              responsive support, and staffing strategies shaped around real
+              operational needs.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button asChild size="lg">
@@ -104,10 +104,10 @@ export function HomeHero() {
             </div>
             <div className="px-4 py-3 sm:px-5">
               <span className="text-muted-foreground block text-[0.65rem] font-semibold tracking-[0.14em] uppercase">
-                Serving
+                Industries
               </span>
               <span className="font-heading mt-1 block text-lg font-bold">
-                Pennsylvania
+                6+
               </span>
             </div>
           </div>

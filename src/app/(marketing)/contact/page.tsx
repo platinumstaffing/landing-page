@@ -24,10 +24,23 @@ import { siteConfig } from "@/content/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Platinum Staffing & Recruitment to request talent, ask a question, or begin a consultation about workforce solutions in Pennsylvania.",
+    "Contact Platinum Staffing & Recruitment to request talent, ask a question, or begin a consultation about workforce solutions.",
 };
 
-export default function ContactPage() {
+type ContactPageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+function first(value: string | string[] | undefined): string | undefined {
+  if (Array.isArray(value)) return value[0];
+  return value;
+}
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const params = await searchParams;
+  const defaultService = first(params.service);
+  const defaultIndustry = first(params.industry);
+
   return (
     <>
       <EditorialPageHero
@@ -44,6 +57,7 @@ export default function ContactPage() {
         primary={{ label: "Request Talent", href: "#request-talent" }}
         secondary={{ label: "Contact Our Team", href: "#message" }}
         note="Two clear paths · One responsive team"
+        banner={{ family: "Contact", page: "Request Talent & Inquiry" }}
       />
 
       <Section>
@@ -83,10 +97,13 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
             <SectionHeader
               title="Request Talent"
-              description="Tell us about your hiring needs and a Platinum Staffing representative will follow up."
+              description="Tell us about your hiring needs and a Platinum Staffing representative will follow up. Selecting a staffing service helps us categorize the inquiry correctly."
             />
             <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
-              <RequestTalentForm />
+              <RequestTalentForm
+                defaultService={defaultService}
+                defaultIndustry={defaultIndustry}
+              />
             </div>
           </div>
         </Container>

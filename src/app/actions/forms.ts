@@ -50,7 +50,7 @@ export async function submitRequestTalent(
   const fields = withoutSpamFields(parsed.data);
   const result = await deliverSubmission({
     kind: "request-talent",
-    subject: `Request Talent — ${fields.companyName}`,
+    subject: `[Request Talent] ${fields.employmentType} — ${fields.companyName}`,
     fields,
   });
 
@@ -104,7 +104,7 @@ export async function submitResumeAction(
   return {
     status: "success",
     message:
-      "Thank you for joining our talent network. A recruiter will review your information and contact you when a matching opportunity becomes available.",
+      "Thank you for joining our talent network. Our team will review your information and contact you when a matching opportunity becomes available.",
   };
 }
 

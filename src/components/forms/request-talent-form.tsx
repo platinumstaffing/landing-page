@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -15,35 +15,86 @@ import {
   type RequestTalentInput,
 } from "@/lib/forms/schemas";
 
-const employmentTypes = [
-  "Temporary",
+const staffingServices = [
+  "Temporary Staffing",
   "Temp-to-Hire",
   "Direct Hire",
-  "Seasonal",
-  "High-Volume",
+  "Seasonal Staffing",
+  "High-Volume Staffing",
   "Workforce Planning",
   "Not sure yet",
-];
+] as const;
 
-export function RequestTalentForm() {
+const serviceSlugToLabel: Record<string, string> = {
+  "temporary-staffing": "Temporary Staffing",
+  "temp-to-hire": "Temp-to-Hire",
+  "direct-hire": "Direct Hire",
+  "seasonal-staffing": "Seasonal Staffing",
+  "high-volume-staffing": "High-Volume Staffing",
+  "workforce-planning": "Workforce Planning",
+  temporary: "Temporary Staffing",
+  seasonal: "Seasonal Staffing",
+  "high-volume": "High-Volume Staffing",
+};
+
+type RequestTalentFormProps = {
+  defaultService?: string;
+  defaultIndustry?: string;
+};
+
+function resolveServiceLabel(value?: string): string {
+  if (!value) return "";
+  if (staffingServices.includes(value as (typeof staffingServices)[number])) {
+    return value;
+  }
+  return serviceSlugToLabel[value] ?? "";
+}
+
+function resolveIndustryLabel(value?: string): string {
+  if (!value) return "";
+  const byName = industries.find((industry) => industry.name === value);
+  if (byName) return byName.name;
+  const bySlug = industries.find((industry) => industry.slug === value);
+  return bySlug?.name ?? "";
+}
+
+export function RequestTalentForm({
+  defaultService,
+  defaultIndustry,
+}: RequestTalentFormProps) {
   const [pending, startTransition] = useTransition();
   const [result, setResult] = useState<{
     status: "idle" | "success" | "error";
     message?: string;
   }>({ status: "idle" });
 
+  const resolvedService = resolveServiceLabel(defaultService);
+  const resolvedIndustry = resolveIndustryLabel(defaultIndustry);
+
   const {
     register,
     handleSubmit,
     reset,
     setError,
+    setValue,
     formState: { errors },
   } = useForm<RequestTalentInput>({
     resolver: zodResolver(requestTalentSchema) as never,
     defaultValues: {
       website: "",
+      employmentType: resolvedService,
+      industry: resolvedIndustry,
     },
   });
+
+  useEffect(() => {
+    if (resolvedService) {
+      setValue("employmentType", resolvedService);
+    }
+    if (resolvedIndustry) {
+      setValue("industry", resolvedIndustry);
+    }
+  }, [resolvedService, resolvedIndustry, setValue]);
 
   const onSubmit = handleSubmit((values) => {
     setResult({ status: "idle" });
@@ -62,7 +113,11 @@ export function RequestTalentForm() {
         setResult({ status: "error", message: response.message });
         return;
       }
-      reset({ website: "" });
+      reset({
+        website: "",
+        employmentType: resolvedService,
+        industry: resolvedIndustry,
+      });
       setResult({ status: "success", message: response.message });
     });
   });
@@ -142,6 +197,29 @@ export function RequestTalentForm() {
           />
         </Field>
         <Field
+          label="Staffing Service"
+          htmlFor="employmentType"
+          required
+          error={errors.employmentType?.message}
+        >
+          <select
+            id="employmentType"
+            className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
+            {...register("employmentType")}
+            defaultValue={resolvedService}
+            aria-invalid={!!errors.employmentType}
+          >
+            <option value="" disabled>
+              Select a staffing service
+            </option>
+            {staffingServices.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+        </Field>
+        <Field
           label="Industry"
           htmlFor="industry"
           required
@@ -151,8 +229,8 @@ export function RequestTalentForm() {
             id="industry"
             className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
             {...register("industry")}
+            defaultValue={resolvedIndustry}
             aria-invalid={!!errors.industry}
-            defaultValue=""
           >
             <option value="" disabled>
               Select an industry
@@ -184,28 +262,6 @@ export function RequestTalentForm() {
           error={errors.positions?.message}
         >
           <Input id="positions" className="h-11" {...register("positions")} />
-        </Field>
-        <Field
-          label="Employment Type"
-          htmlFor="employmentType"
-          required
-          error={errors.employmentType?.message}
-        >
-          <select
-            id="employmentType"
-            className="border-input focus-visible:border-ring focus-visible:ring-ring/40 h-11 w-full rounded-lg border bg-transparent px-2.5 text-sm outline-none focus-visible:ring-3"
-            {...register("employmentType")}
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select type
-            </option>
-            {employmentTypes.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
         </Field>
         <Field label="Preferred Start Date" htmlFor="preferredStartDate">
           <Input

@@ -1,5 +1,5 @@
 // Approved brand copy from the Brand Identity guide + copy deck. Do not invent
-// leadership names, bios, or dates beyond what is confirmed here (founded 2019, PA).
+// leadership names, bios, or dates beyond what is confirmed here (founded 2019).
 
 export const ourStory = [
   "Platinum Staffing & Recruitment was founded with a simple mission: to connect exceptional talent with outstanding employers.",
@@ -11,7 +11,7 @@ export const mission =
   "To connect businesses with dependable talent through responsive workforce solutions while creating meaningful employment opportunities that strengthen organizations, individuals, and the communities we serve.";
 
 export const vision =
-  "To become one of Pennsylvania's most trusted workforce solutions partners by helping employers build stronger teams and empowering professionals to achieve long-term career success.";
+  "To become one of the most trusted workforce solutions partners by helping employers build stronger teams and empowering professionals to achieve long-term career success.";
 
 export const coreValues = [
   {

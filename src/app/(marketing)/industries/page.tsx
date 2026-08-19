@@ -24,24 +24,6 @@ const benefits = [
   "Responsive partnership",
 ];
 
-const commonRoles = [
-  "Production Associates",
-  "Machine Operators",
-  "Assemblers",
-  "Forklift Operators",
-  "Warehouse Associates",
-  "Shipping & Receiving",
-  "Inventory Specialists",
-  "Customer Service Representatives",
-  "Administrative Assistants",
-  "Office Coordinators",
-  "Operations Supervisors",
-  "Maintenance Technicians",
-  "Quality Inspectors",
-  "Packaging Associates",
-  "General Labor Professionals",
-];
-
 export default function IndustriesPage() {
   return (
     <>
@@ -59,13 +41,14 @@ export default function IndustriesPage() {
         primary={{ label: "Explore Industries", href: "#industries" }}
         secondary={{ label: "Request Talent", href: "/contact#request-talent" }}
         note="Six sectors · One accountable partner"
+        banner={{ family: "Industries", page: "Overview" }}
       />
 
       <div id="industries">
         <IndustriesGrid
           eyebrow="Industries We Serve"
           title="Select an industry to learn more"
-          description="Our recruiters understand the unique hiring needs of each industry we serve, allowing us to connect employers with professionals who are prepared to contribute from day one."
+          description="Each industry opens a dedicated landing page with tailored challenges, positions, hiring solutions, and a Request Talent path."
         />
       </div>
 
@@ -93,22 +76,6 @@ export default function IndustriesPage() {
         title="From discovery to ongoing support"
         steps={employerProcess}
       />
-
-      <Section tone="muted">
-        <Container>
-          <SectionHeader
-            title="Positions We Frequently Recruit"
-            description="A sample of roles we regularly fill across the industries we serve."
-          />
-          <ul className="text-muted-foreground mt-8 columns-1 gap-x-10 text-sm sm:columns-2 lg:columns-3">
-            {commonRoles.map((role) => (
-              <li key={role} className="mb-2 break-inside-avoid">
-                {role}
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </Section>
 
       <FinalCta
         title="Need Help Finding the Right Workforce Solution?"
