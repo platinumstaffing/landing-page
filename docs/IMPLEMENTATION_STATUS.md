@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: Client review updates (homepage/vision copy, PA de-emphasis, 12 landing pages, form prefill)._
+_Last updated: Sync main into release/dev (D24) + TypeScript 6 / Motion 13 / Actions pins._
 
 ## Completed
 
@@ -59,7 +59,7 @@ _Last updated: Client review updates (homepage/vision copy, PA de-emphasis, 12 l
 - Homepage rebuilt as an eight-beat Industrial Field Journal narrative: employer-first hero,
   credibility ledger, employer proof, interactive industries, workforce blueprint, candidate
   pathway, resource desk, and conversion close.
-- The prior GSAP-pinned WebGL hero has been retired. Motion v12 is again the sole animation
+- The prior GSAP-pinned WebGL hero has been retired. Motion is again the sole animation
   library, and the generic SaaS hero image is no longer used.
 - Navbar polish: wider/taller with a scrolled shrink+shadow, roomier two-column dropdowns,
   desktop nav at `xl` (Sheet below) to remove crowding.
@@ -101,6 +101,13 @@ _Last updated: Client review updates (homepage/vision copy, PA de-emphasis, 12 l
 - Pinned patched transitives in `pnpm-workspace.yaml`: `fast-uri`, `nanoid` (3.x), `hono`,
   `js-yaml` 3.x/4.x. Production `pnpm security:audit` is clean.
 - `extract-zip` (unpatched, Lighthouse/Puppeteer CI-only) dismissed as tolerable risk on GitHub.
+
+## Dependabot sync (D24)
+
+- Merged `main` into `release/dev` (preferring `release/dev` for product/docs conflicts) to
+  unblock promotion PR #39 after squash-history divergence.
+- Batched Dependabot bumps: CodeQL Action 4.37.6 (init+analyze same SHA), zizmor-action 0.6.2,
+  TypeScript ^6.0.3, Motion ^13.0.0. Supersedes Dependabot PRs #32, #33, #35, #36, #37.
 
 ## In progress
 
