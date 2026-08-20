@@ -41,12 +41,29 @@ describe("form schemas", () => {
       industry: "Manufacturing",
       employeesNeeded: "5",
       positions: "Machine operators",
-      employmentType: "Temp-to-Hire",
+      employmentType: "Temporary Staffing",
       staffingNeeds: "Five experienced operators for the second shift.",
       website: "",
     });
 
     expect(result.success).toBe(true);
+  });
+
+  it("rejects employer inquiries without a staffing service", () => {
+    const result = requestTalentSchema.safeParse({
+      companyName: "Platinum Partner",
+      contactName: "Jordan Lee",
+      businessEmail: "jordan@example.com",
+      phone: "2155550100",
+      industry: "Manufacturing",
+      employeesNeeded: "5",
+      positions: "Machine operators",
+      employmentType: "",
+      staffingNeeds: "Five experienced operators for the second shift.",
+      website: "",
+    });
+
+    expect(result.success).toBe(false);
   });
 
   it("requires candidate consent", () => {

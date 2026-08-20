@@ -25,7 +25,7 @@ import {
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Platinum Staffing & Recruitment — our story, mission, vision, core values, and commitment to Pennsylvania employers and job seekers since 2019.",
+    "Learn about Platinum Staffing & Recruitment — our story, mission, vision, core values, and commitment to employers and job seekers since 2019.",
 };
 
 export default function AboutPage() {
@@ -38,8 +38,8 @@ export default function AboutPage() {
         description={
           <>
             <p>
-              We partner with employers across Pennsylvania to solve workforce
-              challenges, strengthen operations, and support long-term success.
+              We partner with employers to solve workforce challenges,
+              strengthen operations, and support long-term success.
             </p>
             <p>
               Our network includes more than{" "}
@@ -50,7 +50,8 @@ export default function AboutPage() {
         }
         primary={{ label: "Explore employer solutions", href: "/employers" }}
         secondary={{ label: "Contact our team", href: "/contact" }}
-        note="Established 2019 · Pennsylvania"
+        note="Established 2019 · Growing with employers"
+        banner={{ family: "About", page: "Our Story" }}
       />
 
       <Section tone="muted">

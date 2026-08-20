@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next";
 
+import { industries } from "@/content/industries";
 import { siteConfig } from "@/content/site";
+import { solutions } from "@/content/solutions";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url.replace(/\/$/, "");
   const now = new Date();
 
-  const routes = [
+  const staticRoutes = [
     "",
     "/about",
     "/employers",
@@ -18,10 +20,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/accessibility",
   ];
 
-  return routes.map((route) => ({
-    url: `${base}${route}`,
-    lastModified: now,
-    changeFrequency: route === "" || route === "/jobs" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : 0.7,
-  }));
+  const solutionRoutes = solutions.map((solution) => solution.href);
+  const industryRoutes = industries.map((industry) => industry.href);
+
+  return [...staticRoutes, ...solutionRoutes, ...industryRoutes].map(
+    (route) => ({
+      url: `${base}${route}`,
+      lastModified: now,
+      changeFrequency: route === "" || route === "/jobs" ? "weekly" : "monthly",
+      priority:
+        route === ""
+          ? 1
+          : route.startsWith("/employers/") || route.startsWith("/industries/")
+            ? 0.65
+            : 0.7,
+    }),
+  );
 }

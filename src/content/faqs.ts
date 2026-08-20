@@ -15,7 +15,7 @@ export const employerFaqs: FaqItem[] = [
     id: "industries",
     question: "What industries do you specialize in?",
     answer:
-      "We support manufacturing, warehouse and distribution, logistics, administrative support, customer service, and light industrial employers across Pennsylvania.",
+      "We support manufacturing, warehouse and distribution, logistics, administrative support, customer service, and light industrial employers.",
   },
   {
     id: "staffing-types",
@@ -33,7 +33,7 @@ export const employerFaqs: FaqItem[] = [
     id: "geography",
     question: "What geographic areas do you serve?",
     answer:
-      "Platinum Staffing & Recruitment partners with employers across Pennsylvania. Contact us to discuss coverage for your locations.",
+      "Platinum Staffing & Recruitment partners with employers across the regions we serve. Contact us to discuss coverage for your locations.",
   },
   {
     id: "request",
@@ -87,13 +87,13 @@ export const contactFaqs: FaqItem[] = [
     id: "location",
     question: "Where is Platinum Staffing located?",
     answer:
-      "We serve employers and job seekers across Pennsylvania. Full office address details will be published once confirmed — reach us through the contact forms on this page in the meantime.",
+      "Full office address details will be published once confirmed — reach us through the contact forms on this page in the meantime.",
   },
   {
     id: "areas",
     question: "What areas do you serve?",
     answer:
-      "Platinum Staffing & Recruitment partners with organizations and professionals across Pennsylvania.",
+      "Platinum Staffing & Recruitment partners with organizations and professionals across the regions we serve. Contact us to discuss coverage for your locations.",
   },
   {
     id: "response",

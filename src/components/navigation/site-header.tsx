@@ -75,7 +75,7 @@ export function SiteHeader() {
         <div className="xl:border-border flex shrink-0 items-center gap-5 xl:border-r xl:pr-6">
           <Logo priority />
           <p className="text-muted-foreground hidden max-w-[11ch] text-[0.62rem] leading-tight font-semibold tracking-[0.12em] uppercase 2xl:block">
-            Pennsylvania workforce partner
+            Workforce solutions partner
           </p>
         </div>
 

@@ -241,7 +241,7 @@ export function SubmitResumeForm() {
       <Field
         label="Upload Résumé"
         htmlFor="resume"
-        hint="PDF or Word, up to 5 MB. Optional if Blob storage is not yet configured."
+        hint="PDF or Word, up to 5 MB. Uploaded files are stored privately in Vercel Blob and shared only with our recruiting team."
       >
         <Input
           id="resume"

@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Platinum Staffing",
   tagline: "Workforce Solutions That Keep Your Business Moving.",
   description:
-    "Since 2019, Platinum Staffing & Recruitment has partnered with employers across Pennsylvania to solve workforce challenges through dependable staffing and recruitment solutions.",
+    "Since 2019, Platinum Staffing & Recruitment has partnered with employers to solve workforce challenges through dependable staffing and recruitment solutions.",
   founded: 2019,
   region: "Pennsylvania",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",

@@ -12,7 +12,7 @@ import { filterJobs, type JobFilters } from "@/content/jobs";
 export const metadata: Metadata = {
   title: "Search Jobs",
   description:
-    "Explore current employment opportunities available through Platinum Staffing & Recruitment across Pennsylvania.",
+    "Explore current employment opportunities available through Platinum Staffing & Recruitment across manufacturing, warehouse, logistics, and related industries.",
 };
 
 type JobsPageProps = {
@@ -57,7 +57,8 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
           label: "Join Our Talent Network",
           href: "/job-seekers#submit-resume",
         }}
-        note="Current openings · Pennsylvania"
+        note="Current openings · Multiple industries"
+        banner={{ family: "Job Seekers", page: "Search Jobs" }}
       />
 
       <Section>
