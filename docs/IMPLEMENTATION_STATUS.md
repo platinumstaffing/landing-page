@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: Dependabot triage + transitive vulnerability pins (D21)._
+_Last updated: Sync main into release/dev (D24) + TypeScript 6 / Motion 13 / Actions pins._
 
 ## Completed
 
@@ -16,9 +16,14 @@ _Last updated: Dependabot triage + transitive vulnerability pins (D21)._
 - Homepage vertical slice (hero → trusted-by self-hide → impact → why → careers → industries →
   solutions → process → resources → final CTA).
 - Core pages: `/employers`, `/industries`, `/job-seekers`, `/jobs` (searchParams filters), `/contact`.
+- **Six employer-service landings** (`/employers/[slug]`) and **six industry landings**
+  (`/industries/[slug]`) from the approved copy deck, with shared templates, distinct heroes,
+  banners, and Request Talent deep-links.
 - Forms: Request Talent, Submit Résumé (Blob upload), General Contact — RHF + zod + Server Actions
-  - Resend boundary + honeypot. Honest loading/success/error states.
-- SEO: metadata, OG, sitemap, robots, Organization JSON-LD; `not-found` + `error`.
+  - Resend boundary + honeypot. Honest loading/success/error states. Request Talent now requires a
+    Staffing Service field and prefills from `?service=` / `?industry=` (D22).
+- SEO: metadata, OG, sitemap (includes all 12 landings), robots, Organization JSON-LD; `not-found` +
+  `error`.
 - Motion: Reveal + AnimatedStat with reduced-motion support.
 - Legal pages built via a shared `LegalPage` layout: `/accessibility` is a real, indexable
   statement (truthful to the site's a11y posture); `/privacy` and `/terms` are grounded drafts,
@@ -36,13 +41,25 @@ _Last updated: Dependabot triage + transitive vulnerability pins (D21)._
 - Fonts are self-hosted as licensed, subsetted WOFF2 assets. The internal `/type-specimen` route
   and its external font dependency were removed.
 
-## Impeccable design pass (this session)
+## Client review pass (this session)
+
+- Homepage supporting statement updated to the approved sentence; Pennsylvania de-emphasized in
+  marketing copy (hero, header, About vision/hero, FAQs, metadata) while legal/org facts remain.
+- Vision Statement updated to the client-approved non-geo wording.
+- Job Seekers Career Center now emphasizes Search Jobs, Submit Résumé, Application Process, and
+  Contact Us; direct “contact a recruiter” invitation language removed; résumé upload notes private
+  Vercel Blob storage.
+- `EditorialPageHero` extended with tone, optional photography, and page banners (D23).
+- Employer and industry overview pages are catalogues linking to dedicated landings; industry
+  cards use documentary photography instead of icons-in-circles.
+
+## Impeccable design pass (prior)
 
 - Added `PRODUCT.md` + `DESIGN.md` (+ `DESIGN.json`) design context; pointer in `AGENTS.md`.
 - Homepage rebuilt as an eight-beat Industrial Field Journal narrative: employer-first hero,
   credibility ledger, employer proof, interactive industries, workforce blueprint, candidate
   pathway, resource desk, and conversion close.
-- The prior GSAP-pinned WebGL hero has been retired. Motion v12 is again the sole animation
+- The prior GSAP-pinned WebGL hero has been retired. Motion is again the sole animation
   library, and the generic SaaS hero image is no longer used.
 - Navbar polish: wider/taller with a scrolled shrink+shadow, roomier two-column dropdowns,
   desktop nav at `xl` (Sheet below) to remove crowding.
@@ -85,65 +102,45 @@ _Last updated: Dependabot triage + transitive vulnerability pins (D21)._
   `js-yaml` 3.x/4.x. Production `pnpm security:audit` is clean.
 - `extract-zip` (unpatched, Lighthouse/Puppeteer CI-only) dismissed as tolerable risk on GitHub.
 
+## Dependabot sync (D24)
+
+- Merged `main` into `release/dev` (preferring `release/dev` for product/docs conflicts) to
+  unblock promotion PR #39 after squash-history divergence.
+- Batched Dependabot bumps: CodeQL Action 4.37.6 (init+analyze same SHA), zizmor-action 0.6.2,
+  TypeScript ^6.0.3, Motion ^13.0.0. Supersedes Dependabot PRs #32, #33, #35, #36, #37.
+
 ## In progress
 
 - Repository-owner application of the tracked GitHub rulesets and Vercel administrator setup.
 
 ## Remaining (next pass)
 
-- Header navigation now uses a continuous hover bridge and short close grace period, preventing
-  desktop dropdowns from collapsing as the pointer moves from the trigger to the menu. Dropdowns
-  also use a clearer indexed editorial layout.
-- The workforce blueprint now gives Staffing Models and its dedicated image a focused first row;
-  the interactive partnership journey follows beneath at full width.
-- Proven Scale uses a wider ledger container and larger, consistently padded stat cells. The
-  candidate pathway explicitly isolates Image 09 beneath an opaque content surface so placeholder
-  and final photography cannot cover the adjacent copy.
-- 6 employer service detail pages + 6 industry detail pages.
 - Job detail (`/jobs/[slug]`) + apply flow.
 - Resource article template + real articles per category (directory is live; articles pending).
 - Leadership section on `/about` needs real bios + headshots when supplied.
-- Legal copy pages once client provides Privacy / Terms / Accessibility.
-- Client sign-off on Libre Franklin; replace sample jobs with real openings.
+- Legal copy pages once client provides Privacy / Terms / Accessibility counsel review.
+- Client may still supply richer industry-specific challenges/FAQ enrichment beyond the
+  deck-based pages shipped in this pass.
+- Sample jobs with real openings.
 - Full service-integrated form E2E for email delivery, Blob upload, and Turnstile remains deferred;
   blocking tests cover safe client/server validation without sending or uploading.
-- Impeccable visual polish pass against live review feedback.
-- Added `docs/PARTNERSHIP_JOURNEY_IMAGE_PROMPTS.md`: a coordinated five-asset infographic
-  direction with shared route geometry, individual step prompts, negative prompts, alt-text
-  drafts, filenames, integration guidance, and a full-width desktop/vertical mobile connector plan.
-- Implemented the five supplied Partnership Journey WebP illustrations in the cards and detail
-  dialogs. Desktop uses one continuous animated route aligned to each illustration centerline;
-  smaller screens use a vertical route with a branch and waypoint into every card.
 
 ## Blockers / known issues
 
-- See `docs/CONTENT_GAPS.md` (contact details, logos, legal copy, real jobs).
+- See `docs/CONTENT_GAPS.md` (contact details, logos, legal copy, real jobs, leadership).
 - Forms return a clear error when Resend / Blob env vars are missing (do not fake success).
 
 ## Last validation
 
-- `CI=true pnpm verify` — pass (format, lint, types, 9 unit tests with scoped 100% coverage,
-  dependency hygiene, production build)
-- `pnpm test:smoke` — pass (27 Chromium tests across route availability, navigation, metadata,
-  responsive overflow, keyboard behavior, safe validation for all three forms, console errors,
-  headers, and axe)
-- `pnpm security:secrets` — pass
-- `pnpm security:audit` — pass; no known production vulnerabilities
-- actionlint — pass
-- zizmor offline audit — pass with no findings; one documented metadata-only trigger exception
-- Lighthouse CI — pass against four production routes at accessibility/SEO 1.00, best practices
-  ≥0.95, performance ≥0.85, and explicit script/image budgets
-- `pnpm build` — pass (15 routes; internal type specimen removed)
-- Responsive homepage review — pass at 320, 390, 768, 1280, and 1920 px in the original homepage
-  pass; current site-wide route review passes at 1280 px with no horizontal overflow
-- Interaction review — partnership cards open accessible dialogs from real button controls;
-  dialogs close correctly and return the page to its prior state
-- Browser console review — no runtime errors across the primary marketing routes
+- `CI=true pnpm verify` — pass (format, lint, types, 10 unit tests, knip, production build with
+  27 routes including 12 dedicated landings)
+- `pnpm test:smoke` — pass (41 Chromium tests across route availability, new landings, navigation,
+  metadata, responsive overflow, keyboard behavior, safe validation for all three forms,
+  console errors, headers, and axe including one solution + one industry page)
 
 ## Recommended next action
 
-1. Review the new journey and the seven redesigned marketing-page heroes at
-   390 / 768 / 1280 / 1920.
-2. Apply `docs/CI_CD_OWNER_RUNBOOK.md` with repository and Vercel administrator access.
-3. Provide contact details and permissioned partner logos from CONTENT_GAPS.
-4. Build deferred detail pages (services, industries, job detail) and service-integrated form E2E.
+1. Review the twelve new landings and updated heroes at 390 / 768 / 1280 / 1920.
+2. Provide contact details, leadership bio/headshot, and richer industry copy if available.
+3. Apply `docs/CI_CD_OWNER_RUNBOOK.md` with repository and Vercel administrator access.
+4. Replace sample jobs with real openings before launch.

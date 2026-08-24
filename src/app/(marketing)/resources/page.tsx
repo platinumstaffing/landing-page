@@ -24,7 +24,7 @@ import { resourceCategories } from "@/content/resources";
 export const metadata: Metadata = {
   title: "Resources",
   description:
-    "The Platinum Staffing Resource Center — workforce insights, industry reports, employer guides, career advice, and company news for Pennsylvania employers and job seekers.",
+    "The Platinum Staffing Resource Center — workforce insights, industry reports, employer guides, career advice, and company news for employers and job seekers.",
 };
 
 const categoryIcons = {
@@ -57,6 +57,7 @@ export default function ResourcesPage() {
         primary={{ label: "Employer resources", href: "#employer" }}
         secondary={{ label: "Career advice", href: "#career" }}
         note="Guides in progress · Honest by design"
+        banner={{ family: "Resources", page: "Resource Center" }}
       />
 
       <Section tone="muted">

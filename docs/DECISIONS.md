@@ -249,3 +249,52 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   (do not accept a major via `--latest`).
 - **Consequence:** Production audit stays green; Security tab clears after squash-merge into
   `release/dev` and promotion to `main`. Revisit `extract-zip` when ≥2.0.2 ships.
+
+## D22 — One Request Talent form with service prefill
+
+- **Context:** Client review asked whether each employer/industry landing page should have a
+  separate inquiry form or one centralized form with a required service dropdown.
+- **Decision:** Keep a single Request Talent form on `/contact` (Resend + Server Action). Require
+  a Staffing Service field and prefill it from `?service=` (and optional `industry=`) query
+  params. Categorize the Resend email subject as
+  `[Request Talent] {Service} — {Company}`.
+- **Rationale:** Six separate forms would duplicate validation, spam gates, success states, and
+  inbox routing. One form preserves a single admin path while still sorting inquiries by service.
+  Google Forms is not adopted; Resend remains the delivery boundary.
+- **Consequence:** Landing-page CTAs deep-link to `/contact?service=…#request-talent` (and
+  industry pages use `?industry=`). Future Sheets/Zapier sorting can key off the subject line.
+
+## D23 — Section-family heroes without a second palette
+
+- **Context:** Client review asked for distinct visual identities across major sections and
+  landing pages while preserving brand cohesion.
+- **Decision:** Extend `EditorialPageHero` with `tone` (`canvas` | `muted` | `navy`), optional
+  documentary `image`, and a hairline production-line `banner` (family + page). Differentiate
+  pages with existing homepage photography, flat navy bands, and banners — not new accent hues
+  or generated imagery.
+- **Rationale:** Rare Signature and Flat Navy forbid inventing per-page accent colors. Reusing
+  art-directed photography and structural tones keeps the Industrial Field Journal language
+  cohesive while making section changes immediately readable.
+- **Consequence:** Six employer and six industry landings share one template; siblings alternate
+  canvas/muted tones and unique banners/images. Overview catalogues link to dedicated pages
+  instead of long hash-only articles.
+
+## D24 — Accept TypeScript 6 and Motion 13; one-time merge-commit sync
+
+- **Context:** Five open Dependabot PRs (#32, #33, #35, #36, #37) targeted `release/dev` while
+  promotion PR #39 (`release/dev` → `main`) was blocked by squash-history divergence: `main` still
+  merges from an older squash of `release/dev` (#3), so a 3-way merge conflicted across product and
+  docs files. Linear-history + squash-only rulesets forbade merging `main` into `release/dev` with
+  a merge commit. D21 had kept Motion on 12.x; D20 already allowed TypeScript 6 (ignored only ≥7).
+- **Decision:** Temporarily allow a merge commit on `release/dev`, merge `main` into `release/dev`
+  preferring `release/dev` content for conflicts (main’s unique dep pins already landed via #23),
+  and batch compatible Dependabot bumps in the same sync: CodeQL `init`+`analyze` on SHA
+  `5595cca` (v4.37.6), zizmor-action `3dc1ecc` (v0.6.2), TypeScript ^6.0.3, Motion ^13.0.0.
+  Close the five Dependabot PRs as superseded. After promoting #39 to `main`, merge `main` back
+  into `release/dev` once more, then restore squash-only + required linear history.
+- **Rationale:** A merge commit is the only way to make `main` an ancestor of `release/dev` without
+  ruleset bypass. Motion 13’s breaking change (optional `@emotion/is-prop-valid`) does not affect
+  this codebase’s `motion.div` / `li` / `article` usage. TypeScript 6 stays within D20’s allowed
+  range and is already supported by Next.js 16.
+- **Consequence:** Dependabot PRs #32–#37 close without individual merges. Promotion #39 becomes a
+  clean squash into `main`. Revisit Motion majors only when usage patterns change.

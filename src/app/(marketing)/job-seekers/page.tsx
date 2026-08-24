@@ -12,6 +12,7 @@ import { FinalCta } from "@/components/sections/final-cta";
 import { ProcessSteps } from "@/components/sections/process-steps";
 import { Button } from "@/components/ui/button";
 import { candidateFaqs } from "@/content/faqs";
+import { homeImages } from "@/content/home-images";
 import { candidateProcess } from "@/content/process";
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 const benefits = [
   "Access to diverse job opportunities",
   "Professional career guidance",
-  "Personalized recruiter support",
+  "Personalized career support",
   "Temporary and permanent opportunities",
   "Career growth opportunities",
   "A trusted workforce partner",
@@ -46,6 +47,9 @@ export default function JobSeekersPage() {
         primary={{ label: "Search Jobs", href: "/jobs" }}
         secondary={{ label: "Submit Your Résumé", href: "#submit-resume" }}
         note="Clear opportunities · Human support"
+        tone="muted"
+        banner={{ family: "Job Seekers", page: "Career Center" }}
+        image={homeImages.candidatePathway}
       />
 
       <Section>
@@ -57,7 +61,7 @@ export default function JobSeekersPage() {
           />
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild variant="outline">
-              <Link href="/jobs">Search Open Jobs</Link>
+              <Link href="/jobs">Search Jobs</Link>
             </Button>
             <Button asChild variant="outline">
               <Link href="#submit-resume">Submit Your Résumé</Link>
@@ -66,7 +70,7 @@ export default function JobSeekersPage() {
               <Link href="#process">Application Process</Link>
             </Button>
             <Button asChild variant="outline">
-              <Link href="#faq">Frequently Asked Questions</Link>
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
         </Container>
@@ -87,7 +91,7 @@ export default function JobSeekersPage() {
             <SectionHeader
               eyebrow="Join Our Talent Network"
               title="Submit Your Résumé"
-              description="Don't see the right opportunity today? Submit your résumé and join our growing talent network. Our recruiters will review your qualifications and contact you when opportunities become available that match your experience and career goals."
+              description="Don't see the right opportunity today? Submit your résumé and join our growing talent network. Our team reviews submissions and will contact you when a role aligns with your experience and career goals."
             />
             <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
               <SubmitResumeForm />

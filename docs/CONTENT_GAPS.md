@@ -56,6 +56,9 @@ Items required from the client. None block the current build; the site degrades 
       Industry Reports, Employer Resources, Career Advice, Company News) is live with approved
       category descriptions and honest "articles in progress" states. Supply real articles +
       an article template to populate each category (see `src/content/resources.ts`).
+- [ ] Optional richer industry-page enrichment. Dedicated industry landings now ship from the
+      copy deck (Manufacturing is fullest; the other five use honest non-invented supporting
+      challenges/FAQs). Client may still supply deeper industry-specific narratives.
 
 ## Decisions needing sign-off
 

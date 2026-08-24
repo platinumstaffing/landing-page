@@ -23,8 +23,7 @@ const libreFranklin = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default:
-      "Platinum Staffing & Recruitment | Workforce Solutions in Pennsylvania",
+    default: "Platinum Staffing & Recruitment | Workforce Solutions Partner",
     template: "%s | Platinum Staffing & Recruitment",
   },
   description: siteConfig.description,

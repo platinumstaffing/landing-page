@@ -13,13 +13,14 @@ import { ProcessSteps } from "@/components/sections/process-steps";
 import { SolutionsGrid } from "@/components/sections/solutions-grid";
 import { Button } from "@/components/ui/button";
 import { employerFaqs } from "@/content/faqs";
+import { homeImages } from "@/content/home-images";
 import { employerProcess } from "@/content/process";
 import { employerPillars, solutions } from "@/content/solutions";
 
 export const metadata: Metadata = {
   title: "Employer Solutions",
   description:
-    "Flexible staffing and recruitment solutions for Pennsylvania employers — temporary, temp-to-hire, direct hire, seasonal, high-volume, and workforce planning.",
+    "Flexible staffing and recruitment solutions for employers — temporary, temp-to-hire, direct hire, seasonal, high-volume, and workforce planning.",
 };
 
 export default function EmployersPage() {
@@ -42,6 +43,9 @@ export default function EmployersPage() {
           href: "/contact#consultation",
         }}
         note="Employer-first · Built for operational reality"
+        tone="navy"
+        banner={{ family: "Employers", page: "Workforce Solutions Overview" }}
+        image={homeImages.employerPartnership}
       />
 
       <Section>
@@ -59,26 +63,24 @@ export default function EmployersPage() {
       <Section>
         <Container>
           <SectionHeader
-            title="Our Staffing Solutions in Detail"
-            description="Select a solution below to understand how it supports your hiring goals. Dedicated service pages are coming next."
+            title="Choose the staffing model that fits"
+            description="Each solution below opens a dedicated landing page with tailored details, positions, process steps, and a prefilled Request Talent path."
           />
-          <div className="mt-10 space-y-8">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {solutions.map((solution) => (
               <article
                 key={solution.slug}
                 id={solution.slug}
-                className="border-border bg-surface scroll-mt-28 rounded-xl border p-6 sm:p-8"
+                className="border-border bg-surface scroll-mt-28 rounded-xl border p-6"
               >
                 <h3 className="font-heading text-foreground text-xl font-bold">
                   {solution.name}
                 </h3>
-                <p className="text-muted-foreground mt-3 max-w-3xl">
+                <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
                   {solution.summary}
                 </p>
                 <Button asChild variant="link" className="mt-4 px-0">
-                  <Link href="/contact#request-talent">
-                    Request {solution.name}
-                  </Link>
+                  <Link href={solution.href}>Explore {solution.name}</Link>
                 </Button>
               </article>
             ))}
