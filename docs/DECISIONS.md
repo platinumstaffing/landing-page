@@ -278,3 +278,23 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
 - **Consequence:** Six employer and six industry landings share one template; siblings alternate
   canvas/muted tones and unique banners/images. Overview catalogues link to dedicated pages
   instead of long hash-only articles.
+
+## D24 — Accept TypeScript 6 and Motion 13; one-time merge-commit sync
+
+- **Context:** Five open Dependabot PRs (#32, #33, #35, #36, #37) targeted `release/dev` while
+  promotion PR #39 (`release/dev` → `main`) was blocked by squash-history divergence: `main` still
+  merges from an older squash of `release/dev` (#3), so a 3-way merge conflicted across product and
+  docs files. Linear-history + squash-only rulesets forbade merging `main` into `release/dev` with
+  a merge commit. D21 had kept Motion on 12.x; D20 already allowed TypeScript 6 (ignored only ≥7).
+- **Decision:** Temporarily allow a merge commit on `release/dev`, merge `main` into `release/dev`
+  preferring `release/dev` content for conflicts (main’s unique dep pins already landed via #23),
+  and batch compatible Dependabot bumps in the same sync: CodeQL `init`+`analyze` on SHA
+  `5595cca` (v4.37.6), zizmor-action `3dc1ecc` (v0.6.2), TypeScript ^6.0.3, Motion ^13.0.0.
+  Close the five Dependabot PRs as superseded. After promoting #39 to `main`, merge `main` back
+  into `release/dev` once more, then restore squash-only + required linear history.
+- **Rationale:** A merge commit is the only way to make `main` an ancestor of `release/dev` without
+  ruleset bypass. Motion 13’s breaking change (optional `@emotion/is-prop-valid`) does not affect
+  this codebase’s `motion.div` / `li` / `article` usage. TypeScript 6 stays within D20’s allowed
+  range and is already supported by Next.js 16.
+- **Consequence:** Dependabot PRs #32–#37 close without individual merges. Promotion #39 becomes a
+  clean squash into `main`. Revisit Motion majors only when usage patterns change.
