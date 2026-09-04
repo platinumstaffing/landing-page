@@ -82,9 +82,10 @@ export default function TermsPage() {
 
       <h2>Governing law</h2>
       <p>
-        These terms are governed by the laws of the Commonwealth of
-        Pennsylvania, without regard to conflict-of-law principles. [Confirm
-        governing law, venue, and dispute-resolution approach.]
+        These terms are governed by the laws of [governing state to be confirmed
+        by counsel], without regard to conflict-of-law principles. [Confirm
+        governing law, venue, and dispute-resolution approach for multi-state
+        operations.]
       </p>
 
       <h2>Changes to these terms</h2>

@@ -33,7 +33,7 @@ export const employerFaqs: FaqItem[] = [
     id: "geography",
     question: "What geographic areas do you serve?",
     answer:
-      "Platinum Staffing & Recruitment partners with employers across the regions we serve. Contact us to discuss coverage for your locations.",
+      "Platinum Staffing & Recruitment partners with employers across the tri-state region — Pennsylvania, New Jersey, and New York. Contact us to discuss coverage for your locations.",
   },
   {
     id: "request",
@@ -93,7 +93,7 @@ export const contactFaqs: FaqItem[] = [
     id: "areas",
     question: "What areas do you serve?",
     answer:
-      "Platinum Staffing & Recruitment partners with organizations and professionals across the regions we serve. Contact us to discuss coverage for your locations.",
+      "Platinum Staffing & Recruitment partners with organizations and professionals across the tri-state region — Pennsylvania, New Jersey, and New York. Contact us to discuss coverage for your locations.",
   },
   {
     id: "response",

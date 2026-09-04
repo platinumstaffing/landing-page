@@ -47,3 +47,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Source JPEGs for page photography; committed output is .webp
+/public/brand/pages/**/*.jpeg
+/public/brand/pages/**/*.jpg

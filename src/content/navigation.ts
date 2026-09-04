@@ -15,11 +15,14 @@ export const primaryNav: NavItem[] = [
     label: "About",
     href: "/about",
     children: [
-      { label: "Our Story", href: "/about#story" },
-      { label: "Mission, Vision & Values", href: "/about#values" },
-      { label: "Leadership", href: "/about#leadership" },
-      { label: "Why Platinum", href: "/about#why-platinum" },
-      { label: "Careers at Platinum", href: "/about#careers" },
+      { label: "Our Story", href: "/about/our-story" },
+      {
+        label: "Mission, Vision & Values",
+        href: "/about/mission-vision-values",
+      },
+      { label: "Leadership", href: "/about/leadership" },
+      { label: "Why Platinum", href: "/about/why-platinum" },
+      { label: "Careers at Platinum", href: "/about/careers" },
     ],
   },
   {
@@ -36,7 +39,7 @@ export const primaryNav: NavItem[] = [
         href: "/employers/high-volume-staffing",
       },
       { label: "Workforce Planning", href: "/employers/workforce-planning" },
-      { label: "Request Talent", href: "/contact#request-talent" },
+      { label: "Request Talent", href: "/employers/request-talent" },
     ],
   },
   {
@@ -63,26 +66,37 @@ export const primaryNav: NavItem[] = [
     children: [
       { label: "Career Center", href: "/job-seekers" },
       { label: "Search Jobs", href: "/jobs" },
-      { label: "Submit Your Résumé", href: "/job-seekers#submit-resume" },
-      { label: "Application Process", href: "/job-seekers#process" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "Frequently Asked Questions", href: "/job-seekers#faq" },
+      { label: "Submit Your Résumé", href: "/job-seekers/submit-resume" },
+      {
+        label: "Application Process",
+        href: "/job-seekers/application-process",
+      },
+      { label: "Career Resources", href: "/job-seekers/career-resources" },
+      { label: "Frequently Asked Questions", href: "/job-seekers/faq" },
     ],
   },
   {
     label: "Resources",
     href: "/resources",
     children: [
-      { label: "Workforce Insights", href: "/resources#insights" },
-      { label: "Industry Reports", href: "/resources#reports" },
-      { label: "Employer Resources", href: "/resources#employer" },
-      { label: "Career Advice", href: "/resources#career" },
-      { label: "Company News", href: "/resources#news" },
+      { label: "Workforce Insights", href: "/resources/workforce-insights" },
+      { label: "Industry Reports", href: "/resources/industry-reports" },
+      { label: "Employer Resources", href: "/resources/employer-resources" },
+      { label: "Career Advice", href: "/resources/career-advice" },
+      { label: "Company News", href: "/resources/company-news" },
     ],
   },
   {
     label: "Contact",
     href: "/contact",
+    children: [
+      { label: "Contact Us", href: "/contact" },
+      {
+        label: "Schedule a Consultation",
+        href: "/contact/schedule-consultation",
+      },
+      { label: "Office Information", href: "/contact/office-information" },
+    ],
   },
 ];
 
@@ -90,13 +104,16 @@ export const footerNav = {
   employers: [
     { label: "Employer Solutions", href: "/employers" },
     { label: "Industries", href: "/industries" },
-    { label: "Request Talent", href: "/contact#request-talent" },
+    { label: "Request Talent", href: "/employers/request-talent" },
   ],
   jobSeekers: [
     { label: "Search Jobs", href: "/jobs" },
-    { label: "Submit Résumé", href: "/job-seekers#submit-resume" },
+    { label: "Submit Résumé", href: "/job-seekers/submit-resume" },
     { label: "Career Center", href: "/job-seekers" },
-    { label: "Frequently Asked Questions", href: "/job-seekers#faq" },
+    {
+      label: "Frequently Asked Questions",
+      href: "/job-seekers/faq",
+    },
   ],
   company: [
     { label: "About Platinum", href: "/about" },

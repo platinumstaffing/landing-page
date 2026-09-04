@@ -1,5 +1,6 @@
 import type { FaqItem } from "@/content/faqs";
-import { homeImages, type HomeImageAsset } from "@/content/home-images";
+import type { ImageAsset } from "@/content/image-asset";
+import { pageImages } from "@/content/page-images";
 
 export type SolutionSlug =
   | "temporary-staffing"
@@ -24,7 +25,7 @@ export type Solution = {
   positions: string[];
   faqs: FaqItem[];
   heroTone: "canvas" | "muted";
-  image: HomeImageAsset;
+  image: ImageAsset;
   index: string;
 };
 
@@ -98,7 +99,7 @@ export const solutions: Solution[] = [
       },
     ],
     heroTone: "canvas",
-    image: homeImages.staffingModels,
+    image: pageImages.temporaryStaffing,
     index: "02.1",
   },
   {
@@ -169,7 +170,7 @@ export const solutions: Solution[] = [
       },
     ],
     heroTone: "muted",
-    image: homeImages.employerPartnership,
+    image: pageImages.tempToHire,
     index: "02.2",
   },
   {
@@ -241,7 +242,7 @@ export const solutions: Solution[] = [
       },
     ],
     heroTone: "canvas",
-    image: homeImages.employerResource,
+    image: pageImages.directHire,
     index: "02.3",
   },
   {
@@ -311,7 +312,7 @@ export const solutions: Solution[] = [
       },
     ],
     heroTone: "muted",
-    image: homeImages.warehouseDistribution,
+    image: pageImages.seasonalStaffing,
     index: "02.4",
   },
   {
@@ -386,7 +387,7 @@ export const solutions: Solution[] = [
       },
     ],
     heroTone: "canvas",
-    image: homeImages.manufacturing,
+    image: pageImages.highVolumeStaffing,
     index: "02.5",
   },
   {
@@ -451,7 +452,7 @@ export const solutions: Solution[] = [
       },
     ],
     heroTone: "muted",
-    image: homeImages.employerResource,
+    image: pageImages.workforcePlanning,
     index: "02.6",
   },
 ];

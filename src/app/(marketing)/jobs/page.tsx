@@ -8,6 +8,7 @@ import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { filterJobs, type JobFilters } from "@/content/jobs";
+import { pageImages } from "@/content/page-images";
 
 export const metadata: Metadata = {
   title: "Search Jobs",
@@ -55,10 +56,11 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
         }
         primary={{
           label: "Join Our Talent Network",
-          href: "/job-seekers#submit-resume",
+          href: "/job-seekers/submit-resume",
         }}
         note="Current openings · Multiple industries"
         banner={{ family: "Job Seekers", page: "Search Jobs" }}
+        image={pageImages.jobsHero}
       />
 
       <Section>
@@ -96,7 +98,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                   </p>
                   <div className="mt-6 flex flex-wrap gap-3">
                     <Button asChild>
-                      <Link href="/job-seekers#submit-resume">
+                      <Link href="/job-seekers/submit-resume">
                         Join Our Talent Network
                       </Link>
                     </Button>
@@ -126,7 +128,7 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
                   </p>
                 </div>
                 <Button asChild className="mt-4 sm:mt-0">
-                  <Link href="/job-seekers#submit-resume">
+                  <Link href="/job-seekers/submit-resume">
                     Submit Your Résumé
                   </Link>
                 </Button>

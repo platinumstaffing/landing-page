@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
   <title id="title">Hero photography placeholder</title>
-  <desc id="desc">Art direction frame for an active Pennsylvania manufacturing floor.</desc>
+  <desc id="desc">Art direction frame for an active tri-state manufacturing floor.</desc>
   <rect width="1600" height="1000" fill="#1e2a44"/>
   <path d="M0 140h1600M0 860h1600M140 0v1000M1460 0v1000" stroke="#c7ccd6" stroke-opacity=".38"/>
   <path d="M140 500h1320M800 140v720" stroke="#c7ccd6" stroke-opacity=".18" stroke-dasharray="8 14"/>

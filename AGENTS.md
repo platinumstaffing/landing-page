@@ -5,7 +5,7 @@ and [MASTER_BUILD_INSTRUCTIONS.md](MASTER_BUILD_INSTRUCTIONS.md) before making c
 
 ## Project
 
-A premium marketing website for Platinum Staffing & Recruitment, a Pennsylvania workforce
+A premium marketing website for Platinum Staffing & Recruitment, a tri-state workforce
 solutions firm serving employers and job seekers across manufacturing, warehouse &
 distribution, logistics, administrative support, customer service, and light industrial.
 
@@ -75,3 +75,13 @@ These summarize, and must stay consistent with, the sources of truth above and
 At the end of a substantial session, update `docs/IMPLEMENTATION_STATUS.md`,
 `docs/DECISIONS.md`, and `docs/CONTENT_GAPS.md`. Never mark work complete while major
 parts are placeholders.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

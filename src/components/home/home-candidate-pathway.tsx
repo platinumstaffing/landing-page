@@ -4,7 +4,7 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { homeImages } from "@/content/home-images";
-import { EditorialImage } from "./editorial-image";
+import { EditorialImage } from "@/components/layout/editorial-image";
 
 export function HomeCandidatePathway() {
   return (
@@ -36,7 +36,7 @@ export function HomeCandidatePathway() {
                   <Link href="/jobs">Search Open Positions</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link href="/job-seekers#submit-resume">
+                  <Link href="/job-seekers/submit-resume">
                     Submit Your Résumé
                   </Link>
                 </Button>

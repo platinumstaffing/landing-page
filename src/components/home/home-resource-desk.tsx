@@ -3,7 +3,7 @@ import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 import { Container } from "@/components/layout/container";
 import { homeImages } from "@/content/home-images";
-import { EditorialImage } from "./editorial-image";
+import { EditorialImage } from "@/components/layout/editorial-image";
 import { EditorialIntro } from "./editorial-intro";
 
 const resourceRows = [

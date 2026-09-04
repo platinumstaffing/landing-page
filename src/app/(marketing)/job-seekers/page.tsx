@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Check } from "@phosphor-icons/react/dist/ssr";
+import {
+  ChatCircle,
+  FileText,
+  ListChecks,
+  MagnifyingGlass,
+} from "@phosphor-icons/react/dist/ssr";
+import type { Icon } from "@phosphor-icons/react";
 
-import { SubmitResumeForm } from "@/components/forms/submit-resume-form";
 import { Container } from "@/components/layout/container";
 import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
+import { LinkCard } from "@/components/layout/link-card";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
-import { FaqList } from "@/components/sections/faq-list";
 import { FinalCta } from "@/components/sections/final-cta";
-import { ProcessSteps } from "@/components/sections/process-steps";
-import { Button } from "@/components/ui/button";
-import { candidateFaqs } from "@/content/faqs";
-import { homeImages } from "@/content/home-images";
-import { candidateProcess } from "@/content/process";
+import { Reveal } from "@/components/motion/reveal";
+import { jobSeekerPages } from "@/content/job-seekers";
+import { pageImages } from "@/content/page-images";
 
 export const metadata: Metadata = {
   title: "Job Seekers",
@@ -21,14 +23,12 @@ export const metadata: Metadata = {
     "Find your next opportunity with Platinum Staffing & Recruitment. Search jobs, submit your résumé, and get support throughout the hiring process.",
 };
 
-const benefits = [
-  "Access to diverse job opportunities",
-  "Professional career guidance",
-  "Personalized career support",
-  "Temporary and permanent opportunities",
-  "Career growth opportunities",
-  "A trusted workforce partner",
-];
+const pageIcons: Record<(typeof jobSeekerPages)[number]["slug"], Icon> = {
+  "submit-resume": FileText,
+  "application-process": ListChecks,
+  "career-resources": ChatCircle,
+  faq: MagnifyingGlass,
+};
 
 export default function JobSeekersPage() {
   return (
@@ -45,92 +45,47 @@ export default function JobSeekersPage() {
           </p>
         }
         primary={{ label: "Search Jobs", href: "/jobs" }}
-        secondary={{ label: "Submit Your Résumé", href: "#submit-resume" }}
+        secondary={{
+          label: "Submit Your Résumé",
+          href: "/job-seekers/submit-resume",
+        }}
         note="Clear opportunities · Human support"
         tone="muted"
         banner={{ family: "Job Seekers", page: "Career Center" }}
-        image={homeImages.candidatePathway}
+        image={pageImages.jobSeekersHero}
       />
 
       <Section>
         <Container>
-          <SectionHeader
-            eyebrow="Career Center"
-            title="Helping You Build a Career, Not Just Find a Job"
-            description="Our Career Center is designed to provide the tools, resources, and opportunities you need to succeed — from job searching and résumé submission to interview preparation and career development."
-          />
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild variant="outline">
-              <Link href="/jobs">Search Jobs</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="#submit-resume">Submit Your Résumé</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="#process">Application Process</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/contact">Contact Us</Link>
-            </Button>
-          </div>
-        </Container>
-      </Section>
-
-      <div id="process">
-        <ProcessSteps
-          tone="muted"
-          eyebrow="Application Process"
-          title="What to Expect"
-          steps={candidateProcess}
-        />
-      </div>
-
-      <Section id="submit-resume">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal>
             <SectionHeader
-              eyebrow="Join Our Talent Network"
-              title="Submit Your Résumé"
-              description="Don't see the right opportunity today? Submit your résumé and join our growing talent network. Our team reviews submissions and will contact you when a role aligns with your experience and career goals."
+              eyebrow="Career Center"
+              title="Helping You Build a Career, Not Just Find a Job"
+              description="The Career Center is designed to provide the tools, resources, and opportunities you need to succeed — from job searching and résumé submission to interview preparation and career development."
             />
-            <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
-              <SubmitResumeForm />
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section tone="muted">
-        <Container>
-          <SectionHeader
-            eyebrow="Why Work With Platinum"
-            title="More Than a Staffing Agency"
-            description="We are committed to helping talented professionals find meaningful employment with organizations that value their skills and contributions."
-          />
-          <ul className="mt-10 grid gap-x-10 gap-y-1 sm:grid-cols-2">
-            {benefits.map((benefit) => (
-              <li
-                key={benefit}
-                className="border-border/70 text-foreground flex items-start gap-3 border-b py-3.5 text-sm font-medium"
-              >
-                <Check
-                  className="text-primary mt-0.5 size-4 shrink-0"
-                  weight="bold"
-                  aria-hidden
+          </Reveal>
+          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Reveal as="li">
+              <LinkCard
+                href="/jobs"
+                icon={MagnifyingGlass}
+                title="Search Jobs"
+                summary="Browse current openings across manufacturing, warehouse, logistics, administrative support, customer service, and light industrial."
+                cta="Search available jobs"
+              />
+            </Reveal>
+            {jobSeekerPages.map((page, index) => (
+              <Reveal as="li" key={page.slug} delay={(index + 1) * 0.04}>
+                <LinkCard
+                  href={page.href}
+                  icon={pageIcons[page.slug]}
+                  title={page.label}
+                  summary={page.summary}
+                  cta={`Open ${page.label}`}
                 />
-                {benefit}
-              </li>
+              </Reveal>
             ))}
           </ul>
-        </Container>
-      </Section>
-
-      <Section id="faq">
-        <Container narrow>
-          <SectionHeader title="Frequently Asked Questions" />
-          <div className="mt-8">
-            <FaqList items={candidateFaqs} />
-          </div>
         </Container>
       </Section>
 
@@ -140,7 +95,7 @@ export default function JobSeekersPage() {
         primary={{ label: "Search Jobs", href: "/jobs" }}
         secondary={{
           label: "Submit Your Résumé",
-          href: "#submit-resume",
+          href: "/job-seekers/submit-resume",
         }}
       />
     </>
