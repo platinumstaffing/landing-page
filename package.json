@@ -24,7 +24,7 @@
     "test:smoke": "playwright test --project=chromium",
     "test:a11y": "playwright test tests/e2e/accessibility.spec.ts --project=chromium",
     "security:secrets": "secretlint \"**/*\"",
-    "security:audit": "pnpm audit --prod --audit-level high",
+    "security:audit": "node scripts/security-audit.mjs",
     "deps:check": "knip --include files,dependencies",
     "images:optimize": "node scripts/optimize-images.mjs",
     "validate:env": "node scripts/validate-environment.mjs",

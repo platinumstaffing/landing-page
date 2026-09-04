@@ -320,3 +320,18 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
 - **Consequence:** A unit test fails if `Pennsylvania` or standalone `PA` appears in `src/`
   outside an explicit allowlist. Dropdown IA is also expanded so every nav child is a real route
   (hub + standalone pages) rather than hash anchors on the parent.
+
+## D26 — Retry production audit on npm registry timeouts
+
+- **Context:** PR Security failed `pnpm security:audit` with `TimeoutError` / `error (23)` against
+  `registry.npmjs.org/-/npm/v1/security/advisories/bulk`. pnpm already retried twice; the job still
+  exited 1, which is the same code used for real HIGH advisories.
+- **Decision:** `pnpm security:audit` runs `scripts/security-audit.mjs`, which retries transient
+  registry/network failures and still fails immediately on advisory findings. A completed audit
+  that reports `vulnerabilities found` is never retried, even if pnpm logged a timeout warning
+  first. `fast-uri` is pinned to `>=4.1.3` so the current 4.1.2 HIGH advisories do not fail a
+  successful registry response.
+- **Rationale:** A flaky npm advisory API should not block an otherwise clean PR. High and critical
+  production advisories remain blocking.
+- **Consequence:** The Security workflow can take a few extra minutes when the registry is slow.
+  Persistent registry outages still fail the job after four attempts.

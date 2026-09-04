@@ -119,7 +119,9 @@ _Last updated: Reused page photography, homepage light-industrial swap, and home
   updates, SHA-pinned Actions (`pnpm/action-setup` 6.0.10, `zizmor-action` 0.6.1, CodeQL
   init+analyze 4.37.5 together). Rejected `@types/node` 26 and split CodeQL pins.
 - Pinned patched transitives in `pnpm-workspace.yaml`: `fast-uri`, `nanoid` (3.x), `hono`,
-  `js-yaml` 3.x/4.x. Production `pnpm security:audit` is clean.
+  `js-yaml` 3.x/4.x. Production `pnpm security:audit` is clean. Registry timeouts retry via
+  `scripts/security-audit.mjs` (D26) instead of failing the Security job as if an advisory landed.
+  `fast-uri` is pinned to `>=4.1.3` for the 4.1.2 HIGH advisories.
 - `extract-zip` (unpatched, Lighthouse/Puppeteer CI-only) dismissed as tolerable risk on GitHub.
 
 ## Dependabot sync (D24)
