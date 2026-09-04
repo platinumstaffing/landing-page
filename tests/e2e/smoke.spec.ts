@@ -3,6 +3,11 @@ import { expect, test } from "@playwright/test";
 const routes = [
   "/",
   "/about",
+  "/about/our-story",
+  "/about/mission-vision-values",
+  "/about/leadership",
+  "/about/why-platinum",
+  "/about/careers",
   "/employers",
   "/employers/temporary-staffing",
   "/employers/temp-to-hire",
@@ -10,6 +15,7 @@ const routes = [
   "/employers/seasonal-staffing",
   "/employers/high-volume-staffing",
   "/employers/workforce-planning",
+  "/employers/request-talent",
   "/industries",
   "/industries/manufacturing",
   "/industries/warehouse-distribution",
@@ -18,9 +24,20 @@ const routes = [
   "/industries/customer-service",
   "/industries/light-industrial",
   "/job-seekers",
+  "/job-seekers/submit-resume",
+  "/job-seekers/application-process",
+  "/job-seekers/career-resources",
+  "/job-seekers/faq",
   "/jobs",
   "/resources",
+  "/resources/workforce-insights",
+  "/resources/industry-reports",
+  "/resources/employer-resources",
+  "/resources/career-advice",
+  "/resources/company-news",
   "/contact",
+  "/contact/schedule-consultation",
+  "/contact/office-information",
   "/accessibility",
   "/privacy",
   "/terms",
@@ -90,7 +107,7 @@ test("employer validation does not send an empty inquiry", async ({ page }) => {
     if (request.method() !== "GET") mutationRequests.push(request.url());
   });
 
-  await page.goto("/contact#request-talent");
+  await page.goto("/employers/request-talent");
   await page.getByRole("button", { name: "Submit Employer Inquiry" }).click();
 
   await expect(page.getByText("Company name is required")).toBeVisible();
@@ -108,7 +125,7 @@ test("résumé validation does not upload or submit empty data", async ({
     if (request.method() !== "GET") mutationRequests.push(request.url());
   });
 
-  await page.goto("/job-seekers#submit-resume");
+  await page.goto("/job-seekers/submit-resume");
   await page.getByRole("button", { name: "Join Our Talent Network" }).click();
 
   await expect(page.getByText("First name is required")).toBeVisible();

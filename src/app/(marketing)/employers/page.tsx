@@ -13,7 +13,7 @@ import { ProcessSteps } from "@/components/sections/process-steps";
 import { SolutionsGrid } from "@/components/sections/solutions-grid";
 import { Button } from "@/components/ui/button";
 import { employerFaqs } from "@/content/faqs";
-import { homeImages } from "@/content/home-images";
+import { pageImages } from "@/content/page-images";
 import { employerProcess } from "@/content/process";
 import { employerPillars, solutions } from "@/content/solutions";
 
@@ -37,15 +37,15 @@ export default function EmployersPage() {
             hire with confidence, and build dependable teams.
           </p>
         }
-        primary={{ label: "Request Talent", href: "/contact#request-talent" }}
+        primary={{ label: "Request Talent", href: "/employers/request-talent" }}
         secondary={{
           label: "Schedule a Consultation",
-          href: "/contact#consultation",
+          href: "/contact/schedule-consultation",
         }}
         note="Employer-first · Built for operational reality"
         tone="navy"
         banner={{ family: "Employers", page: "Workforce Solutions Overview" }}
-        image={homeImages.employerPartnership}
+        image={pageImages.employersHero}
       />
 
       <Section>

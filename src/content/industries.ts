@@ -1,5 +1,6 @@
 import type { FaqItem } from "@/content/faqs";
-import { industryHomeImages, type HomeImageAsset } from "@/content/home-images";
+import type { ImageAsset } from "@/content/image-asset";
+import { pageImages } from "@/content/page-images";
 
 export type IndustrySlug =
   | "manufacturing"
@@ -24,7 +25,7 @@ export type Industry = {
   solutions: string[];
   faqs: FaqItem[];
   heroTone: "canvas" | "muted";
-  image: HomeImageAsset;
+  image: ImageAsset;
   index: string;
 };
 
@@ -94,7 +95,7 @@ export const industries: Industry[] = [
       },
     ],
     heroTone: "canvas",
-    image: industryHomeImages.manufacturing,
+    image: pageImages.manufacturingTeam,
     index: "03.1",
   },
   {
@@ -161,7 +162,7 @@ export const industries: Industry[] = [
       },
     ],
     heroTone: "muted",
-    image: industryHomeImages["warehouse-distribution"],
+    image: pageImages.distributionFlow,
     index: "03.2",
   },
   {
@@ -226,7 +227,7 @@ export const industries: Industry[] = [
       },
     ],
     heroTone: "canvas",
-    image: industryHomeImages.logistics,
+    image: pageImages.logisticsCoordination,
     index: "03.3",
   },
   {
@@ -291,7 +292,7 @@ export const industries: Industry[] = [
       },
     ],
     heroTone: "muted",
-    image: industryHomeImages["administrative-support"],
+    image: pageImages.administrativeOperations,
     index: "03.4",
   },
   {
@@ -355,7 +356,7 @@ export const industries: Industry[] = [
       },
     ],
     heroTone: "canvas",
-    image: industryHomeImages["customer-service"],
+    image: pageImages.customerSupportTeam,
     index: "03.5",
   },
   {
@@ -421,7 +422,7 @@ export const industries: Industry[] = [
       },
     ],
     heroTone: "muted",
-    image: industryHomeImages["light-industrial"],
+    image: pageImages.lightIndustrialProcess,
     index: "03.6",
   },
 ];

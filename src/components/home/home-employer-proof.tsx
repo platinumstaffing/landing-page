@@ -4,7 +4,7 @@ import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { Container } from "@/components/layout/container";
 import { employerPillars } from "@/content/solutions";
 import { homeImages } from "@/content/home-images";
-import { EditorialImage } from "./editorial-image";
+import { EditorialImage } from "@/components/layout/editorial-image";
 import { EditorialIntro } from "./editorial-intro";
 
 export function HomeEmployerProof() {

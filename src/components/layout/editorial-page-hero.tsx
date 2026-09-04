@@ -4,7 +4,7 @@ import { ArrowDownRight, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
-import type { HomeImageAsset } from "@/content/home-images";
+import { imageAspectClasses, type ImageAsset } from "@/content/image-asset";
 import { cn } from "@/lib/utils";
 
 type HeroAction = {
@@ -27,7 +27,7 @@ type EditorialPageHeroProps = {
   note?: string;
   tone?: "canvas" | "muted" | "navy";
   banner?: HeroBanner;
-  image?: HomeImageAsset;
+  image?: ImageAsset;
   className?: string;
 };
 
@@ -196,7 +196,12 @@ export function EditorialPageHero({
           </div>
 
           {image ? (
-            <figure className="border-border bg-surface-muted relative mt-8 aspect-[4/3] overflow-hidden border lg:mt-10">
+            <figure
+              className={cn(
+                "border-border bg-surface-muted relative mt-8 overflow-hidden border lg:mt-10",
+                imageAspectClasses[image.aspectRatio],
+              )}
+            >
               <Image
                 src={image.src}
                 alt={image.alt}

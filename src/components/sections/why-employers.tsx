@@ -22,7 +22,9 @@ export function WhyEmployers() {
         <PillarGrid pillars={employerPillars} className="mt-12" />
         <div className="mt-8">
           <Button asChild variant="outline">
-            <Link href="/employers">Why employers choose Platinum</Link>
+            <Link href="/about/why-platinum">
+              Why employers choose Platinum
+            </Link>
           </Button>
         </div>
       </Container>

@@ -1,6 +1,6 @@
 # Platinum Staffing & Recruitment
 
-Marketing website for Platinum Staffing & Recruitment — a Pennsylvania workforce solutions firm.
+Marketing website for Platinum Staffing & Recruitment — a tri-state workforce solutions firm.
 Built with Next.js 16, TypeScript, Tailwind CSS v4, and shadcn/ui.
 
 ## Getting started
@@ -28,6 +28,7 @@ Open http://localhost:3000.
 | `pnpm test:e2e`         | Run the configured Playwright browser matrix             |
 | `pnpm security:secrets` | Scan tracked content for secrets                         |
 | `pnpm security:audit`   | Block high/critical production dependency advisories     |
+| `pnpm images:optimize`  | Convert page JPEG sources to spec WebP assets            |
 | `pnpm verify`           | Run the local formatting-to-production-build quality set |
 | `pnpm ci`               | Run `verify` followed by blocking Chromium browser tests |
 

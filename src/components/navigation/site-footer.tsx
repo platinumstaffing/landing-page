@@ -52,7 +52,7 @@ export function SiteFooter() {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild>
-                  <Link href="/contact#request-talent">Request Talent</Link>
+                  <Link href="/employers/request-talent">Request Talent</Link>
                 </Button>
                 <Button
                   asChild
@@ -76,7 +76,7 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <p>{siteConfig.region}</p>
+          <p>{siteConfig.regionLabel}</p>
         </div>
       </div>
     </footer>

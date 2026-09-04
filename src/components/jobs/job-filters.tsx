@@ -53,7 +53,7 @@ export function JobFiltersForm({ filters }: JobFiltersFormProps) {
           name="location"
           defaultValue={filters.location ?? ""}
           className="h-11"
-          placeholder="e.g. Allentown"
+          placeholder="City, state, or ZIP"
         />
       </div>
 

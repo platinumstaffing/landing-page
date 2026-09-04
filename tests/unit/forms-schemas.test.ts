@@ -73,7 +73,7 @@ describe("form schemas", () => {
       email: "taylor@example.com",
       phone: "2155550101",
       city: "Philadelphia",
-      state: "PA",
+      state: "NJ",
       preferredIndustry: "Logistics",
       desiredPosition: "Dispatcher",
       employmentType: "Direct Hire",

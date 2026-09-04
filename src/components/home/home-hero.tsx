@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { homeImages } from "@/content/home-images";
-import { EditorialImage } from "./editorial-image";
+import { EditorialImage } from "@/components/layout/editorial-image";
 
 const words = [
   "Workforce",
@@ -72,7 +72,7 @@ export function HomeHero() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button asChild size="lg">
-                <Link href="/contact#request-talent">Request Talent</Link>
+                <Link href="/employers/request-talent">Request Talent</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="/jobs">Find Jobs</Link>

@@ -4,7 +4,7 @@
 
 These prompts replace the designed SVG art-direction frames in `public/brand/home/`.
 The final set should feel like one documentary assignment photographed across real
-Pennsylvania workplaces, not a collection of unrelated stock images.
+tri-state workplaces, not a collection of unrelated stock images.
 
 The five diagrammatic illustrations for the interactive employer process are documented
 separately in `docs/PARTNERSHIP_JOURNEY_IMAGE_PROMPTS.md`.
@@ -24,30 +24,34 @@ separately in `docs/PARTNERSHIP_JOURNEY_IMAGE_PROMPTS.md`.
 
 ## Asset specifications
 
-| ID | Replacement filename | Target size | Crop | Focal point | Placement |
-| --- | --- | ---: | --- | --- | --- |
-| 01 | `hero.webp` | 2400 × 1500 | 16:10 | Center-right activity | Homepage hero |
-| 02 | `employer-partnership.webp` | 1600 × 2000 | 4:5 | People centered | Why Platinum |
-| 03 | `manufacturing.webp` | 1800 × 1350 | 4:3 | Operator center-right | Industries stage |
-| 04 | `warehouse-distribution.webp` | 1800 × 1350 | 4:3 | Worker center | Industries stage |
-| 05 | `logistics.webp` | 1800 × 1350 | 4:3 | Worker center-left | Industries stage |
-| 06 | `administrative-support.webp` | 1800 × 1350 | 4:3 | Professional center-right | Industries stage |
-| 07 | `customer-service.webp` | 1800 × 1350 | 4:3 | Professional center | Industries stage |
-| 08 | `light-industrial.webp` | 1800 × 1350 | 4:3 | Hands and worker center | Industries stage |
-| 09 | `candidate-pathway.webp` | 2100 × 1400 | 3:2 | Worker center-left | Job seeker pathway |
-| 10 | `employer-resource.webp` | 1800 × 1200 | 3:2 | Documents and manager center | Employer resource |
-| 11 | `career-resource.webp` | 1800 × 1200 | 3:2 | Job seeker center-right | Career resource |
-| 12 | `staffing-models.webp` | 1800 × 1350 | 4:3 | People and plan centered | Staffing models |
+| ID  | Replacement filename                                   | Target size | Crop  | Focal point                  | Placement          |
+| --- | ------------------------------------------------------ | ----------: | ----- | ---------------------------- | ------------------ |
+| 01  | `hero.webp`                                            | 2400 × 1500 | 16:10 | Center-right activity        | Homepage hero      |
+| 02  | `employer-partnership.webp`                            | 1600 × 2000 | 4:5   | People centered              | Why Platinum       |
+| 03  | `manufacturing.webp`                                   | 1800 × 1350 | 4:3   | Operator center-right        | Industries stage   |
+| 04  | `warehouse-distribution.webp`                          | 1800 × 1350 | 4:3   | Worker center                | Industries stage   |
+| 05  | `logistics.webp`                                       | 1800 × 1350 | 4:3   | Worker center-left           | Industries stage   |
+| 06  | `administrative-support.webp`                          | 1800 × 1350 | 4:3   | Professional center-right    | Industries stage   |
+| 07  | `customer-service.webp`                                | 1800 × 1350 | 4:3   | Professional center          | Industries stage   |
+| 08  | `pages/industries/light-industrial-process.webp` (I07) | 1800 × 1350 | 4:3   | Hands and worker center      | Industries stage   |
+| 09  | `candidate-pathway.webp`                               | 2100 × 1400 | 3:2   | Worker center-left           | Job seeker pathway |
+| 10  | `employer-resource.webp`                               | 1800 × 1200 | 3:2   | Documents and manager center | Employer resource  |
+| 11  | `career-resource.webp`                                 | 1800 × 1200 | 3:2   | Job seeker center-right      | Career resource    |
+| 12  | `staffing-models.webp`                                 | 1800 × 1350 | 4:3   | People and plan centered     | Staffing models    |
 
 After adding final files, update only the corresponding `src` values in
 `src/content/home-images.ts`. The section components, dimensions, crops, captions, and
 alternative text do not need to change.
 
+The homepage light-industrial stage uses the sitewide I07 file
+(`public/brand/pages/industries/light-industrial-process.webp`) instead of a separate
+`public/brand/home/light-industrial.webp`.
+
 ## 01. Hero
 
 **Prompt**
 
-> Wide documentary photograph inside an active Pennsylvania manufacturing facility
+> Wide documentary photograph inside an active tri-state manufacturing facility
 > during a normal shift. Skilled workers are naturally distributed through the middle
 > and right side of the frame, with one supervisor visible but not posed. Real production
 > equipment, practical safety barriers, accurate PPE, and overhead industrial lighting.
@@ -90,7 +94,7 @@ alternative text do not need to change.
 
 **Prompt**
 
-> Skilled machine operator inspecting a production line in a clean Pennsylvania facility.
+> Skilled machine operator inspecting a production line in a clean industrial facility.
 > Visible machine detail, authentic PPE, focused working posture, and realistic safety
 > spacing. Capture process and concentration, not a portrait. Natural overhead light,
 > restrained cool-neutral grade, 4:3 landscape.
@@ -177,6 +181,9 @@ alternative text do not need to change.
 > A customer service professional assisting someone by phone.
 
 ## 08. Light industrial
+
+The homepage industries stage uses the sitewide Light Industrial photograph (I07) rather
+than a separate homepage file.
 
 **Prompt**
 

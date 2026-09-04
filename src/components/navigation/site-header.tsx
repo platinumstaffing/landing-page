@@ -225,7 +225,7 @@ export function SiteHeader() {
             <Link href="/jobs">Find Jobs</Link>
           </Button>
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link href="/contact#request-talent">Request Talent</Link>
+            <Link href="/employers/request-talent">Request Talent</Link>
           </Button>
 
           <Sheet>
@@ -287,7 +287,7 @@ export function SiteHeader() {
               <div className="border-border mt-auto flex flex-col gap-2 border-t p-4">
                 <SheetClose asChild>
                   <Button asChild>
-                    <Link href="/contact#request-talent">Request Talent</Link>
+                    <Link href="/employers/request-talent">Request Talent</Link>
                   </Button>
                 </SheetClose>
                 <SheetClose asChild>

@@ -7,6 +7,7 @@ import { SectionHeader } from "@/components/layout/section-header";
 import { FinalCta } from "@/components/sections/final-cta";
 import { IndustriesGrid } from "@/components/sections/industries-grid";
 import { ProcessSteps } from "@/components/sections/process-steps";
+import { pageImages } from "@/content/page-images";
 import { employerProcess } from "@/content/process";
 
 export const metadata: Metadata = {
@@ -39,7 +40,11 @@ export default function IndustriesPage() {
           </p>
         }
         primary={{ label: "Explore Industries", href: "#industries" }}
-        secondary={{ label: "Request Talent", href: "/contact#request-talent" }}
+        secondary={{
+          label: "Request Talent",
+          href: "/employers/request-talent",
+        }}
+        image={pageImages.industriesHero}
         note="Six sectors · One accountable partner"
         banner={{ family: "Industries", page: "Overview" }}
       />

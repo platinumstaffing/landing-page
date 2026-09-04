@@ -1,14 +1,7 @@
 import Image from "next/image";
 
-import type { HomeImageAsset } from "@/content/home-images";
+import { imageAspectClasses, type ImageAsset } from "@/content/image-asset";
 import { cn } from "@/lib/utils";
-
-const aspectClasses = {
-  "16:10": "aspect-[16/10]",
-  "4:5": "aspect-[4/5]",
-  "4:3": "aspect-[4/3]",
-  "3:2": "aspect-[3/2]",
-} as const;
 
 export function EditorialImage({
   image,
@@ -16,7 +9,7 @@ export function EditorialImage({
   priority = false,
   sizes = "(min-width: 1024px) 50vw, 100vw",
 }: {
-  image: HomeImageAsset;
+  image: ImageAsset;
   className?: string;
   priority?: boolean;
   sizes?: string;
@@ -25,7 +18,7 @@ export function EditorialImage({
     <figure
       className={cn(
         "border-border bg-surface-muted relative isolate overflow-hidden border",
-        aspectClasses[image.aspectRatio],
+        imageAspectClasses[image.aspectRatio],
         className,
       )}
     >

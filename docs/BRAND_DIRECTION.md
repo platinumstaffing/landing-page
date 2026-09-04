@@ -8,8 +8,8 @@ whole site should express.
 
 Platinum Staffing & Recruitment is a **workforce solutions partner**, not "another staffing
 agency." It helps employers build dependable, productive, scalable teams and helps
-professionals build meaningful careers. Every page answers one question: *"How does Platinum
-Staffing help my business succeed?"* (or, for candidates, *"How does Platinum help my career?"*).
+professionals build meaningful careers. Every page answers one question: _"How does Platinum
+Staffing help my business succeed?"_ (or, for candidates, _"How does Platinum help my career?"_).
 
 ## Brand adjectives
 
@@ -25,21 +25,21 @@ corporate. Modern without appearing trendy. Confident without being overwhelming
 
 - **Display / headings: Manrope** (brand-specified). Confident, geometric-humanist.
 - **Body: Libre Franklin** (deviation from the brand guide's "Inter" — see DECISIONS). Its
-  Franklin Gothic lineage reads American-industrial and editorial, fits the PA / manufacturing
-  audience, holds up at small sizes, and avoids the default-Inter "AI SaaS" look MASTER §12 warns about.
+  Franklin Gothic lineage reads American-industrial and editorial, fits the tri-state /
+  manufacturing audience, holds up at small sizes, and avoids the default-Inter "AI SaaS" look MASTER §12 warns about.
 - One weight discipline: headings 600/700, body 400/500. Comfortable line length (~65ch),
   generous line-height on body, tight leading on large display.
 
 ## Color usage
 
-| Token | Hex | Role |
-|-------|-----|------|
-| Executive Purple | `#4B2E83` | Signature: primary CTAs, links, key headings, focus ring |
-| Deep Navy | `#1E2A44` | Structural anchor bands, footer, corporate messaging |
-| Platinum Silver | `#C7CCD6` | Hairlines, dividers, card edges, quiet accents (never body text) |
-| Soft White | `#F8F9FB` | Page background |
-| Charcoal | `#2C2C2C` | Primary text |
-| Emerald | `#2E8B57` | Success states only |
+| Token            | Hex       | Role                                                             |
+| ---------------- | --------- | ---------------------------------------------------------------- |
+| Executive Purple | `#4B2E83` | Signature: primary CTAs, links, key headings, focus ring         |
+| Deep Navy        | `#1E2A44` | Structural anchor bands, footer, corporate messaging             |
+| Platinum Silver  | `#C7CCD6` | Hairlines, dividers, card edges, quiet accents (never body text) |
+| Soft White       | `#F8F9FB` | Page background                                                  |
+| Charcoal         | `#2C2C2C` | Primary text                                                     |
+| Emerald          | `#2E8B57` | Success states only                                              |
 
 Purple is used deliberately and sparingly so it reads as a signature, not a wash. No gradients
 as brand devices; navy is a flat structural color, not a gradient.

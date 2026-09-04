@@ -9,14 +9,11 @@ import { FaqList } from "@/components/sections/faq-list";
 import { FinalCta } from "@/components/sections/final-cta";
 import { Button } from "@/components/ui/button";
 import type { Solution } from "@/content/solutions";
+import { requestTalentHref } from "@/lib/paths";
 
 type SolutionLandingProps = {
   solution: Solution;
 };
-
-function requestHref(service: string) {
-  return `/contact?service=${service}#request-talent`;
-}
 
 export function SolutionLanding({ solution }: SolutionLandingProps) {
   return (
@@ -28,11 +25,11 @@ export function SolutionLanding({ solution }: SolutionLandingProps) {
         description={<p>{solution.lede}</p>}
         primary={{
           label: solution.ctaLabel,
-          href: requestHref(solution.slug),
+          href: requestTalentHref({ service: solution.slug }),
         }}
         secondary={{
           label: "Schedule a Consultation",
-          href: "/contact#consultation",
+          href: "/contact/schedule-consultation",
         }}
         note={`${solution.name} · Employer solutions`}
         tone={solution.heroTone}
@@ -120,7 +117,9 @@ export function SolutionLanding({ solution }: SolutionLandingProps) {
               </p>
             </div>
             <Button asChild size="lg">
-              <Link href={requestHref(solution.slug)}>{solution.ctaLabel}</Link>
+              <Link href={requestTalentHref({ service: solution.slug })}>
+                {solution.ctaLabel}
+              </Link>
             </Button>
           </div>
         </Container>
@@ -140,7 +139,7 @@ export function SolutionLanding({ solution }: SolutionLandingProps) {
         description="Whether you need immediate coverage or a longer hiring plan, Platinum Staffing is ready to help."
         primary={{
           label: solution.ctaLabel,
-          href: requestHref(solution.slug),
+          href: requestTalentHref({ service: solution.slug }),
         }}
         secondary={{
           label: "Explore all solutions",

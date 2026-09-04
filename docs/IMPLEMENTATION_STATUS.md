@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: Sync main into release/dev (D24) + TypeScript 6 / Motion 13 / Actions pins._
+_Last updated: Reused page photography, homepage light-industrial swap, and homepage WebP re-encode._
 
 ## Completed
 
@@ -19,11 +19,13 @@ _Last updated: Sync main into release/dev (D24) + TypeScript 6 / Motion 13 / Act
 - **Six employer-service landings** (`/employers/[slug]`) and **six industry landings**
   (`/industries/[slug]`) from the approved copy deck, with shared templates, distinct heroes,
   banners, and Request Talent deep-links.
-- Forms: Request Talent, Submit Résumé (Blob upload), General Contact — RHF + zod + Server Actions
-  - Resend boundary + honeypot. Honest loading/success/error states. Request Talent now requires a
-    Staffing Service field and prefills from `?service=` / `?industry=` (D22).
-- SEO: metadata, OG, sitemap (includes all 12 landings), robots, Organization JSON-LD; `not-found` +
-  `error`.
+- **Standalone nav pages:** every primary-nav child is a real route. About, Job Seekers, Resources,
+  and Contact are hubs linking to dedicated children. Canonical Request Talent lives at
+  `/employers/request-talent` (preserves `?service=` / `?industry=`). Consultation form is live.
+- Forms: Request Talent, Submit Résumé (Blob upload), General Contact, Schedule Consultation —
+  RHF + zod + Server Actions + Resend boundary + honeypot. Honest loading/success/error states.
+- SEO: metadata, OG, sitemap (hubs + children + 12 landings), robots, Organization JSON-LD with
+  three-state `areaServed`, BreadcrumbList JSON-LD on child pages; `not-found` + `error`.
 - Motion: Reveal + AnimatedStat with reduced-motion support.
 - Legal pages built via a shared `LegalPage` layout: `/accessibility` is a real, indexable
   statement (truthful to the site's a11y posture); `/privacy` and `/terms` are grounded drafts,
@@ -41,7 +43,7 @@ _Last updated: Sync main into release/dev (D24) + TypeScript 6 / Motion 13 / Act
 - Fonts are self-hosted as licensed, subsetted WOFF2 assets. The internal `/type-specimen` route
   and its external font dependency were removed.
 
-## Client review pass (this session)
+## Client review pass (prior)
 
 - Homepage supporting statement updated to the approved sentence; Pennsylvania de-emphasized in
   marketing copy (hero, header, About vision/hero, FAQs, metadata) while legal/org facts remain.
@@ -52,6 +54,24 @@ _Last updated: Sync main into release/dev (D24) + TypeScript 6 / Motion 13 / Act
 - `EditorialPageHero` extended with tone, optional photography, and page banners (D23).
 - Employer and industry overview pages are catalogues linking to dedicated landings; industry
   cards use documentary photography instead of icons-in-circles.
+
+## Tri-state + sitewide photography (this session)
+
+- Service area is **the tri-state region** (D25). `siteConfig` splits inline `region`, standalone
+  `regionLabel`, and `areaServed` states. JSON-LD emits State objects. Sample jobs spread across
+  PA/NJ/NY. Résumé form no longer defaults to PA. Geography unit test guards `src/`.
+- 33 page JPEGs converted to spec WebP (97.7 MB → 7.8 MB) via `pnpm images:optimize`; JPEG
+  originals gitignored. The seven slots without dedicated files reuse existing photographs
+  (`reusedPageImages`) so Contact, Resources, and Office Information are not typography-only.
+- Homepage light-industrial stage now uses the sitewide I07 photograph; the old
+  `public/brand/home/light-industrial.webp` was removed.
+- Five oversized homepage WebPs were re-encoded to spec dimensions (18.95 MB → 847 KB):
+  manufacturing, staffing-models, candidate-pathway, employer-partnership, career-resource.
+- Shared `ImageAsset` type, hero aspect derived from the photo, `EditorialImage` promoted to
+  layout, and inner pages wired to `src/content/page-images.ts`.
+- Parent pages are hubs. New routes: `/about/*` (5), `/employers/request-talent`,
+  `/job-seekers/*` (4), `/resources/[slug]` (5), `/contact/schedule-consultation`,
+  `/contact/office-information`.
 
 ## Impeccable design pass (prior)
 
@@ -117,7 +137,7 @@ _Last updated: Sync main into release/dev (D24) + TypeScript 6 / Motion 13 / Act
 
 - Job detail (`/jobs/[slug]`) + apply flow.
 - Resource article template + real articles per category (directory is live; articles pending).
-- Leadership section on `/about` needs real bios + headshots when supplied.
+- Leadership page (`/about/leadership`) needs real bios + headshots when supplied.
 - Legal copy pages once client provides Privacy / Terms / Accessibility counsel review.
 - Client may still supply richer industry-specific challenges/FAQ enrichment beyond the
   deck-based pages shipped in this pass.
@@ -132,11 +152,11 @@ _Last updated: Sync main into release/dev (D24) + TypeScript 6 / Motion 13 / Act
 
 ## Last validation
 
-- `CI=true pnpm verify` — pass (format, lint, types, 10 unit tests, knip, production build with
-  27 routes including 12 dedicated landings)
-- `pnpm test:smoke` — pass (41 Chromium tests across route availability, new landings, navigation,
-  metadata, responsive overflow, keyboard behavior, safe validation for all three forms,
-  console errors, headers, and axe including one solution + one industry page)
+- `pnpm lint`, `pnpm typecheck`, `pnpm test:unit`, `pnpm deps:check`, `pnpm build` — pass
+  (44 routes: hubs, 17 new standalone pages, 12 landings, legal)
+- `pnpm test:a11y` — pass (13 Chromium axe checks including `/about/our-story`,
+  `/employers/request-talent`, `/job-seekers/submit-resume`, `/resources/workforce-insights`,
+  `/contact/schedule-consultation`)
 
 ## Recommended next action
 

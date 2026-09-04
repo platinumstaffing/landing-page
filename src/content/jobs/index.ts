@@ -3,7 +3,7 @@ import { parseJobs, type Job } from "@/content/jobs/schema";
 export type { Job } from "@/content/jobs/schema";
 
 /**
- * Local job listings. Seeded with illustrative Pennsylvania roles matching the
+ * Local job listings. Seeded with illustrative tri-state roles matching the
  * content doc's example shape. Replace/extend with real openings from the client.
  * When empty (or all closed), the jobs page shows the designed empty state.
  */
@@ -37,11 +37,11 @@ const rawJobs = [
     status: "open",
   },
   {
-    slug: "production-associate-lancaster",
+    slug: "production-associate-edison",
     referenceNumber: "PSR-MFG-1002",
     title: "Production Associate",
     industry: "manufacturing",
-    location: { city: "Lancaster", state: "Pennsylvania" },
+    location: { city: "Edison", state: "New Jersey" },
     employmentType: "Temporary",
     shift: "Second Shift",
     workArrangement: "On-Site",
@@ -64,11 +64,11 @@ const rawJobs = [
     status: "open",
   },
   {
-    slug: "administrative-assistant-harrisburg",
+    slug: "administrative-assistant-white-plains",
     referenceNumber: "PSR-ADM-1003",
     title: "Administrative Assistant",
     industry: "administrative-support",
-    location: { city: "Harrisburg", state: "Pennsylvania" },
+    location: { city: "White Plains", state: "New York" },
     employmentType: "Direct Hire",
     shift: "First Shift",
     workArrangement: "On-Site",
@@ -91,11 +91,11 @@ const rawJobs = [
     status: "open",
   },
   {
-    slug: "customer-service-representative-reading",
+    slug: "customer-service-representative-newark",
     referenceNumber: "PSR-CS-1004",
     title: "Customer Service Representative",
     industry: "customer-service",
-    location: { city: "Reading", state: "Pennsylvania" },
+    location: { city: "Newark", state: "New Jersey" },
     employmentType: "Full-Time",
     shift: "Flexible Schedule",
     workArrangement: "On-Site",

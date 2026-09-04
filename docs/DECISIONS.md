@@ -6,7 +6,7 @@
   "Do not automatically use Inter" and warns against generic AI-SaaS output.
 - **Decision:** Keep Manrope for display; use **Libre Franklin** for body. Client sign-off requested.
 - **Alternatives:** Honor Inter exactly; go fully editorial serif/grotesk.
-- **Rationale:** Franklin Gothic lineage is American-industrial and editorial, fits the PA /
+- **Rationale:** Franklin Gothic lineage reads American-industrial and editorial, fits the tri-state /
   manufacturing audience, and reads intentional rather than templated. Body face is a one-file swap.
 - **Consequence:** A temporary `/type-specimen` route lets the client compare before final lock.
 
@@ -25,7 +25,9 @@
 The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authoritative values:
 
 - **Founded 2019** (mockup "About" shows 2010 — wrong).
-- **Location: Pennsylvania** (mockups show Memphis/Nashville, TN and a `(615)` phone — placeholder).
+- **Location: the tri-state region** (Pennsylvania, New Jersey, and New York). The copy deck
+  originally said Pennsylvania; D25 supersedes that marketing geography. Mockups' Memphis/Nashville,
+  TN and a `(615)` phone remain placeholder.
 - **Core values: Integrity, Partnership, Excellence, Responsiveness, Opportunity** (brand PDF).
   The mockup's Respect/Accountability/Teamwork/Innovation set is not used.
 - **Stats: 2019, 40,000+ network, 10,000+ placements, 6+ industries** — supplied by client, safe.
@@ -298,3 +300,23 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   range and is already supported by Next.js 16.
 - **Consequence:** Dependabot PRs #32–#37 close without individual merges. Promotion #39 becomes a
   clean squash into `main`. Revisit Motion majors only when usage patterns change.
+
+## D25 — Service area is the tri-state region, not Pennsylvania alone
+
+- **Context:** The copy deck, AGENTS.md, and D3 framed the firm as Pennsylvania-based. The client
+  confirmed operations also cover New Jersey and New York. Marketing copy had already been
+  de-emphasized; remaining runtime PA language lived in `siteConfig`, the footer, JSON-LD
+  `areaServed`, sample jobs, the résumé form default, and legal drafts.
+- **Decision:** Marketing geography is **the tri-state region**. `siteConfig.region` is the inline
+  phrase; `regionLabel` is the standalone label; `areaServed` is
+  `["Pennsylvania", "New Jersey", "New York"]` and JSON-LD emits State objects. Sample jobs spread
+  across the three states. The résumé form no longer defaults to `PA`. Privacy drafts name
+  applicable U.S. state privacy laws including PA/NJ/NY. Terms governing law is a counsel
+  placeholder because a contract must name one jurisdiction, not a region. The client copy deck
+  and brand PDF are not rewritten; this decision records the divergence.
+- **Rationale:** Naming the three states is more honest than a PA-only claim, and splitting
+  inline/label phrasing keeps the footer from reading "partnerships across Pennsylvania" or a
+  bare "the tri-state region" as a location chip.
+- **Consequence:** A unit test fails if `Pennsylvania` or standalone `PA` appears in `src/`
+  outside an explicit allowlist. Dropdown IA is also expanded so every nav child is a real route
+  (hub + standalone pages) rather than hash anchors on the parent.

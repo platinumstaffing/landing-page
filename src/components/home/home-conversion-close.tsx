@@ -23,7 +23,7 @@ export function HomeConversionClose() {
               </p>
               <div className="flex shrink-0 flex-wrap gap-3">
                 <Button asChild size="lg">
-                  <Link href="/contact#request-talent">Request Talent</Link>
+                  <Link href="/employers/request-talent">Request Talent</Link>
                 </Button>
                 <Button
                   asChild
@@ -31,7 +31,7 @@ export function HomeConversionClose() {
                   variant="quiet"
                   className="border-silver/50 text-navy-foreground hover:border-navy-foreground hover:text-navy-foreground hover:bg-transparent"
                 >
-                  <Link href="/contact#consultation">
+                  <Link href="/contact/schedule-consultation">
                     Schedule a Consultation
                   </Link>
                 </Button>
