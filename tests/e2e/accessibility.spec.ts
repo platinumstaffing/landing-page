@@ -3,12 +3,18 @@ import { expect, test } from "@playwright/test";
 
 const routes = [
   "/",
+  "/about",
+  "/about/our-story",
   "/employers",
   "/employers/temporary-staffing",
+  "/employers/request-talent",
   "/industries/manufacturing",
   "/job-seekers",
+  "/job-seekers/submit-resume",
   "/jobs",
+  "/resources/workforce-insights",
   "/contact",
+  "/contact/schedule-consultation",
 ];
 
 for (const route of routes) {

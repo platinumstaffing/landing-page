@@ -50,7 +50,9 @@ export function ResourcesTeaser() {
                 ))}
               </ul>
               <Button asChild variant="outline" className="mt-6">
-                <Link href="/resources">View Employer Resources</Link>
+                <Link href="/resources/employer-resources">
+                  View Employer Resources
+                </Link>
               </Button>
             </div>
           </Reveal>
@@ -71,7 +73,9 @@ export function ResourcesTeaser() {
                 ))}
               </ul>
               <Button asChild variant="outline" className="mt-6">
-                <Link href="/resources">View Career Resources</Link>
+                <Link href="/job-seekers/career-resources">
+                  View Career Resources
+                </Link>
               </Button>
             </div>
           </Reveal>

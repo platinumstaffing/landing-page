@@ -36,7 +36,7 @@ export function JobCard({ job }: { job: Job }) {
         </div>
         <div className="flex shrink-0 flex-col gap-2 sm:items-end">
           <Button asChild size="sm">
-            <Link href={`/job-seekers#submit-resume`}>Apply Now</Link>
+            <Link href="/job-seekers/submit-resume">Apply Now</Link>
           </Button>
           <p className="text-muted-foreground text-xs">
             Ref. {job.referenceNumber}

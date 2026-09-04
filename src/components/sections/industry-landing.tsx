@@ -9,14 +9,11 @@ import { FaqList } from "@/components/sections/faq-list";
 import { FinalCta } from "@/components/sections/final-cta";
 import { Button } from "@/components/ui/button";
 import type { Industry } from "@/content/industries";
+import { requestTalentHref } from "@/lib/paths";
 
 type IndustryLandingProps = {
   industry: Industry;
 };
-
-function requestHref(industry: string) {
-  return `/contact?industry=${industry}#request-talent`;
-}
 
 export function IndustryLanding({ industry }: IndustryLandingProps) {
   return (
@@ -28,11 +25,11 @@ export function IndustryLanding({ industry }: IndustryLandingProps) {
         description={<p>{industry.lede}</p>}
         primary={{
           label: industry.ctaLabel,
-          href: requestHref(industry.slug),
+          href: requestTalentHref({ industry: industry.slug }),
         }}
         secondary={{
           label: "Schedule a Consultation",
-          href: "/contact#consultation",
+          href: "/contact/schedule-consultation",
         }}
         note={`${industry.name} · Industry focus`}
         tone={industry.heroTone}
@@ -119,7 +116,9 @@ export function IndustryLanding({ industry }: IndustryLandingProps) {
               </p>
             </div>
             <Button asChild size="lg">
-              <Link href={requestHref(industry.slug)}>{industry.ctaLabel}</Link>
+              <Link href={requestTalentHref({ industry: industry.slug })}>
+                {industry.ctaLabel}
+              </Link>
             </Button>
           </div>
         </Container>
@@ -139,7 +138,7 @@ export function IndustryLanding({ industry }: IndustryLandingProps) {
         description="Not sure which staffing model fits your operation? Our team is ready to understand your workforce needs and recommend a customized hiring approach."
         primary={{
           label: industry.ctaLabel,
-          href: requestHref(industry.slug),
+          href: requestTalentHref({ industry: industry.slug }),
         }}
         secondary={{
           label: "Explore all industries",

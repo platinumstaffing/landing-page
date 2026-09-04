@@ -8,7 +8,7 @@ import { Container } from "@/components/layout/container";
 import { industries } from "@/content/industries";
 import { industryHomeImages } from "@/content/home-images";
 import { cn } from "@/lib/utils";
-import { EditorialImage } from "./editorial-image";
+import { EditorialImage } from "@/components/layout/editorial-image";
 import { EditorialIntro } from "./editorial-intro";
 
 export function HomeIndustries() {

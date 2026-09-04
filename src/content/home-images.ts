@@ -1,4 +1,7 @@
-export type HomeImageAsset = {
+import type { ImageAsset } from "@/content/image-asset";
+import { pageImages } from "@/content/page-images";
+
+export type HomeImageAsset = ImageAsset & {
   id:
     | "hero"
     | "employer-partnership"
@@ -12,13 +15,7 @@ export type HomeImageAsset = {
     | "candidate-pathway"
     | "employer-resource"
     | "career-resource";
-  src: string;
-  alt: string;
-  label: string;
   aspectRatio: "16:10" | "4:5" | "4:3" | "3:2";
-  width: number;
-  height: number;
-  focalPoint: string;
 };
 
 export const homeImages = {
@@ -38,8 +35,8 @@ export const homeImages = {
     alt: "An operations supervisor and staffing partner reviewing work on a facility floor.",
     label: "Partnership on the floor",
     aspectRatio: "4:5",
-    width: 1856,
-    height: 2304,
+    width: 1600,
+    height: 2000,
     focalPoint: "center",
   },
   staffingModels: {
@@ -48,8 +45,8 @@ export const homeImages = {
     alt: "A staffing strategist mapping workforce requirements with an operations leader.",
     label: "A workforce model built to fit",
     aspectRatio: "4:3",
-    width: 2400,
-    height: 1792,
+    width: 1800,
+    height: 1350,
     focalPoint: "center",
   },
   manufacturing: {
@@ -58,8 +55,8 @@ export const homeImages = {
     alt: "A skilled operator inspecting work on a production line.",
     label: "Manufacturing",
     aspectRatio: "4:3",
-    width: 2400,
-    height: 1792,
+    width: 1800,
+    height: 1350,
     focalPoint: "65% 50%",
   },
   warehouseDistribution: {
@@ -104,13 +101,13 @@ export const homeImages = {
   },
   lightIndustrial: {
     id: "light-industrial",
-    src: "/brand/home/light-industrial.webp",
-    alt: "A team member performing careful assembly work at an organized station.",
-    label: "Light industrial",
+    src: pageImages.lightIndustrialProcess.src,
+    alt: pageImages.lightIndustrialProcess.alt,
+    label: pageImages.lightIndustrialProcess.label,
     aspectRatio: "4:3",
-    width: 2400,
-    height: 1792,
-    focalPoint: "center",
+    width: pageImages.lightIndustrialProcess.width,
+    height: pageImages.lightIndustrialProcess.height,
+    focalPoint: pageImages.lightIndustrialProcess.focalPoint,
   },
   candidatePathway: {
     id: "candidate-pathway",
@@ -118,8 +115,8 @@ export const homeImages = {
     alt: "A professional welcoming a worker as other candidates arrive behind them.",
     label: "A supported career journey",
     aspectRatio: "3:2",
-    width: 2528,
-    height: 1696,
+    width: 2100,
+    height: 1400,
     focalPoint: "35% 50%",
   },
   employerResource: {
@@ -138,8 +135,8 @@ export const homeImages = {
     alt: "A job seeker preparing application materials with support from a recruiter.",
     label: "Career preparation",
     aspectRatio: "3:2",
-    width: 2528,
-    height: 1696,
+    width: 1800,
+    height: 1200,
     focalPoint: "65% 50%",
   },
 } satisfies Record<string, HomeImageAsset>;

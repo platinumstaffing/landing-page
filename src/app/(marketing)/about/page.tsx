@@ -1,31 +1,37 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import {
+  Briefcase,
+  Flag,
+  Handshake,
+  Path,
+  UsersThree,
+} from "@phosphor-icons/react/dist/ssr";
+import type { Icon } from "@phosphor-icons/react";
 
 import { Container } from "@/components/layout/container";
 import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
-import { Eyebrow } from "@/components/layout/eyebrow";
-import { Heading } from "@/components/layout/heading";
-import { Prose } from "@/components/layout/prose";
+import { LinkCard } from "@/components/layout/link-card";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
-import { CareerPathway } from "@/components/sections/career-pathway";
 import { FinalCta } from "@/components/sections/final-cta";
 import { WhyEmployers } from "@/components/sections/why-employers";
 import { WorkforceImpact } from "@/components/sections/workforce-impact";
 import { Reveal } from "@/components/motion/reveal";
-import { Button } from "@/components/ui/button";
-import {
-  coreValues,
-  leadershipIntro,
-  mission,
-  ourStory,
-  vision,
-} from "@/content/about";
+import { aboutPages } from "@/content/about";
+import { pageImages } from "@/content/page-images";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "Learn about Platinum Staffing & Recruitment — our story, mission, vision, core values, and commitment to employers and job seekers since 2019.",
+};
+
+const pageIcons: Record<(typeof aboutPages)[number]["slug"], Icon> = {
+  "our-story": Path,
+  "mission-vision-values": Flag,
+  leadership: UsersThree,
+  "why-platinum": Handshake,
+  careers: Briefcase,
 };
 
 export default function AboutPage() {
@@ -51,126 +57,43 @@ export default function AboutPage() {
         primary={{ label: "Explore employer solutions", href: "/employers" }}
         secondary={{ label: "Contact our team", href: "/contact" }}
         note="Established 2019 · Growing with employers"
-        banner={{ family: "About", page: "Our Story" }}
+        banner={{ family: "About", page: "Overview" }}
+        image={pageImages.aboutHero}
       />
-
-      <Section tone="muted">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-            <Reveal>
-              <div className="lg:sticky lg:top-28">
-                <Eyebrow>Our Journey</Eyebrow>
-                <Heading level="h2" className="mt-3">
-                  A partnership-first approach, from day one
-                </Heading>
-              </div>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <div>
-                <Prose size="lg" className="max-w-2xl">
-                  {ourStory.map((paragraph) => (
-                    <p key={paragraph.slice(0, 24)} className="mt-4 first:mt-0">
-                      {paragraph}
-                    </p>
-                  ))}
-                </Prose>
-                <Button asChild variant="outline" className="mt-8">
-                  <Link href="/employers">Explore our services</Link>
-                </Button>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
-
-      <WorkforceImpact />
-
-      <Section>
-        <Container>
-          <div className="border-border bg-border grid gap-px overflow-hidden rounded-xl border sm:grid-cols-2">
-            <Reveal className="bg-surface">
-              <div className="flex h-full flex-col p-8 sm:p-10">
-                <Eyebrow>Our Mission</Eyebrow>
-                <p className="font-heading text-foreground mt-4 text-xl leading-snug font-semibold text-balance sm:text-2xl">
-                  {mission}
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.06} className="bg-surface">
-              <div className="flex h-full flex-col p-8 sm:p-10">
-                <Eyebrow>Our Vision</Eyebrow>
-                <p className="font-heading text-foreground mt-4 text-xl leading-snug font-semibold text-balance sm:text-2xl">
-                  {vision}
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
 
       <Section tone="muted">
         <Container>
           <Reveal>
             <SectionHeader
-              eyebrow="What We Stand For"
-              title="Our Core Values"
-              description="Five principles guide how we work with every employer and every professional we place."
+              eyebrow="Inside Platinum"
+              title="Five ways to know the firm"
+              description="Each topic has its own page. Start with the story, then move into values, leadership, the employer case, or careers."
             />
           </Reveal>
-          <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-            {coreValues.map((value, index) => (
-              <Reveal as="li" key={value.name} delay={index * 0.05}>
-                <div className="border-border border-t pt-5">
-                  <span className="font-heading text-primary text-sm font-bold tabular-nums">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-heading text-foreground mt-3 text-lg font-bold">
-                    {value.name}
-                  </h3>
-                  <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
+          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {aboutPages.map((page, index) => (
+              <Reveal as="li" key={page.slug} delay={index * 0.04}>
+                <LinkCard
+                  href={page.href}
+                  icon={pageIcons[page.slug]}
+                  title={page.label}
+                  summary={page.summary}
+                  cta={`Read ${page.label}`}
+                />
               </Reveal>
             ))}
           </ul>
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-            <Reveal>
-              <div>
-                <Eyebrow>Leadership</Eyebrow>
-                <Heading level="h2" className="mt-3">
-                  Leadership that puts people first
-                </Heading>
-              </div>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <div>
-                <Prose size="lg" className="max-w-2xl">
-                  <p>{leadershipIntro}</p>
-                </Prose>
-                <p className="border-border bg-muted text-muted-foreground mt-6 rounded-lg border px-4 py-3 text-sm">
-                  Leadership biographies and photographs will be added here as
-                  they become available.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
+      <WorkforceImpact />
 
       <WhyEmployers />
-
-      <CareerPathway />
 
       <FinalCta
         title="Let's Build Something Great Together"
         description="Whether you're looking for dependable workforce solutions or your next career opportunity, Platinum Staffing & Recruitment is ready to help you build stronger businesses, meaningful careers, and lasting partnerships."
-        primary={{ label: "Request Talent", href: "/contact#request-talent" }}
+        primary={{ label: "Request Talent", href: "/employers/request-talent" }}
         secondary={{ label: "Find Jobs", href: "/jobs" }}
       />
     </>

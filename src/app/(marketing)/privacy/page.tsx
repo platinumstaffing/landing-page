@@ -106,8 +106,9 @@ export default function PrivacyPage() {
         You may contact us to request access to, correction of, or deletion of
         the personal information you have submitted, and to ask that we stop
         contacting you. [Confirm which privacy laws apply (for example,
-        Pennsylvania and other applicable U.S. state laws) and list the specific
-        rights and response times those laws require.]
+        applicable U.S. state privacy laws, including Pennsylvania, New Jersey,
+        and New York) and list the specific rights and response times those laws
+        require.]
       </p>
 
       <h2>Security</h2>

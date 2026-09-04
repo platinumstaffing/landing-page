@@ -7,7 +7,7 @@ brand
 ## Users
 
 - **Employers / hiring decision-makers** (operations managers, HR, plant and warehouse
-  leads across Pennsylvania manufacturing, warehousing, distribution, logistics,
+  leads across the tri-state region in manufacturing, warehousing, distribution, logistics,
   administrative support, customer service, and light industrial). Their context: they are
   evaluating whether to trust a staffing partner with a real workforce gap. The job to be
   done is to solve that gap with someone dependable and to start a conversation (Request

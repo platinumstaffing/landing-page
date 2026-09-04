@@ -1,25 +1,23 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   Briefcase,
+  Buildings,
+  CalendarBlank,
   EnvelopeSimple,
-  MapPin,
-  Phone,
   User,
 } from "@phosphor-icons/react/dist/ssr";
 
 import { GeneralContactForm } from "@/components/forms/general-contact-form";
-import { RequestTalentForm } from "@/components/forms/request-talent-form";
 import { Container } from "@/components/layout/container";
+import { EditorialImage } from "@/components/layout/editorial-image";
 import { EditorialPageHero } from "@/components/layout/editorial-page-hero";
 import { LinkCard } from "@/components/layout/link-card";
 import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
 import { FaqList } from "@/components/sections/faq-list";
 import { FinalCta } from "@/components/sections/final-cta";
-import { Button } from "@/components/ui/button";
 import { contactFaqs } from "@/content/faqs";
-import { siteConfig } from "@/content/site";
+import { pageImages, reusedPageImages } from "@/content/page-images";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -27,20 +25,7 @@ export const metadata: Metadata = {
     "Contact Platinum Staffing & Recruitment to request talent, ask a question, or begin a consultation about workforce solutions.",
 };
 
-type ContactPageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
-
-function first(value: string | string[] | undefined): string | undefined {
-  if (Array.isArray(value)) return value[0];
-  return value;
-}
-
-export default async function ContactPage({ searchParams }: ContactPageProps) {
-  const params = await searchParams;
-  const defaultService = first(params.service);
-  const defaultIndustry = first(params.industry);
-
+export default function ContactPage() {
   return (
     <>
       <EditorialPageHero
@@ -54,10 +39,14 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             career support.
           </p>
         }
-        primary={{ label: "Request Talent", href: "#request-talent" }}
+        primary={{
+          label: "Request Talent",
+          href: "/employers/request-talent",
+        }}
         secondary={{ label: "Contact Our Team", href: "#message" }}
         note="Two clear paths · One responsive team"
-        banner={{ family: "Contact", page: "Request Talent & Inquiry" }}
+        banner={{ family: "Contact", page: "Get in Touch" }}
+        image={pageImages.contactHero}
       />
 
       <Section>
@@ -66,13 +55,20 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             eyebrow="How Can We Help?"
             title="Choose the path that fits your needs"
           />
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <LinkCard
-              href="#request-talent"
+              href="/employers/request-talent"
               icon={Briefcase}
-              title="Employers"
+              title="Request Talent"
               summary="Looking to hire qualified professionals for your organization."
               cta="Request talent"
+            />
+            <LinkCard
+              href="/contact/schedule-consultation"
+              icon={CalendarBlank}
+              title="Schedule a Consultation"
+              summary="Walk through hiring needs, staffing strategy, and available services with a representative."
+              cta="Request a consultation"
             />
             <LinkCard
               href="/job-seekers"
@@ -80,6 +76,13 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               title="Job Seekers"
               summary="Looking for employment opportunities or help with an application."
               cta="Visit the Career Center"
+            />
+            <LinkCard
+              href="/contact/office-information"
+              icon={Buildings}
+              title="Office Information"
+              summary="Service area, hours, and how to reach Platinum Staffing while a street address is confirmed."
+              cta="View office information"
             />
             <LinkCard
               href="#message"
@@ -92,83 +95,24 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         </Container>
       </Section>
 
-      <Section tone="muted" id="request-talent">
+      <Section id="message" tone="muted">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-            <SectionHeader
-              title="Request Talent"
-              description="Tell us about your hiring needs and a Platinum Staffing representative will follow up. Selecting a staffing service helps us categorize the inquiry correctly."
-            />
-            <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
-              <RequestTalentForm
-                defaultService={defaultService}
-                defaultIndustry={defaultIndustry}
-              />
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      <Section id="message">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
             <div>
               <SectionHeader
                 title="Send Us a Message"
                 description="For general questions, partnerships, or website feedback."
               />
-              <div className="text-muted-foreground mt-8 space-y-4 text-sm">
-                <p className="inline-flex items-start gap-3">
-                  <MapPin className="text-primary mt-0.5 size-5" aria-hidden />
-                  <span>
-                    <strong className="font-heading text-foreground block">
-                      Service Area
-                    </strong>
-                    {siteConfig.address.display}
-                    <span className="mt-1 block text-xs">
-                      Full office address pending client confirmation.
-                    </span>
-                  </span>
-                </p>
-                <p className="inline-flex items-start gap-3">
-                  <Phone className="text-primary mt-0.5 size-5" aria-hidden />
-                  <span>
-                    <strong className="font-heading text-foreground block">
-                      Phone
-                    </strong>
-                    Pending confirmation
-                  </span>
-                </p>
-                <p className="inline-flex items-start gap-3">
-                  <EnvelopeSimple
-                    className="text-primary mt-0.5 size-5"
-                    aria-hidden
-                  />
-                  <span>
-                    <strong className="font-heading text-foreground block">
-                      Email
-                    </strong>
-                    Use the form — public inbox pending confirmation
-                  </span>
-                </p>
+              <div className="mt-8 hidden lg:block">
+                <EditorialImage
+                  image={reusedPageImages.candidateConversation}
+                />
               </div>
             </div>
             <div className="border-border bg-surface rounded-xl border p-6 sm:p-8">
               <GeneralContactForm />
             </div>
           </div>
-        </Container>
-      </Section>
-
-      <Section tone="muted" id="consultation">
-        <Container>
-          <SectionHeader
-            title="Schedule a Consultation"
-            description="Employers interested in discussing workforce solutions can request a consultation with a Platinum Staffing representative. Use the Request Talent form and note your preferred meeting time, or send a general message with “Consultation” as the reason."
-          />
-          <Button asChild className="mt-6">
-            <Link href="#request-talent">Request Consultation</Link>
-          </Button>
         </Container>
       </Section>
 
@@ -184,7 +128,10 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
       <FinalCta
         title="We're Here to Help"
         description="Partner with Platinum Staffing & Recruitment for workforce solutions that drive results."
-        primary={{ label: "Request Talent", href: "#request-talent" }}
+        primary={{
+          label: "Request Talent",
+          href: "/employers/request-talent",
+        }}
         secondary={{ label: "Search Jobs", href: "/jobs" }}
       />
     </>

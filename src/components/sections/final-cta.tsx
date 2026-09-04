@@ -14,10 +14,10 @@ type FinalCtaProps = {
 export function FinalCta({
   title,
   description,
-  primary = { label: "Request Talent", href: "/contact#request-talent" },
+  primary = { label: "Request Talent", href: "/employers/request-talent" },
   secondary = {
     label: "Schedule a Consultation",
-    href: "/contact#consultation",
+    href: "/contact/schedule-consultation",
   },
 }: FinalCtaProps) {
   return (

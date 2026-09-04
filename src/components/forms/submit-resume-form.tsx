@@ -43,7 +43,7 @@ export function SubmitResumeForm() {
     defaultValues: {
       website: "",
       consent: false,
-      state: "PA",
+      state: "",
     },
   });
 
@@ -78,7 +78,7 @@ export function SubmitResumeForm() {
         setResult({ status: "error", message: response.message });
         return;
       }
-      reset({ website: "", consent: false, state: "PA" });
+      reset({ website: "", consent: false, state: "" });
       setFile(null);
       setResult({ status: "success", message: response.message });
     });

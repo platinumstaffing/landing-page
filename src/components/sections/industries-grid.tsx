@@ -7,7 +7,6 @@ import { Section } from "@/components/layout/section";
 import { SectionHeader } from "@/components/layout/section-header";
 import { Reveal } from "@/components/motion/reveal";
 import { industries } from "@/content/industries";
-import { industryHomeImages } from "@/content/home-images";
 
 type IndustriesGridProps = {
   eyebrow?: string;
@@ -34,7 +33,7 @@ export function IndustriesGrid({
         </Reveal>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {industries.map((industry, index) => {
-            const image = industryHomeImages[industry.slug];
+            const image = industry.image;
             const cta = `${industry.name} staffing`;
             return (
               <Reveal key={industry.slug} as="li" delay={index * 0.03}>

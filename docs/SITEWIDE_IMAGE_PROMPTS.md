@@ -22,8 +22,8 @@ public/brand/pages/
 ## Shared production rules
 
 - Photorealistic documentary workplace photography with natural, observational moments.
-- Pennsylvania context where it can be shown honestly through climate, architecture, or
-  industrial character. Do not insert readable Pennsylvania signage unless the location is real.
+- Tri-state workplace context where it can be shown honestly through climate, architecture, or
+  industrial character. Do not insert readable state signage unless the location is real.
 - Representative diversity across the complete library, without tokenized casting.
 - Accurate PPE, safe equipment use, plausible work zones, and realistic operational details.
 - Slightly cool neutral color grade, controlled contrast, natural skin tones, and fine detail.
@@ -80,7 +80,7 @@ public/brand/pages/
 | C01 | `contact/contact-hero.webp`                 | 2400 × 1500 | 16:10 | Contact hero                            |
 | C02 | `contact/employer-conversation.webp`        | 1600 × 2000 | 4:5   | Request Talent form companion           |
 | C03 | `contact/candidate-conversation.webp`       | 1600 × 2000 | 4:5   | General Inquiry form companion          |
-| C04 | `contact/pennsylvania-operations.webp`      | 2100 × 1400 | 3:2   | Service area and consultation           |
+| C04 | `contact/service-area-operations.webp`      | 2100 × 1400 | 3:2   | Service area and consultation           |
 | R01 | `resources/resources-hero.webp`             | 2400 × 1500 | 16:10 | Resources hero                          |
 | R02 | `resources/workforce-insights.webp`         | 1800 × 1200 | 3:2   | Workforce Insights category             |
 | R03 | `resources/industry-reports.webp`           | 1800 × 1200 | 3:2   | Industry Reports category               |
@@ -98,7 +98,7 @@ right, with the heading and actions on the left. Focal point: center-right.
 
 **Prompt**
 
-> Wide documentary photograph of a staffing partner walking through an active Pennsylvania
+> Wide documentary photograph of a staffing partner walking through an active industrial
 > manufacturing facility with an operations leader, both engaged in a practical conversation
 > while work continues naturally around them. Show a sense of accumulated experience and
 > long-term presence without posing, celebration, or sales behavior. Real safety-aware clothing,
@@ -297,7 +297,7 @@ of the editorial container.
 
 **Prompt**
 
-> Wide documentary view through a Pennsylvania industrial campus where manufacturing, warehouse,
+> Wide documentary view through an industrial campus where manufacturing, warehouse,
 > loading, and adjacent operations-office activity can be understood in one coherent environment.
 > Include workers at natural scale rather than a hero portrait. Strong structural geometry,
 > daylight mixed with practical facility lighting, 16:10 landscape.
@@ -527,19 +527,19 @@ duplicating it. Focal point: people centered.
 
 **Alt text draft:** A recruiter answering a job seeker’s question.
 
-### C04. Pennsylvania operations
+### C04. Service-area operations
 
 **Placement:** Full-width image behind or above the Schedule a Consultation section. Keep text on
 an opaque surface rather than directly over a busy image.
 
 **Prompt**
 
-> Exterior documentary view of a working Pennsylvania industrial or distribution facility during
+> Exterior documentary view of a working industrial or distribution facility during
 > a normal weekday, with employees arriving and operational vehicles positioned safely. Use
 > regional weather, practical architecture, and restrained daylight to establish place without
 > readable signs, logos, or license plates. 3:2 landscape.
 
-**Alt text draft:** Employees arriving at a working industrial facility in Pennsylvania.
+**Alt text draft:** Employees arriving at a working industrial facility in the tri-state region.
 
 ## Resources page
 
@@ -654,3 +654,7 @@ an opaque surface rather than directly over a busy image.
 - Meaningful photographs use the provided alt-text drafts. Purely atmospheric duplicates should
   use empty alt text.
 - Do not repeat the same photograph twice on one page.
+
+Until dedicated files exist for C03, C04, R02–R05, and R07, those slots reuse an existing
+photograph with a matching scene (`src/content/page-images.ts` `reusedPageImages`). Replace the
+aliases with the generated files when they arrive.

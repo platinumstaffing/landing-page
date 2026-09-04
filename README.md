@@ -1,6 +1,6 @@
 # Platinum Staffing & Recruitment
 
-Marketing website for Platinum Staffing & Recruitment — a Pennsylvania workforce solutions firm.
+Marketing website for Platinum Staffing & Recruitment — a tri-state workforce solutions firm.
 Built with Next.js 16, TypeScript, Tailwind CSS v4, and shadcn/ui.
 
 ## Getting started
@@ -15,21 +15,22 @@ Open http://localhost:3000.
 
 ## Scripts
 
-| Command                 | Description                                              |
-| ----------------------- | -------------------------------------------------------- |
-| `pnpm dev`              | Start the dev server (Turbopack)                         |
-| `pnpm build`            | Production build                                         |
-| `pnpm start`            | Serve the production build                               |
-| `pnpm format:check`     | Check Prettier formatting                                |
-| `pnpm lint`             | Run ESLint with zero warnings                            |
-| `pnpm typecheck`        | Run strict TypeScript checks                             |
-| `pnpm test:unit`        | Run Vitest with coverage thresholds                      |
-| `pnpm test:smoke`       | Run blocking Chromium smoke and accessibility tests      |
-| `pnpm test:e2e`         | Run the configured Playwright browser matrix             |
-| `pnpm security:secrets` | Scan tracked content for secrets                         |
-| `pnpm security:audit`   | Block high/critical production dependency advisories     |
-| `pnpm verify`           | Run the local formatting-to-production-build quality set |
-| `pnpm ci`               | Run `verify` followed by blocking Chromium browser tests |
+| Command                 | Description                                                        |
+| ----------------------- | ------------------------------------------------------------------ |
+| `pnpm dev`              | Start the dev server (Turbopack)                                   |
+| `pnpm build`            | Production build                                                   |
+| `pnpm start`            | Serve the production build                                         |
+| `pnpm format:check`     | Check Prettier formatting                                          |
+| `pnpm lint`             | Run ESLint with zero warnings                                      |
+| `pnpm typecheck`        | Run strict TypeScript checks                                       |
+| `pnpm test:unit`        | Run Vitest with coverage thresholds                                |
+| `pnpm test:smoke`       | Run blocking Chromium smoke and accessibility tests                |
+| `pnpm test:e2e`         | Run the configured Playwright browser matrix                       |
+| `pnpm security:secrets` | Scan tracked content for secrets                                   |
+| `pnpm security:audit`   | Block high/critical production advisories; retry registry timeouts |
+| `pnpm images:optimize`  | Convert page JPEG sources to spec WebP assets                      |
+| `pnpm verify`           | Run the local formatting-to-production-build quality set           |
+| `pnpm ci`               | Run `verify` followed by blocking Chromium browser tests           |
 
 Node 24 and pnpm 11.17.0 are pinned. Lefthook installs with dependencies: pre-commit checks staged
 formatting, lint, secrets, conflict markers, and file size; pre-push blocks direct updates to

@@ -22,12 +22,14 @@ export function CareerPathway() {
                 <Link href="/jobs">Search Open Positions</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link href="/job-seekers#submit-resume">
+                <Link href="/job-seekers/submit-resume">
                   Submit Your Résumé
                 </Link>
               </Button>
               <Button asChild size="lg" variant="ghost">
-                <Link href="/job-seekers">Career Resources</Link>
+                <Link href="/job-seekers/career-resources">
+                  Career Resources
+                </Link>
               </Button>
             </div>
           </div>
