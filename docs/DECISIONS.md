@@ -15,7 +15,8 @@
 - **Context:** The content doc describes a job board, applications, resume uploads, a resource
   library, and internal admin tooling. MASTER §4 says don't add a backend unless required.
 - **Decision:** Jobs and articles live in typed local content files. Forms submit via Server
-  Actions to Resend; resumes upload to Vercel Blob. No DB, no CMS, no auth, no admin UI.
+  Actions; résumés upload to Vercel Blob. No app database, CMS, auth, or admin UI. D28 adds a
+  private Google Sheet as the submission log without changing that boundary.
 - **Rationale:** Ships a credible, complete marketing site now with a clean, documented
   integration boundary (`src/lib/submissions.ts`) so a DB/ATS can be added later without rework.
 - **Consequence:** Internal admin requirements are documented as a boundary, not built.
@@ -354,3 +355,22 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   clearing the Next/sharp advisories are the conditions for a green `release/dev`.
 - **Consequence:** Dependabot will not reopen these ranges. Later patch releases (Next `16.3.6`,
   sharp `0.35.5`) wait for the next scheduled group.
+
+## D28 — Form submissions persist to Google Sheets; Resend stays the alert
+
+- **Context:** Site forms already validate with RHF + zod and deliver through
+  `src/lib/submissions.ts` to Resend. The team needs a tabular record that can be exported as
+  CSV or Excel without replacing the designed forms or adopting Google Forms.
+- **Decision:** Keep the four website forms. Append each successful submission as a row in a
+  private Google Sheet (tabs: Request Talent, Talent Network, General Contact, Consultation)
+  via a service account and the Sheets API. Write the sheet first (fail-closed); then send the
+  Resend notification. If email fails after a successful sheet write, still return success so
+  retries do not create duplicate rows. Env: `GOOGLE_SHEETS_SPREADSHEET_ID` and
+  `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64` (required for staging/production).
+- **Rationale:** Sheets is already a table plus export tool. The submissions boundary was built
+  for exactly this swap. Google Forms would duplicate UX; an app DB or Airtable would add admin
+  surface the marketing site does not need yet.
+- **Consequence:** Staff share the workbook with the service account (Editor) and export from
+  Sheets. Staging and production use separate spreadsheet IDs. Privacy draft names spreadsheet
+  storage as a processor. D2’s “no database” means no app DB/admin; the sheet is the submission
+  log.

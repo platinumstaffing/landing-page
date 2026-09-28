@@ -78,7 +78,13 @@ export default function PrivacyPage() {
           <strong>Hosting</strong> of the website with our hosting provider.
         </li>
         <li>
-          <strong>Email delivery</strong> to route form submissions to our team.
+          <strong>Email delivery</strong> to notify our team when a form is
+          submitted.
+        </li>
+        <li>
+          <strong>Spreadsheet storage</strong> to keep form submissions in a
+          private tabular log that our team can review and export. [Confirm the
+          Google Workspace account that owns this workbook and who has access.]
         </li>
         <li>
           <strong>Secure file storage</strong> for résumés and documents you
