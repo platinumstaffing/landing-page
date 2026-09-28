@@ -335,3 +335,22 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   production advisories remain blocking.
 - **Consequence:** The Security workflow can take a few extra minutes when the registry is slow.
   Persistent registry outages still fail the job after four attempts.
+
+## D27 — Batch September Dependabot PRs; patch Next and sharp together
+
+- **Context:** Seven Dependabot pull requests targeted `release/dev` (#61–#64, #69, #70, #72).
+  Actions-only pulls failed `security-dependency-and-secrets` because production `next@16.3.1`
+  is below the patched line (`>=16.3.3`) and `pnpm-workspace.yaml` forced `sharp@0.35.3`
+  (`<0.35.4` is a high advisory via `next`). CodeQL `init` (#62) and `analyze` (#64) each fail
+  `security-codeql` unless both pins share one SHA. #61 and #63 were green on an older advisory
+  snapshot and would fail the same audit if rebased alone.
+- **Decision:** Close the seven Dependabot pull requests. Land one human pull request that
+  applies their compatible bumps together: production Next `16.3.5` and React `19.3.0`;
+  development Playwright, secretlint, eslint-config-next, knip, lefthook, Prettier, shadcn, and
+  sharp; Actions pins for pnpm/action-setup `v6.1.0`, anchore/sbom-action `v0.24.2`,
+  zizmor-action `v0.6.3`, and CodeQL `init`+`analyze` on SHA `cdf488f` (`v4.37.9`). Raise the
+  sharp override to `0.35.4` so the production graph matches the patched release.
+- **Rationale:** Required checks cannot pass on the split pulls. Matching CodeQL versions and
+  clearing the Next/sharp advisories are the conditions for a green `release/dev`.
+- **Consequence:** Dependabot will not reopen these ranges. Later patch releases (Next `16.3.6`,
+  sharp `0.35.5`) wait for the next scheduled group.

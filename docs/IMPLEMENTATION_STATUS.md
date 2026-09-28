@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: Reused page photography, homepage light-industrial swap, and homepage WebP re-encode._
+_Last updated: Batched Dependabot into release/dev (Next 16.3.5, sharp 0.35.4, Actions pins)._
 
 ## Completed
 
@@ -55,7 +55,15 @@ _Last updated: Reused page photography, homepage light-industrial swap, and home
 - Employer and industry overview pages are catalogues linking to dedicated landings; industry
   cards use documentary photography instead of icons-in-circles.
 
-## Tri-state + sitewide photography (this session)
+## Dependency batch (this session)
+
+- Supersedes the seven open Dependabot pulls (#61–#64, #69, #70, #72) with one human pull
+  request (D27). Next `16.3.5` and the sharp override `0.35.4` clear the production audit.
+  CodeQL `init` and `analyze` share SHA `cdf488f` (`v4.37.9`).
+- Local `pnpm security:audit`, lint, typecheck, unit tests, Knip, format check, and production
+  build passed on that batch.
+
+## Tri-state + sitewide photography (prior)
 
 - Service area is **the tri-state region** (D25). `siteConfig` splits inline `region`, standalone
   `regionLabel`, and `areaServed` states. JSON-LD emits State objects. Sample jobs spread across
@@ -154,7 +162,8 @@ _Last updated: Reused page photography, homepage light-industrial swap, and home
 
 ## Last validation
 
-- `pnpm lint`, `pnpm typecheck`, `pnpm test:unit`, `pnpm deps:check`, `pnpm build` — pass
+- `pnpm security:audit` — pass (no known production vulnerabilities after Next 16.3.5 and sharp 0.35.4)
+- `pnpm format:check`, `pnpm lint`, `pnpm typecheck`, `pnpm test:unit`, `pnpm deps:check`, `pnpm build` — pass
   (44 routes: hubs, 17 new standalone pages, 12 landings, legal)
 - `pnpm test:a11y` — pass (13 Chromium axe checks including `/about/our-story`,
   `/employers/request-talent`, `/job-seekers/submit-resume`, `/resources/workforce-insights`,
