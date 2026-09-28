@@ -78,10 +78,12 @@ squash commits are the commits that enter the protected branch.
    pnpm/action-setup@*,
    anchore/sbom-action@*,
    zaproxy/action-baseline@*,
-   rhysd/actionlint@*,
    zizmorcore/zizmor-action@*,
    vercel/repository-dispatch@*
    ```
+
+   Workflow syntax checks use the checksum-pinned actionlint v1.7.12 release binary. That
+   repository has no `action.yml`, so it is not an allowlisted action.
 
 6. Enable **Require actions to be pinned to a full-length commit SHA**.
 7. Click **Save**.
