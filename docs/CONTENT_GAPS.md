@@ -1,7 +1,8 @@
 # Content Gaps
 
 Items required from the client. None block the current build; the site degrades honestly
-(sections self-hide or use marked placeholders) until they arrive.
+(sections self-hide or use marked placeholders) until they arrive. The September Dependabot
+batch (D27) does not add or close any of these gaps.
 
 ## Missing company information
 
