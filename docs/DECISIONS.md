@@ -374,3 +374,20 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   Sheets. Staging and production use separate spreadsheet IDs. Privacy draft names spreadsheet
   storage as a processor. D2’s “no database” means no app DB/admin; the sheet is the submission
   log.
+
+## D29 — Promote release/dev with a merge commit
+
+- **Context:** Squash-only, linear-history rules made every `release/dev` → `main` promotion
+  conflict. `main` never contained `release/dev`'s commits, so Git kept comparing both branches to
+  an old ancestor. A side branch could not be the promotion either: `pr-policy` closes any pull
+  request into `main` whose head is not `release/dev`.
+- **Decision:** Drop required linear history on `main` and `release/dev`. Allow squash and merge.
+  Feature pulls into `release/dev` may still squash. The promotion pull request must use a merge
+  commit. Record that in `.github/rulesets/main.json`, `.github/rulesets/release-dev.json`, and
+  the owner runbook.
+- **Rationale:** A merge commit is what makes `release/dev` an ancestor of `main`. The next
+  promotion then only contains new `release/dev` commits. Squashing that promotion would split
+  the histories again.
+- **Consequence:** After this sync is merge-committed into `release/dev` and `release/dev` is
+  merge-committed into `main`, later promotions are `release/dev` → `main` with **Create a merge
+  commit**.
