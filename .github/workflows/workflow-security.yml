@@ -32,11 +32,37 @@ jobs:
         with:
           persist-credentials: false
 
+      # The rhysd/actionlint repository has no action.yml, so a uses: pin cannot be
+      # resolved. Run the published v1.7.12 binary and check its release checksum.
       - name: Validate workflow syntax
-        uses: rhysd/actionlint@914e7df21a07ef503a81201c76d2b11c789d3fca # v1.7.12
+        run: |
+          set -euo pipefail
+          version="1.7.12"
+          case "$(uname -m)" in
+            x86_64)
+              arch="amd64"
+              sha256="8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+              ;;
+            aarch64 | arm64)
+              arch="arm64"
+              sha256="325e971b6ba9bfa504672e29be93c24981eeb1c07576d730e9f7c8805afff0c6"
+              ;;
+            *)
+              echo "unsupported architecture: $(uname -m)" >&2
+              exit 1
+              ;;
+          esac
+          archive="actionlint_${version}_linux_${arch}.tar.gz"
+          work="$(mktemp -d)"
+          curl --fail --silent --show-error --location --proto '=https' --tlsv1.2 \
+            --output "${work}/${archive}" \
+            "https://github.com/rhysd/actionlint/releases/download/v${version}/${archive}"
+          echo "${sha256}  ${work}/${archive}" | sha256sum --check
+          tar --extract --gzip --file "${work}/${archive}" --directory "${work}" actionlint
+          "${work}/actionlint" -color
 
       - name: Audit workflow security
-        uses: zizmorcore/zizmor-action@3dc1ecc9bcb9e94e9b2c709687979e1298497054 # v0.6.2
+        uses: zizmorcore/zizmor-action@70fb788f84895a7701f5643d103d587e460b5c99 # v0.6.3
         with:
           advanced-security: false
           online-audits: false

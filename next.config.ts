@@ -2,13 +2,23 @@ import type { NextConfig } from "next";
 
 // Next.js emits a small inline bootstrap and Motion uses inline style attributes.
 // Keep these two narrowly documented exceptions while denying external script sources.
+// React DevTools/callstack reconstruction needs eval() in development only; production
+// never includes 'unsafe-eval'.
+const scriptSrc = [
+  "script-src 'self' 'unsafe-inline'",
+  process.env.NODE_ENV === "development" ? "'unsafe-eval'" : null,
+  "https://challenges.cloudflare.com",
+]
+  .filter((part): part is string => part !== null)
+  .join(" ");
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
+  scriptSrc,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' blob: data:",
   "font-src 'self'",
@@ -34,6 +44,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   reactStrictMode: true,
+  // googleapis is a large Node client; keep it external to the server bundle.
+  serverExternalPackages: ["googleapis"],
   async headers() {
     return [
       {

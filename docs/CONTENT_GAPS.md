@@ -1,7 +1,8 @@
 # Content Gaps
 
 Items required from the client. None block the current build; the site degrades honestly
-(sections self-hide or use marked placeholders) until they arrive.
+(sections self-hide or use marked placeholders) until they arrive. The September Dependabot
+batch (D27) does not add or close any of these gaps.
 
 ## Missing company information
 
@@ -49,11 +50,11 @@ Items required from the client. None block the current build; the site degrades 
       site's accessibility posture. Review wording, then it can stay indexed.
 - [ ] Privacy Policy + Terms & Conditions — live as **grounded drafts** (`/privacy`, `/terms`),
       `noindex`, with a "pending legal review, not in effect" banner. Privacy reflects the
-      code's actual data flows (forms → email delivery; résumés → private Blob storage; no
-      third-party analytics/ad cookies). Counsel must review and confirm the `[bracketed]`
-      items (legal entity, retention periods, applicable privacy laws/rights including PA/NJ/NY,
-      governing law for multi-state operations, liability, minimum age, privacy/legal contact)
-      before removing `noindex`.
+      code's actual data flows (forms → private Google Sheet log + email notification;
+      résumés → private Blob storage; no third-party analytics/ad cookies). Counsel must review
+      and confirm the `[bracketed]` items (legal entity, spreadsheet ownership/access, retention
+      periods, applicable privacy laws/rights including PA/NJ/NY, governing law for multi-state
+      operations, liability, minimum age, privacy/legal contact) before removing `noindex`.
 - [ ] Real job postings (current `/jobs` uses clearly-marked sample listings derived from the
       content doc's example roles; replace with real openings).
 - [ ] Resource Center articles. Category pages now exist for Workforce Insights, Industry

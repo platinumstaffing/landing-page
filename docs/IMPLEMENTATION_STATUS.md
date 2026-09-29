@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: Reused page photography, homepage light-industrial swap, and homepage WebP re-encode._
+_Last updated: Form submissions append to private Google Sheets; Resend remains the alert._
 
 ## Completed
 
@@ -23,7 +23,9 @@ _Last updated: Reused page photography, homepage light-industrial swap, and home
   and Contact are hubs linking to dedicated children. Canonical Request Talent lives at
   `/employers/request-talent` (preserves `?service=` / `?industry=`). Consultation form is live.
 - Forms: Request Talent, Submit Résumé (Blob upload), General Contact, Schedule Consultation —
-  RHF + zod + Server Actions + Resend boundary + honeypot. Honest loading/success/error states.
+  RHF + zod + Server Actions + Google Sheets row store + Resend alert + honeypot. Honest
+  loading/success/error states. Sheet write is fail-closed; email failure after a saved row
+  still returns success.
 - SEO: metadata, OG, sitemap (hubs + children + 12 landings), robots, Organization JSON-LD with
   three-state `areaServed`, BreadcrumbList JSON-LD on child pages; `not-found` + `error`.
 - Motion: Reveal + AnimatedStat with reduced-motion support.
@@ -55,7 +57,15 @@ _Last updated: Reused page photography, homepage light-industrial swap, and home
 - Employer and industry overview pages are catalogues linking to dedicated landings; industry
   cards use documentary photography instead of icons-in-circles.
 
-## Tri-state + sitewide photography (this session)
+## Dependency batch (this session)
+
+- Supersedes the seven open Dependabot pulls (#61–#64, #69, #70, #72) with one human pull
+  request (D27). Next `16.3.5` and the sharp override `0.35.4` clear the production audit.
+  CodeQL `init` and `analyze` share SHA `cdf488f` (`v4.37.9`).
+- Local `pnpm security:audit`, lint, typecheck, unit tests, Knip, format check, and production
+  build passed on that batch.
+
+## Tri-state + sitewide photography (prior)
 
 - Service area is **the tri-state region** (D25). `siteConfig` splits inline `region`, standalone
   `regionLabel`, and `areaServed` states. JSON-LD emits State objects. Sample jobs spread across
@@ -150,11 +160,13 @@ _Last updated: Reused page photography, homepage light-industrial swap, and home
 ## Blockers / known issues
 
 - See `docs/CONTENT_GAPS.md` (contact details, logos, legal copy, real jobs, leadership).
-- Forms return a clear error when Resend / Blob env vars are missing (do not fake success).
+- Forms return a clear error when Sheets / Resend / Blob env vars are missing (do not fake
+  success). Sheet credentials and spreadsheet ID are required for staging/production builds.
 
 ## Last validation
 
-- `pnpm lint`, `pnpm typecheck`, `pnpm test:unit`, `pnpm deps:check`, `pnpm build` — pass
+- `pnpm security:audit` — pass (no known production vulnerabilities after Next 16.3.5 and sharp 0.35.4)
+- `pnpm format:check`, `pnpm lint`, `pnpm typecheck`, `pnpm test:unit`, `pnpm deps:check`, `pnpm build` — pass
   (44 routes: hubs, 17 new standalone pages, 12 landings, legal)
 - `pnpm test:a11y` — pass (13 Chromium axe checks including `/about/our-story`,
   `/employers/request-talent`, `/job-seekers/submit-resume`, `/resources/workforce-insights`,

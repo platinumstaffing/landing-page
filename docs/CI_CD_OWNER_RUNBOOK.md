@@ -36,7 +36,8 @@ Use this order for the first rollout:
 6. Open the one-time promotion pull request from the same repository's `release/dev` branch into
    `main`.
 7. Because `main` does not yet contain the trusted policy workflow, manually confirm the source is
-   exactly `release/dev`, then squash-merge it.
+   exactly `release/dev`, then merge-commit it. Do not squash; that drops `release/dev` from
+   `main`'s history (D29).
 8. Import and activate the `main` ruleset.
 9. Keep any existing classic branch-protection rules enabled until both rulesets show **Active**
    and the acceptance tests in section 11 pass. Remove duplicate classic rules only afterward.
@@ -55,15 +56,18 @@ required checks. Do not use this bootstrap exception again.
    - Enable **Allow squash merging**.
    - Set the default squash commit message to **Pull request title** or **Pull request title and
      commit details**.
-   - Disable **Allow merge commits**.
+   - Enable **Allow merge commits**. Feature pulls into `release/dev` may still squash. A
+     promotion from `release/dev` into `main` must use a merge commit so `main` keeps
+     `release/dev` in its history.
    - Disable **Allow rebase merging**.
    - Enable **Automatically delete head branches**.
 6. Confirm the default branch remains `main`.
 7. Scroll to the repository danger-zone settings and confirm branch deletion is not being used as
    a normal release mechanism.
 
-The repository uses squash-only history so the protected branches remain linear. GitHub-generated
-squash commits are the commits that enter the protected branch.
+Feature pull requests into `release/dev` may squash. The promotion from `release/dev` into `main`
+must be a merge commit. Squashing that promotion removes `release/dev` from `main`'s history and
+the next promotion conflicts again.
 
 ## 2. GitHub Actions policy
 
@@ -78,10 +82,12 @@ squash commits are the commits that enter the protected branch.
    pnpm/action-setup@*,
    anchore/sbom-action@*,
    zaproxy/action-baseline@*,
-   rhysd/actionlint@*,
    zizmorcore/zizmor-action@*,
    vercel/repository-dispatch@*
    ```
+
+   Workflow syntax checks use the checksum-pinned actionlint v1.7.12 release binary. That
+   repository has no `action.yml`, so it is not an allowlisted action.
 
 6. Enable **Require actions to be pinned to a full-length commit SHA**.
 7. Click **Save**.
@@ -162,15 +168,17 @@ Do this only after the CI/CD bootstrap pull request has been merged into `releas
    - Target: branch matching exactly `release/dev`.
    - **Restrict deletions**: enabled.
    - **Block force pushes**: enabled.
-   - **Require linear history**: enabled.
+   - **Require linear history**: disabled. A merge commit is required when promoting
+     `release/dev` into `main`.
    - **Require signed commits**: disabled. PR-only updates, required checks, strict
-     up-to-date branches, linear history, and an empty bypass list remain the enforcement boundary.
+     up-to-date branches, and an empty bypass list remain the enforcement boundary.
    - **Require a pull request before merging**: enabled.
    - Required approvals: `0`.
    - Required code-owner approval: disabled.
    - Required approval of the most recent push: disabled.
    - Required conversation resolution: enabled.
-   - Allowed merge method: squash only.
+   - Allowed merge methods: squash and merge. Use squash for feature pulls into `release/dev`.
+     Use a merge commit for `release/dev` → `main`.
    - **Require status checks to pass**: enabled.
    - **Require branches to be up to date before merging**: enabled.
 6. Confirm these eight status checks are listed exactly:
@@ -214,8 +222,8 @@ workflow files on `main`.
    not require a human approval.
 
 The pull-request rule is what prevents direct updates while still allowing GitHub to create the
-squash merge after all checks pass. Do not add **Restrict updates** with an empty bypass list; that
-would also prevent legitimate pull-request merges.
+squash or merge commit after all checks pass. Do not add **Restrict updates** with an empty bypass
+list; that would also prevent legitimate pull-request merges.
 
 ## 6. GitHub repository variables
 
@@ -311,6 +319,8 @@ Remove temporary fallback credentials when the fallback promotion is complete.
     - Staging `RESEND_API_KEY`
     - Staging/test `CONTACT_FROM_EMAIL`
     - Non-customer staging `CONTACT_TO_EMAIL`
+    - Staging-only `GOOGLE_SHEETS_SPREADSHEET_ID` (staging workbook, not production)
+    - Staging `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64`
     - Staging-only `BLOB_READ_WRITE_TOKEN`
     - Staging `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
     - Staging `TURNSTILE_SECRET_KEY`
@@ -350,6 +360,8 @@ this project.
     - Production `RESEND_API_KEY`
     - Verified production `CONTACT_FROM_EMAIL`
     - Real internal `CONTACT_TO_EMAIL`
+    - Production-only `GOOGLE_SHEETS_SPREADSHEET_ID`
+    - Production `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64`
     - Production-only `BLOB_READ_WRITE_TOKEN`
     - Production `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
     - Production `TURNSTILE_SECRET_KEY`
@@ -426,7 +438,7 @@ Run these after the workflows exist on both long-lived branches and both ruleset
 6. Open a valid same-repository `release/dev` → `main` pull request.
    - Expected: all eight checks run.
    - Expected: no human approval is required.
-   - Expected: squash is the only merge method.
+   - Expected: squash and merge are both offered. Promote with a merge commit, not squash.
 7. Trigger Dependabot.
    - Expected: its pull requests target `release/dev`.
    - Expected: it receives no Vercel or ordinary GitHub environment secret.

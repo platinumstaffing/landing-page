@@ -15,7 +15,8 @@
 - **Context:** The content doc describes a job board, applications, resume uploads, a resource
   library, and internal admin tooling. MASTER §4 says don't add a backend unless required.
 - **Decision:** Jobs and articles live in typed local content files. Forms submit via Server
-  Actions to Resend; resumes upload to Vercel Blob. No DB, no CMS, no auth, no admin UI.
+  Actions; résumés upload to Vercel Blob. No app database, CMS, auth, or admin UI. D28 adds a
+  private Google Sheet as the submission log without changing that boundary.
 - **Rationale:** Ships a credible, complete marketing site now with a clean, documented
   integration boundary (`src/lib/submissions.ts`) so a DB/ATS can be added later without rework.
 - **Consequence:** Internal admin requirements are documented as a boundary, not built.
@@ -335,3 +336,58 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
   production advisories remain blocking.
 - **Consequence:** The Security workflow can take a few extra minutes when the registry is slow.
   Persistent registry outages still fail the job after four attempts.
+
+## D27 — Batch September Dependabot PRs; patch Next and sharp together
+
+- **Context:** Seven Dependabot pull requests targeted `release/dev` (#61–#64, #69, #70, #72).
+  Actions-only pulls failed `security-dependency-and-secrets` because production `next@16.3.1`
+  is below the patched line (`>=16.3.3`) and `pnpm-workspace.yaml` forced `sharp@0.35.3`
+  (`<0.35.4` is a high advisory via `next`). CodeQL `init` (#62) and `analyze` (#64) each fail
+  `security-codeql` unless both pins share one SHA. #61 and #63 were green on an older advisory
+  snapshot and would fail the same audit if rebased alone.
+- **Decision:** Close the seven Dependabot pull requests. Land one human pull request that
+  applies their compatible bumps together: production Next `16.3.5` and React `19.3.0`;
+  development Playwright, secretlint, eslint-config-next, knip, lefthook, Prettier, shadcn, and
+  sharp; Actions pins for pnpm/action-setup `v6.1.0`, anchore/sbom-action `v0.24.2`,
+  zizmor-action `v0.6.3`, and CodeQL `init`+`analyze` on SHA `cdf488f` (`v4.37.9`). Raise the
+  sharp override to `0.35.4` so the production graph matches the patched release.
+- **Rationale:** Required checks cannot pass on the split pulls. Matching CodeQL versions and
+  clearing the Next/sharp advisories are the conditions for a green `release/dev`.
+- **Consequence:** Dependabot will not reopen these ranges. Later patch releases (Next `16.3.6`,
+  sharp `0.35.5`) wait for the next scheduled group.
+
+## D28 — Form submissions persist to Google Sheets; Resend stays the alert
+
+- **Context:** Site forms already validate with RHF + zod and deliver through
+  `src/lib/submissions.ts` to Resend. The team needs a tabular record that can be exported as
+  CSV or Excel without replacing the designed forms or adopting Google Forms.
+- **Decision:** Keep the four website forms. Append each successful submission as a row in a
+  private Google Sheet (tabs: Request Talent, Talent Network, General Contact, Consultation)
+  via a service account and the Sheets API. Write the sheet first (fail-closed); then send the
+  Resend notification. If email fails after a successful sheet write, still return success so
+  retries do not create duplicate rows. Env: `GOOGLE_SHEETS_SPREADSHEET_ID` and
+  `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64` (required for staging/production).
+- **Rationale:** Sheets is already a table plus export tool. The submissions boundary was built
+  for exactly this swap. Google Forms would duplicate UX; an app DB or Airtable would add admin
+  surface the marketing site does not need yet.
+- **Consequence:** Staff share the workbook with the service account (Editor) and export from
+  Sheets. Staging and production use separate spreadsheet IDs. Privacy draft names spreadsheet
+  storage as a processor. D2’s “no database” means no app DB/admin; the sheet is the submission
+  log.
+
+## D29 — Promote release/dev with a merge commit
+
+- **Context:** Squash-only, linear-history rules made every `release/dev` → `main` promotion
+  conflict. `main` never contained `release/dev`'s commits, so Git kept comparing both branches to
+  an old ancestor. A side branch could not be the promotion either: `pr-policy` closes any pull
+  request into `main` whose head is not `release/dev`.
+- **Decision:** Drop required linear history on `main` and `release/dev`. Allow squash and merge.
+  Feature pulls into `release/dev` may still squash. The promotion pull request must use a merge
+  commit. Record that in `.github/rulesets/main.json`, `.github/rulesets/release-dev.json`, and
+  the owner runbook.
+- **Rationale:** A merge commit is what makes `release/dev` an ancestor of `main`. The next
+  promotion then only contains new `release/dev` commits. Squashing that promotion would split
+  the histories again.
+- **Consequence:** After this sync is merge-committed into `release/dev` and `release/dev` is
+  merge-committed into `main`, later promotions are `release/dev` → `main` with **Create a merge
+  commit**.
