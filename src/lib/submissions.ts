@@ -1,12 +1,14 @@
 /**
  * Integration boundary for form submissions.
  *
- * Today: validate → spam gate → Resend email (and optional Blob URL for resumes).
- * Later: swap the body of `deliverSubmission` to persist to a DB/ATS without
- * changing form components or Server Action signatures.
+ * Flow: validate → spam gate → Google Sheet row → Resend notification
+ * (and optional Blob URL for resumes). Form components and Server Action
+ * signatures stay stable when the store or notifier changes.
  */
 
 import { Resend } from "resend";
+
+import { appendSubmissionToSheet } from "@/lib/google-sheets";
 
 export type SubmissionKind =
   "request-talent" | "submit-resume" | "general-contact" | "consultation";
@@ -30,7 +32,7 @@ function formatFields(fields: SubmissionPayload["fields"]): string {
     .join("\n");
 }
 
-export async function deliverSubmission(
+async function sendSubmissionEmail(
   payload: SubmissionPayload,
 ): Promise<DeliveryResult> {
   const apiKey = process.env.RESEND_API_KEY;
@@ -88,6 +90,26 @@ export async function deliverSubmission(
       error: "We could not send your message. Please try again.",
     };
   }
+}
+
+export async function deliverSubmission(
+  payload: SubmissionPayload,
+): Promise<DeliveryResult> {
+  const sheetResult = await appendSubmissionToSheet(payload);
+  if (!sheetResult.ok) {
+    return { ok: false, error: sheetResult.error };
+  }
+
+  const emailResult = await sendSubmissionEmail(payload);
+  if (!emailResult.ok) {
+    // Row is already persisted; do not fail the visitor or invite a duplicate row.
+    console.error(
+      "[submissions] Email notification failed after sheet write",
+      emailResult.error,
+    );
+  }
+
+  return { ok: true, id: emailResult.ok ? emailResult.id : undefined };
 }
 
 /** Honeypot spam gate. Turnstile can be layered on when env keys are present. */

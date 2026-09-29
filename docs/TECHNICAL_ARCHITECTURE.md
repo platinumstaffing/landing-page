@@ -5,7 +5,8 @@
 - Next.js 16 App Router, React 19, TypeScript strict, pnpm, Turbopack dev.
 - Tailwind CSS v4 (CSS-first `@theme`), shadcn/ui (radix base) owned in `src/components/ui`.
 - Motion v12 (only animation lib). Phosphor icons (SSR entry).
-- Forms: react-hook-form + zod, Server Actions, Resend delivery, Vercel Blob uploads.
+- Forms: react-hook-form + zod, Server Actions, Google Sheets storage, Resend
+  notification, Vercel Blob uploads.
 
 ## Folder structure
 
@@ -47,12 +48,16 @@ Client form (RHF + zod)
   -> Server Action
      -> re-validate with the same zod schema
      -> honeypot spam gate (+ optional Turnstile when env keys are set)
-     -> deliver via Resend through src/lib/submissions.ts
+     -> deliverSubmission in src/lib/submissions.ts
+        -> append row to private Google Sheet (fail-closed)
+        -> notify team via Resend (sheet success still returns success if email fails)
 Resume file -> uploadResumeAction (Vercel Blob put, private) -> URL passed into submit action
 ```
 
-`src/lib/submissions.ts` is the single integration boundary. Today it emails via Resend; a
-future DB/ATS integration replaces only this module.
+`src/lib/submissions.ts` is the single integration boundary. Submission rows live in a private
+Google Sheet (one tab per form kind) via `src/lib/google-sheets.ts`. Resend remains the alert
+channel. Staff export CSV or Excel from Sheets. A future DB/ATS can replace the sheet writer
+without changing form components.
 
 ## Job data
 
@@ -61,9 +66,10 @@ Typed entries validated by a zod schema in `src/content/jobs`. Each listing can 
 
 ## Not built (documented boundary, per DECISIONS D2)
 
-Internal admin (add/edit/close jobs, applicant tracking, exports, inquiry status), auth, DB,
-CMS, employer/candidate portals. These are future phases; the content model and submissions
-boundary are designed to accommodate them.
+Internal admin (add/edit/close jobs, applicant tracking, inquiry status UI), auth, app DB,
+CMS, employer/candidate portals. These are future phases. Form submissions already persist to
+a private Google Sheet for tabular review and export; the content model and submissions
+boundary remain ready for a later ATS or database.
 
 ## Deployment
 

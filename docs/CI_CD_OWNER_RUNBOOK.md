@@ -313,6 +313,8 @@ Remove temporary fallback credentials when the fallback promotion is complete.
     - Staging `RESEND_API_KEY`
     - Staging/test `CONTACT_FROM_EMAIL`
     - Non-customer staging `CONTACT_TO_EMAIL`
+    - Staging-only `GOOGLE_SHEETS_SPREADSHEET_ID` (staging workbook, not production)
+    - Staging `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64`
     - Staging-only `BLOB_READ_WRITE_TOKEN`
     - Staging `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
     - Staging `TURNSTILE_SECRET_KEY`
@@ -352,6 +354,8 @@ this project.
     - Production `RESEND_API_KEY`
     - Verified production `CONTACT_FROM_EMAIL`
     - Real internal `CONTACT_TO_EMAIL`
+    - Production-only `GOOGLE_SHEETS_SPREADSHEET_ID`
+    - Production `GOOGLE_SERVICE_ACCOUNT_JSON_BASE64`
     - Production-only `BLOB_READ_WRITE_TOKEN`
     - Production `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
     - Production `TURNSTILE_SECRET_KEY`

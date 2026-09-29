@@ -28,7 +28,8 @@ When sources conflict, the written docs beat the mockups. See `docs/DECISIONS.md
 - Tailwind CSS v4 (CSS-first `@theme` in `src/app/globals.css`)
 - shadcn/ui (radix base) — components are owned source in `src/components/ui`
 - Motion (`motion`) v12 — the ONLY animation library
-- Forms: react-hook-form + zod + Server Actions; Resend for delivery; Vercel Blob for uploads
+- Forms: react-hook-form + zod + Server Actions; Google Sheets for storage; Resend for
+  notification; Vercel Blob for uploads
 - Package manager: pnpm
 
 ## Hard rules

@@ -1,6 +1,6 @@
 # Implementation Status
 
-_Last updated: Batched Dependabot into release/dev (Next 16.3.5, sharp 0.35.4, Actions pins)._
+_Last updated: Form submissions append to private Google Sheets; Resend remains the alert._
 
 ## Completed
 
@@ -23,7 +23,9 @@ _Last updated: Batched Dependabot into release/dev (Next 16.3.5, sharp 0.35.4, A
   and Contact are hubs linking to dedicated children. Canonical Request Talent lives at
   `/employers/request-talent` (preserves `?service=` / `?industry=`). Consultation form is live.
 - Forms: Request Talent, Submit Résumé (Blob upload), General Contact, Schedule Consultation —
-  RHF + zod + Server Actions + Resend boundary + honeypot. Honest loading/success/error states.
+  RHF + zod + Server Actions + Google Sheets row store + Resend alert + honeypot. Honest
+  loading/success/error states. Sheet write is fail-closed; email failure after a saved row
+  still returns success.
 - SEO: metadata, OG, sitemap (hubs + children + 12 landings), robots, Organization JSON-LD with
   three-state `areaServed`, BreadcrumbList JSON-LD on child pages; `not-found` + `error`.
 - Motion: Reveal + AnimatedStat with reduced-motion support.
@@ -158,7 +160,8 @@ _Last updated: Batched Dependabot into release/dev (Next 16.3.5, sharp 0.35.4, A
 ## Blockers / known issues
 
 - See `docs/CONTENT_GAPS.md` (contact details, logos, legal copy, real jobs, leadership).
-- Forms return a clear error when Resend / Blob env vars are missing (do not fake success).
+- Forms return a clear error when Sheets / Resend / Blob env vars are missing (do not fake
+  success). Sheet credentials and spreadsheet ID are required for staging/production builds.
 
 ## Last validation
 
