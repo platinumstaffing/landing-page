@@ -23,8 +23,8 @@ export const workforceStats = [
   {
     id: "industries",
     label: "Industries Served",
-    value: 6,
-    display: "6+",
+    value: 300,
+    display: "300+",
     suffix: " Specialized Industries",
   },
 ] as const;

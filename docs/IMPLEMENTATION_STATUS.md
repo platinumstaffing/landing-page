@@ -60,7 +60,8 @@ _Last updated: Form submissions append to private Google Sheets; Resend remains 
 ## Dependency batch (this session)
 
 - Supersedes the seven open Dependabot pulls (#61–#64, #69, #70, #72) with one human pull
-  request (D27). Next `16.3.5` and the sharp override `0.35.4` clear the production audit.
+  request (D27). Next `16.3.8` and the undici override `>=6.28.1 <7` clear the later
+  `next/og` critical and Blob undici high (D30). Sharp remains `0.35.4`.
   CodeQL `init` and `analyze` share SHA `cdf488f` (`v4.37.9`).
 - Local `pnpm security:audit`, lint, typecheck, unit tests, Knip, format check, and production
   build passed on that batch.
@@ -165,7 +166,7 @@ _Last updated: Form submissions append to private Google Sheets; Resend remains 
 
 ## Last validation
 
-- `pnpm security:audit` — pass (no known production vulnerabilities after Next 16.3.5 and sharp 0.35.4)
+- `pnpm security:audit` — pass (no known production vulnerabilities after Next 16.3.8 and undici 6.28.1)
 - `pnpm format:check`, `pnpm lint`, `pnpm typecheck`, `pnpm test:unit`, `pnpm deps:check`, `pnpm build` — pass
   (44 routes: hubs, 17 new standalone pages, 12 landings, legal)
 - `pnpm test:a11y` — pass (13 Chromium axe checks including `/about/our-story`,

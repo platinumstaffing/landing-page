@@ -391,3 +391,14 @@ The `Website & Logo.pdf` mockups contain placeholder/contradictory data. Authori
 - **Consequence:** After this sync is merge-committed into `release/dev` and `release/dev` is
   merge-committed into `main`, later promotions are `release/dev` → `main` with **Create a merge
   commit**.
+
+## D30 — Patch Next 16.3.8 and undici 6.28.1 for production audit
+
+- **Context:** Security CI failed `pnpm security:audit` on a Next critical (`GHSA-vcvr-r3jv-pc5j`,
+  `next/og` ImageResponse RCE in `>=16.2.0 <16.3.6`) and an undici high (`GHSA-rfgv-xxqx-mfg5`
+  via `@vercel/blob`). D27 had deferred Next `16.3.6`.
+- **Decision:** Pin production Next and `eslint-config-next` to `16.3.8` (latest patched 16.3).
+  Override `undici` to `>=6.28.1 <7` so Blob stays on the 6.x line.
+- **Rationale:** High and critical production advisories are blocking. This is a same-line
+  security patch, not a major upgrade.
+- **Consequence:** D27’s “wait for 16.3.6” deferral is superseded for Next. Sharp remains 0.35.4.
